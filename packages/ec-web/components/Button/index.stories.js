@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Button, FlatButton, FlatButtonIndexed } from '.';
+import {  Button, FlatButton, FlatButtonIndexed } from '.';
 
 export default {
   title: 'components/Button',
@@ -37,9 +37,8 @@ Small.args = {
 
 export const Submit = Template.bind({});
 Submit.args = {
-  size: 'large',
+  primary: true,
   label: 'Submit',
-  backgroundColor: '#e1739f',
 }
 
 const But = (args) => <FlatButtonIndexed {...args} />

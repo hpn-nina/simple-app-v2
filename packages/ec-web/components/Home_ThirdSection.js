@@ -16,7 +16,7 @@ class Home_ThirdSection extends React.Component {
               <div className="u-align-center-md u-align-center-sm u-align-center-xs u-container-style u-list-item u-radius-32 u-repeater-item u-shape-round u-white u-list-item-1">
                 <div className="u-container-layout u-similar-container u-container-layout-1">
                   <div
-                    alt
+                    alt = "true"
                     className="u-align-center u-image u-image-circle u-image-1"
                     data-image-width={1536}
                     data-image-height={1541}
@@ -41,7 +41,7 @@ class Home_ThirdSection extends React.Component {
               <div className="u-align-center-md u-align-center-sm u-align-center-xs u-container-style u-list-item u-radius-32 u-repeater-item u-shape-round u-white u-list-item-2">
                 <div className="u-container-layout u-similar-container u-container-layout-2">
                   <div
-                    alt
+                    alt = "true"
                     className="u-align-center u-image u-image-circle u-image-2"
                     data-image-width={2000}
                     data-image-height={1333}
@@ -66,7 +66,7 @@ class Home_ThirdSection extends React.Component {
               <div className="u-align-center-md u-align-center-sm u-align-center-xs u-container-style u-list-item u-radius-32 u-repeater-item u-shape-round u-white u-list-item-3">
                 <div className="u-container-layout u-similar-container u-container-layout-3">
                   <div
-                    alt
+                    alt ="true"
                     className="u-align-center u-image u-image-circle u-image-3"
                     data-image-width={2000}
                     data-image-height={1333}

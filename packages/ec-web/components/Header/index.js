@@ -48,7 +48,7 @@ export default function Header({user, onLogin, onLogout}) {
                 <div className="u-container-layout u-valign-top-lg u-valign-top-xl u-container-layout-3">
                   <div className="u-align-center-md u-align-center-sm u-align-center-xs u-align-left-lg u-align-left-xl u-container-style u-custom-color-33 u-group u-radius-10 u-shape-round u-group-1">
                     <div className="u-container-layout u-container-layout-4">
-                      <div className="u-image u-image-circle u-image-1" alt="" data-image-width={1536} data-image-height={1541} />
+                      <div className="u-image u-image-circle u-image-1" alt="true" data-image-width={1536} data-image-height={1541} />
                       <p className="u-custom-font u-font-raleway u-text u-text-2">Hi! Lâm Thành Tín</p>
                     </div>
                   </div>
@@ -57,7 +57,7 @@ export default function Header({user, onLogin, onLogout}) {
             </div>
           </div>
         </div><h2 className="u-text u-text-3" data-animation-name="bounceIn" data-animation-duration={1000} data-animation-delay={0} data-animation-direction>
-          <a className="u-active-none u-btn u-btn-round u-button-style u-custom-font u-font-raleway u-gradient u-hover-none u-none u-radius-10 u-text-active-white u-text-hover-white u-text-white u-btn-2" href="#" data-animation-name="fadeIn" data-animation-duration={1000} data-animation-delay={0} data-animation-direction="Down"><Link href='/'>SIMPLE</Link></a>
+          <a className="u-active-none u-btn u-btn-round u-button-style u-custom-font u-font-raleway u-gradient u-hover-none u-none u-radius-10 u-text-active-white u-text-hover-white u-text-white u-btn-2" href="#" data-animation-name="fadeIn" data-animation-duration={1000} data-animation-delay={0} data-animation-direction="Down">SIMPLE</a>
         </h2><nav className="u-dropdown-icon u-menu u-menu-dropdown u-offcanvas u-menu-1">
           <div className="menu-collapse" style={{fontSize: '1.125rem', letterSpacing: '0px', fontWeight: 500}}>
             <a className="u-button-style u-custom-active-color u-custom-border-radius u-custom-color u-custom-hover-color u-custom-left-right-menu-spacing u-custom-padding-bottom u-custom-text-active-color u-custom-text-color u-custom-text-hover-color u-custom-text-shadow u-custom-top-bottom-menu-spacing u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="#">
@@ -68,7 +68,7 @@ export default function Header({user, onLogin, onLogout}) {
             </a>
           </div>
           <div className="u-custom-menu u-nav-container">
-            <ul className="u-custom-font u-heading-font u-nav u-unstyled u-nav-1"><li className="u-nav-item"><a className="u-active-palette-2-light-2 u-border-2 u-border-hover-white u-border-white u-button-style u-hover-custom-color-39 u-nav-link u-radius-11 u-text-active-white u-text-grey-50 u-text-hover-custom-color-2 u-white" href="#" style={{padding: '10px 20px'}}><Link href='/'>Home</Link></a>
+            <ul className="u-custom-font u-heading-font u-nav u-unstyled u-nav-1"><li className="u-nav-item"><a className="u-active-palette-2-light-2 u-border-2 u-border-hover-white u-border-white u-button-style u-hover-custom-color-39 u-nav-link u-radius-11 u-text-active-white u-text-grey-50 u-text-hover-custom-color-2 u-white" href="#" style={{padding: '10px 20px'}}>HOME</a>
               </li><li className="u-nav-item"><a className="u-active-palette-2-light-2 u-border-2 u-border-hover-white u-border-white u-button-style u-hover-custom-color-39 u-nav-link u-radius-11 u-text-active-white u-text-grey-50 u-text-hover-custom-color-2 u-white" href="Khám-phá.html" style={{padding: '10px 20px'}}>Khám phá</a><div className="u-nav-popup"><ul className="u-h-spacing-20 u-nav u-unstyled u-v-spacing-10 u-nav-2"><li className="u-nav-item"><a className="u-button-style u-nav-link u-white">Graphic &amp; design</a>
                     </li><li className="u-nav-item"><a className="u-button-style u-nav-link u-white">Lifestyle</a>
                     </li><li className="u-nav-item"><a className="u-button-style u-nav-link u-white">Gaming</a>
@@ -76,14 +76,14 @@ export default function Header({user, onLogin, onLogout}) {
                     </li><li className="u-nav-item"><a className="u-button-style u-nav-link u-white">Writing &amp; translation</a>
                     </li></ul>
                 </div>
-              </li><li className="u-nav-item"><a className="u-active-palette-2-light-2 u-border-2 u-border-hover-white u-border-white u-button-style u-hover-custom-color-39 u-nav-link u-radius-11 u-text-active-white u-text-grey-50 u-text-hover-custom-color-2 u-white" href="#" style={{padding: '10px 20px'}}><Link href='/aboutUs'>Về chúng tôi</Link></a>
+              </li><li className="u-nav-item"><a className="u-active-palette-2-light-2 u-border-2 u-border-hover-white u-border-white u-button-style u-hover-custom-color-39 u-nav-link u-radius-11 u-text-active-white u-text-grey-50 u-text-hover-custom-color-2 u-white" href="#" style={{padding: '10px 20px'}}>Về chúng tôi</a>
               </li></ul>
           </div>
           <div className="u-custom-menu u-nav-container-collapse">
             <div className="u-black u-container-style u-inner-container-layout u-opacity u-opacity-95 u-sidenav">
               <div className="u-sidenav-overflow">
                 <div className="u-menu-close" />
-                <ul className="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-3"><li className="u-nav-item"><a className="u-button-style u-nav-link" href="#" style={{padding: '10px 20px'}}><Link href='/'>Home</Link></a>
+                <ul className="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-3"><li className="u-nav-item"><a className="u-button-style u-nav-link" href="#" style={{padding: '10px 20px'}}>Home</a>
                   </li><li className="u-nav-item"><a className="u-button-style u-nav-link" href="Khám-phá.html" style={{padding: '10px 20px'}}>Khám phá</a><div className="u-nav-popup"><ul className="u-h-spacing-20 u-nav u-unstyled u-v-spacing-10 u-nav-4"><li className="u-nav-item"><a className="u-button-style u-nav-link">Graphic &amp; design</a>
                         </li><li className="u-nav-item"><a className="u-button-style u-nav-link">Lifestyle</a>
                         </li><li className="u-nav-item"><a className="u-button-style u-nav-link">Gaming</a>
@@ -91,7 +91,7 @@ export default function Header({user, onLogin, onLogout}) {
                         </li><li className="u-nav-item"><a className="u-button-style u-nav-link">Writing &amp; translation</a>
                         </li></ul>
                     </div>
-                  </li><li className="u-nav-item"><a className="u-button-style u-nav-link" href="#" style={{padding: '10px 20px'}}><Link href='/aboutUs'>Về chúng tôi</Link></a>
+                  </li><li className="u-nav-item"><a className="u-button-style u-nav-link" href="#" style={{padding: '10px 20px'}}>Về chúng tôi</a>
                   </li></ul>
               </div>
             </div>

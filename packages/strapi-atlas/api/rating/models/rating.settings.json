@@ -1,0 +1,33 @@
+{
+  "kind": "collectionType",
+  "collectionName": "ratings",
+  "info": {
+    "name": "Rating",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "rating": {
+      "type": "float",
+      "required": true,
+      "min": 0,
+      "max": 5
+    },
+    "from_id": {
+      "plugin": "users-permissions",
+      "model": "user",
+      "via": "ratings"
+    },
+    "job": {
+      "model": "jobs"
+    },
+    "comment": {
+      "type": "richtext"
+    }
+  }
+}

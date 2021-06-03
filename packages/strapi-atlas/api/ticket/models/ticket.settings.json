@@ -1,9 +1,8 @@
 {
   "kind": "collectionType",
-  "collectionName": "Category",
+  "collectionName": "tickets",
   "info": {
-    "name": "subCategory",
-    "description": ""
+    "name": "Ticket"
   },
   "options": {
     "increments": true,
@@ -12,17 +11,28 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "name": {
+    "ticketTitle": {
       "type": "string",
-      "unique": true,
       "required": true
     },
-    "coverImg": {
-      "model": "file",
+    "desc": {
+      "type": "richtext",
+      "required": true
+    },
+    "dateCreated": {
+      "type": "date"
+    },
+    "from_user": {
+      "plugin": "users-permissions",
+      "model": "user",
+      "via": "tickets"
+    },
+    "images": {
+      "collection": "file",
       "via": "related",
       "allowedTypes": [
-        "images",
         "files",
+        "images",
         "videos"
       ],
       "plugin": "upload",

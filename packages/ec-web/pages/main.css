@@ -4,6 +4,10 @@
  * Copyright 2014-2020 Froala Labs
  */
  /* Essential deinitions. Without one them the font-face is considered invalid */
+:root{
+  --main-bg-color: rgb(225,115,159);
+  --main-color: rgb(225,115,159);
+}
 
  .fr-clearfix::after {
   clear: both;
@@ -42021,7 +42025,7 @@ a.u-link.u-text-hover-grey-90:hover {
 .u-header .u-image-1 {
   width: 32px;
   height: 32px;
-  background-image: url(./public/LamThanhTin_image.jpg);
+  background-image: url(/LamThanhTin_image.jpg);
   background-position: 50% 50%;
   margin: 7px auto 0 14px;
 }

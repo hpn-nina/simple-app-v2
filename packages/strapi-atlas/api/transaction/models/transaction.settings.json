@@ -1,0 +1,41 @@
+{
+  "kind": "collectionType",
+  "collectionName": "transactions",
+  "info": {
+    "name": "Transaction",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "seller": {
+      "plugin": "users-permissions",
+      "model": "user",
+      "via": "transactions"
+    },
+    "buyer": {
+      "plugin": "users-permissions",
+      "model": "user",
+      "via": "transactions"
+    },
+    "wage": {
+      "type": "biginteger"
+    },
+    "note": {
+      "type": "richtext"
+    },
+    "updateDate": {
+      "type": "date"
+    },
+    "status": {
+      "type": "string"
+    },
+    "job": {
+      "model": "jobs"
+    }
+  }
+}

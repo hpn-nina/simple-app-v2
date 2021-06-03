@@ -1,0 +1,59 @@
+.form-card{
+    background-color: rgb(225,115,159);
+    color: white;
+    border: 1rem solid white;
+    border-radius: 20px;
+    margin-top: 50px;
+    margin-right: auto;
+    margin-left: auto;
+    width: 50%;
+    text-align: center;
+}
+.center{
+    text-align: center;
+}
+.white{
+    color: white;
+}
+.form-heading{
+    font-size: 3rem;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.form-row{
+    padding: 10px;
+}
+.form-row > label{
+    margin:10%;
+}
+.form-row > label{
+    font-weight: 600;
+}
+.form-row > input{
+    border-radius: 5px;
+}
+hr{
+    width: 80%;
+    color: white;
+    margin: auto;
+}
+.submitbtn{
+    background-color: rgb(225,115,159);
+    border: .3rem solid white;
+    color: white;
+    border-radius: 5px;
+    padding: 5px;
+    margin: auto;
+    font-size: medium;
+    font-weight: 800;
+}
+.submitbtn:hover{
+    background-color: white;
+    color: rgb(225,115,159);
+    transition-delay: .1s;
+    transition-timing-function: linear;
+}
+.form-row > input{
+    width: 25%;
+    height: 30px;
+}

@@ -32,7 +32,7 @@ class Home_FirstSection extends React.Component {
                 </label>
                 <input
                   type="text"
-                  placeholder="Nh\u1EADp vi\u1EC7c c\u1EA7n t\xECm..."
+                  placeholder="design logos"
                   id="name-558c"
                   name="find"
                   className="u-border-1 u-border-white u-custom-font u-font-raleway u-input u-input-rectangle u-radius-10 u-white u-input-1"

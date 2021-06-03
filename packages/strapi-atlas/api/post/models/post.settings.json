@@ -1,8 +1,8 @@
 {
   "kind": "collectionType",
-  "collectionName": "Category",
+  "collectionName": "posts",
   "info": {
-    "name": "subCategory",
+    "name": "post",
     "description": ""
   },
   "options": {
@@ -12,13 +12,26 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "name": {
-      "type": "string",
-      "unique": true,
-      "required": true
+    "title": {
+      "type": "string"
+    },
+    "body": {
+      "type": "richtext"
+    },
+    "images": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
     },
     "coverImg": {
-      "model": "file",
+      "collection": "file",
       "via": "related",
       "allowedTypes": [
         "images",

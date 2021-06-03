@@ -9,7 +9,7 @@ export default {
 
 const Template = (args) => <Header {...args} />;
 
-export const TestNav = Template.bind({})
+export const TestHeader = Template.bind({})
 
 
 
