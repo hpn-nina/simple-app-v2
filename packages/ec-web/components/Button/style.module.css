@@ -1,0 +1,68 @@
+.storybook-button {
+  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  border: 0;
+  border-radius: 10px;
+  cursor: pointer;
+  display: inline-block;
+  line-height: 1.5;
+  color:white;
+  background-color: #e1739f;
+}
+.storybook-button:hover {
+  background-color: #c54c7c;
+}
+.storybook-button:focus {
+  background-color: #a73e68;
+}
+
+.storybook-button--secondary {
+  color: #000000;
+  background-color: transparent;
+  box-shadow: #e1739f 0px 0px 0px 2px inset;
+}
+.storybook-button--secondary:hover {
+  color: #ffffff;
+  background-color: #e1739f;
+}
+.storybook-button--secondary:focus {
+  color: #ffffff;
+  background-color: #a73e68;
+}
+
+.storybook-button--small {
+  font-size: 12px;
+  padding: 10px 16px;
+}
+.storybook-button--medium {
+  font-size: 14px;
+  padding: 11px 20px;
+}
+.storybook-button--large {
+  font-size: 16px;
+  padding: 12px 24px;
+}
+
+.u-btn-2 {
+  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  border: 0;
+  border-radius: 10px;
+  cursor: pointer;
+  display: inline-block;
+  line-height: 1.5;
+  color:white;
+  background-color: #e1739f;
+  width: 100%;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  
+}
+
+.u-btn-1 {
+  border-style: none;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  width: 100%;
+}

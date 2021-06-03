@@ -1,0 +1,14 @@
+{
+  "kind": "collectionType",
+  "collectionName": "Category",
+  "info": {
+    "name": "subCategory"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {}
+}
