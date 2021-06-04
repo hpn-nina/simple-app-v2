@@ -1,10 +1,12 @@
 import React from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 
 export default function Custom404(props) {
     return (
         <div>
-            <h1 className='center red err'>404 - Page Not Found</h1>
+            <Image src='/images/banner/we_sorry.jpeg' alt="We're sorry" layout='responsive'></Image>
+            <h1 className='center red err'>404 - We can not found this page</h1>
             <p className='center'><Link href='/'>Please click here to return our Homepage</Link></p>
             <style jsx>
                 {`.center{
@@ -19,6 +21,9 @@ export default function Custom404(props) {
                 }
                 p.center{
                     color: pink;
+                }
+                Image{
+                    margin: auto;
                 }
                 `}
             </style>

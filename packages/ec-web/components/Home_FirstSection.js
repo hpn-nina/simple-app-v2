@@ -62,6 +62,15 @@ class Home_FirstSection extends React.Component {
             </form>
           </div>
         </div>
+        <style jsx>
+          {`
+              section.u-clearfix.u-custom-color-1.u-section-1{
+                font-family: Playfair;
+                font-weigth: normal;
+                font-size: normal;
+              }
+          `}
+        </style>
       </section>
     );
   }

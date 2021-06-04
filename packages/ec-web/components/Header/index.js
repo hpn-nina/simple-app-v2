@@ -57,7 +57,7 @@ export default function Header({user, onLogin, onLogout}) {
             </div>
           </div>
         </div><h2 className="u-text u-text-3" data-animation-name="bounceIn" data-animation-duration={1000} data-animation-delay={0} data-animation-direction>
-          <a className="u-active-none u-btn u-btn-round u-button-style u-custom-font u-font-raleway u-gradient u-hover-none u-none u-radius-10 u-text-active-white u-text-hover-white u-text-white u-btn-2" href="#" data-animation-name="fadeIn" data-animation-duration={1000} data-animation-delay={0} data-animation-direction="Down">SIMPLE</a>
+          <a className="u-active-none u-btn u-btn-round u-button-style u-custom-font u-font-raleway u-gradient u-hover-none u-none u-radius-10 u-text-active-white u-text-hover-white u-text-white u-btn-2" id='logo' href="#" data-animation-name="fadeIn" data-animation-duration={1000} data-animation-delay={0} data-animation-direction="Down">SIMPLE</a>
         </h2><nav className="u-dropdown-icon u-menu u-menu-dropdown u-offcanvas u-menu-1">
           <div className="menu-collapse" style={{fontSize: '1.125rem', letterSpacing: '0px', fontWeight: 500}}>
             <a className="u-button-style u-custom-active-color u-custom-border-radius u-custom-color u-custom-hover-color u-custom-left-right-menu-spacing u-custom-padding-bottom u-custom-text-active-color u-custom-text-color u-custom-text-hover-color u-custom-text-shadow u-custom-top-bottom-menu-spacing u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="#">
@@ -97,7 +97,15 @@ export default function Header({user, onLogin, onLogout}) {
             </div>
             <div className="u-black u-menu-overlay u-opacity u-opacity-70" />
           </div>
-        </nav></header>
+        </nav>
+        <style jsx>
+          {`
+            #logo{
+              font-family: Azonix;
+            }
+          `}
+        </style>
+        </header>
     )
 }
 

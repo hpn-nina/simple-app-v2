@@ -4,9 +4,40 @@
  * Copyright 2014-2020 Froala Labs
  */
  /* Essential deinitions. Without one them the font-face is considered invalid */
-:root{
-  --main-bg-color: rgb(225,115,159);
-  --main-color: rgb(225,115,159);
+
+ @font-face {
+  font-family: Playfair;
+  src: url(../public/fonts/Playfair_Display/PlayfairDisplay-Regular.ttf) format("truetype");
+  font-weight: normal;
+  font-size: normal;
+}
+@font-face {
+  font-family: Playfair;
+  src: url(../public/fonts/Playfair_Display/PlayfairDisplay-ExtraBold.ttf) format("truetype");
+  font-weight: bolder;
+}
+@font-face {
+  font-family: Playfair;
+  src: url(../public/fonts/Playfair_Display/PlayfairDisplay-SemiBold.ttf) format("truetype");
+  font-weight: bold;
+}
+
+@font-face{
+  font-family: Azonix;
+  src: url(../public/fonts/Azonix.otf);
+}
+
+ :root{
+  --main-bg-color: rgb(225,126,166);
+  --main-color: rgb(225,126,166);
+  --secondary-color: rgb(241,148,188);
+  --main-font-family: Monserrat;
+  --dustyrose-color: rgb(239,163,164);
+  --beigerose-color: #FBD2D7;
+}
+*{
+  font-weight: 600;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
  .fr-clearfix::after {
