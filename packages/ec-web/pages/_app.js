@@ -11,6 +11,12 @@ export default function App({ Component, pageProps }) {
         onLogin={(...p) => {
           console.log('-- on login:', p);
         }}
+        onLogout={(...p) => {
+          console.log('-- on logout:', p);
+        }}
+        onCreateAccount={(...p) => {
+          console.log('-- on create account:', p);
+        }}
       />
       <Component {...pageProps} />
       <Footer />

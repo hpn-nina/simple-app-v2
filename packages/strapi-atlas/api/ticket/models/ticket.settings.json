@@ -23,9 +23,9 @@
       "type": "date"
     },
     "from_user": {
+      "via": "tickets",
       "plugin": "users-permissions",
-      "model": "user",
-      "via": "tickets"
+      "model": "user"
     },
     "images": {
       "collection": "file",

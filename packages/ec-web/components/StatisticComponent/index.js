@@ -10,6 +10,49 @@ export const StatisticCPN = (props) => { const { Solieu, Mota, textcolor1, textc
                 <h4 className="u-align-center-sm u-align-center-xs u-text u-text-default u-text-4" style={{color:textcolor1}}>{Solieu}</h4>
                 <h5 className="u-align-center-sm u-align-center-xs u-text u-text-5" style={{color:textcolor2}}>{Mota}</h5>
             </div>
+            <style jsx>
+                {`
+                .u-layout-cell-6 {
+                    min-height: 217px;
+                    background-image: none;
+                }
+
+                .u-container-layout-7 {
+                    text-align: center;
+                    box-shadow: 2px 2px 14px 0 rgba(128,128,128,0.3);
+                    padding: 30px;
+                }
+
+                .u-text-4 {
+                    margin-top: 0;
+                    font-size: 3rem;
+                    font-weight: 700;
+                    margin-bottom: 0;
+                }
+
+                .u-text-4 {
+                    font-size: 2.25rem;
+                }
+
+                .u-text-4 {
+                    font-size: 3rem;
+                    width: auto;
+                    margin-left: auto;
+                    margin-right: auto;
+                }
+
+                .u-text-5 {
+                    margin-left: 0;
+                    margin-right: 2px;
+                    margin-top: 20px;
+                }
+
+                .u-text-5 {
+                    margin: 21px auto 0;
+                }
+
+                `}
+            </style>
         </div>
     )
 };

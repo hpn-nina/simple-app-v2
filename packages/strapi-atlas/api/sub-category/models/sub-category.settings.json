@@ -1,9 +1,8 @@
 {
   "kind": "collectionType",
-  "collectionName": "Category",
+  "collectionName": "sub_categories",
   "info": {
-    "name": "subCategory",
-    "description": ""
+    "name": "subCategory"
   },
   "options": {
     "increments": true,
@@ -13,12 +12,13 @@
   "pluginOptions": {},
   "attributes": {
     "name": {
-      "type": "string",
-      "unique": true,
-      "required": true
+      "type": "string"
     },
-    "coverImg": {
-      "model": "file",
+    "desc": {
+      "type": "text"
+    },
+    "coverImage": {
+      "collection": "file",
       "via": "related",
       "allowedTypes": [
         "images",
@@ -28,6 +28,14 @@
       "plugin": "upload",
       "required": false,
       "pluginOptions": {}
+    },
+    "category": {
+      "model": "category",
+      "via": "sub_categories"
+    },
+    "job": {
+      "via": "sub_category",
+      "model": "jobs"
     }
   }
 }

@@ -19,6 +19,61 @@ export default function FindForm({}){
           <div className="u-form-send-error u-form-send-message">Unable to send your message. Please fix errors then try again.</div>
           <input type="hidden" defaultValue name="recaptchaResponse" />
         </form>
+        <style jsx>
+          {`
+          .u-form-1 {
+              height: 90px;
+              width: 929px;
+              margin: 137px auto 60px;
+          }
+
+          .u-input-1 {
+              background-image: none;
+              font-weight: 600;
+              font-size: 1.25rem;
+          }
+
+          .u-btn-1 {
+              border-style: none;
+              background-image: none;
+              font-weight: 600;
+              font-size: 1.4375rem;
+          }
+
+          @media (max-width: 1199px) {
+              .u-text-1 {
+                margin-left: 0;
+                margin-right: 0;
+              }
+            }
+            
+            @media (max-width: 991px) {
+              .u-form-1 {
+                width: 720px;
+              }
+            }
+            
+            @media (max-width: 767px) {
+              .u-text-1 {
+                font-size: 3.75rem;
+              }
+            
+              .u-form-1 {
+                width: 540px;
+              }
+            }
+            
+            @media (max-width: 575px) {
+              .u-text-1 {
+                font-size: 3rem;
+              }
+            
+              .u-form-1 {
+                width: 340px;
+              }
+          }
+          `}
+        </style>
       </div>
     )
 }

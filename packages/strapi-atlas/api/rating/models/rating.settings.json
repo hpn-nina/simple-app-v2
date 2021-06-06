@@ -19,9 +19,9 @@
       "max": 5
     },
     "from_id": {
+      "via": "ratings",
       "plugin": "users-permissions",
-      "model": "user",
-      "via": "ratings"
+      "model": "user"
     },
     "job": {
       "model": "jobs"

@@ -6,7 +6,7 @@ const Developer = (props) => {
     const { name, description, src } = props;
     return (
         <div className='developer-card'>
-            <img src = {src} className='medium' alt={name}></img>
+            <img src = {src} className='medium' alt={name}  width='200' height='auto'></img>
             <h1 className='developer-name'>{name}</h1>
             <div className = 'developer-description'>{description}</div>
         </div>

@@ -6,6 +6,7 @@ export default function aboutUs(props) {
     return (
         <div>
             <DevelopersCard/>
+            
         </div>
     )
 }

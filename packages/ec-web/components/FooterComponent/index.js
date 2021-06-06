@@ -19,12 +19,18 @@ export const FooterCPN = (props) => { const {type, tieude, link_name1, link1, li
                     </div>
                 </div>
             </div>
+            <style jsx>
+                {`
+                .u-container-layout{
+                    padding: 5% 5% 5% 5%;
+                }`}
+            </style>
         </div>
     )
 };
 
 FooterCPN.propTypes = {
-    mode: PropTypes.bool,
+    mode: PropTypes.string,
     tieude: PropTypes.string.isRequired,
     link_name1: PropTypes.string,
     link1: PropTypes.string,

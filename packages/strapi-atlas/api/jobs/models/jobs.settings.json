@@ -60,6 +60,10 @@
     },
     "ratings": {
       "collection": "rating"
+    },
+    "sub_category": {
+      "model": "sub-category",
+      "via": "job"
     }
   }
 }

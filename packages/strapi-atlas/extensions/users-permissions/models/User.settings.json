@@ -74,9 +74,6 @@
     "jobs": {
       "collection": "jobs"
     },
-    "posts": {
-      "collection": "post"
-    },
     "ratings": {
       "via": "from_id",
       "collection": "rating"

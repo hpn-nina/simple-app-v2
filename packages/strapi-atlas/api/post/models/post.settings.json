@@ -41,6 +41,10 @@
       "plugin": "upload",
       "required": false,
       "pluginOptions": {}
+    },
+    "author_name": {
+      "type": "string",
+      "default": "Unknown"
     }
   }
 }

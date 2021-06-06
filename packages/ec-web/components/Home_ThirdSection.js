@@ -31,7 +31,7 @@ class Home_ThirdSection extends React.Component {
                     aliqua.
                   </p>
                   <a
-                    href
+                    href='true'
                     className="u-active-custom-color-10 u-btn u-btn-round u-button-style u-custom-color-8 u-custom-font u-heading-font u-hover-custom-color-9 u-radius-6 u-text-hover-custom-color-7 u-text-white u-btn-1"
                   >
                     Xem Thêm
@@ -56,7 +56,7 @@ class Home_ThirdSection extends React.Component {
                     aliqua.
                   </p>
                   <a
-                    href
+                    href='true'
                     className="u-active-custom-color-10 u-btn u-btn-round u-button-style u-custom-color-8 u-custom-font u-heading-font u-hover-custom-color-9 u-radius-6 u-text-hover-custom-color-7 u-text-white u-btn-2"
                   >
                     Xem thêm
@@ -81,7 +81,7 @@ class Home_ThirdSection extends React.Component {
                     aliqua.
                   </p>
                   <a
-                    href
+                    href='true'
                     className="u-active-custom-color-10 u-btn u-btn-round u-button-style u-custom-color-8 u-custom-font u-heading-font u-hover-custom-color-9 u-radius-6 u-text-hover-custom-color-7 u-text-white u-btn-3"
                   >
                     xem thêm
