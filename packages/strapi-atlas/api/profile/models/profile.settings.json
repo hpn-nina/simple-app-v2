@@ -1,0 +1,75 @@
+{
+  "kind": "collectionType",
+  "collectionName": "profiles",
+  "info": {
+    "name": "Profile",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "birthday": {
+      "type": "date",
+      "default": "1989-12-31T17:00:00.000Z",
+      "required": true
+    },
+    "sex": {
+      "type": "enumeration",
+      "enum": [
+        "Male",
+        "Female",
+        "Other"
+      ]
+    },
+    "occupations": {
+      "type": "text"
+    },
+    "certificates": {
+      "type": "component",
+      "repeatable": true,
+      "component": "certificate.certificate"
+    },
+    "skills": {
+      "type": "component",
+      "repeatable": true,
+      "component": "skill.skill"
+    },
+    "avatar": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    },
+    "user": {
+      "unique": true,
+      "plugin": "users-permissions",
+      "model": "user"
+    },
+    "interests": {
+      "type": "text"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "favoriteJob": {
+      "type": "component",
+      "repeatable": true,
+      "component": "favorite.job"
+    },
+    "rating": {
+      "type": "component",
+      "repeatable": true,
+      "component": "rating.rating"
+    }
+  }
+}

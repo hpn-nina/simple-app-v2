@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_wage_bonuses",
+  "info": {
+    "name": "bonus",
+    "icon": "splotch"
+  },
+  "options": {},
+  "attributes": {
+    "bonus": {
+      "type": "string"
+    },
+    "desc": {
+      "type": "text"
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "customer_tickets",
+  "info": {
+    "name": "customerTicket",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "tickets": {
+      "type": "component",
+      "repeatable": true,
+      "component": "ticket.ticket"
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "kind": "collectionType",
+  "collectionName": "messages",
+  "info": {
+    "name": "message"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "fromUser": {
+      "unique": true,
+      "private": true,
+      "plugin": "users-permissions",
+      "model": "user"
+    },
+    "toUser": {
+      "unique": true,
+      "private": true,
+      "plugin": "users-permissions",
+      "model": "user"
+    },
+    "message": {
+      "type": "component",
+      "repeatable": true,
+      "component": "message.message",
+      "required": true
+    }
+  }
+}

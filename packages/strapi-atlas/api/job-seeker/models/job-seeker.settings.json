@@ -1,0 +1,20 @@
+{
+  "kind": "collectionType",
+  "collectionName": "job_seekers",
+  "info": {
+    "name": "jobSeeker"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "jobSeeker": {
+      "type": "component",
+      "repeatable": false,
+      "component": "job.job-seeker"
+    }
+  }
+}

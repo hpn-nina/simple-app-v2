@@ -13,9 +13,10 @@
   "pluginOptions": {},
   "attributes": {
     "name": {
-      "type": "string",
-      "required": true,
-      "unique": true
+      "type": "string"
+    },
+    "desc": {
+      "type": "text"
     },
     "coverImg": {
       "model": "file",
@@ -29,12 +30,14 @@
       "required": false,
       "pluginOptions": {}
     },
-    "desc": {
-      "type": "text"
+    "subCategories": {
+      "type": "component",
+      "repeatable": true,
+      "component": "sub-category.sub-category"
     },
-    "sub_categories": {
-      "via": "category",
-      "collection": "sub-category"
+    "Slug": {
+      "type": "uid",
+      "targetField": "name"
     }
   }
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './style.module.css';
+import './button.module.css';
 
 /**
  * Primary UI component for user interaction
@@ -8,6 +8,7 @@ import './style.module.css';
 export const Button = ({ primary, backgroundColor, size, label, ...props }) => {
   const mode = primary ? 'storybook-button--primary' : 'storybook-button--secondary';
   return (
+    <div>
     <button
       type="button"
       className={['storybook-button', `storybook-button--${size}`, mode].join(' ')}
@@ -16,40 +17,43 @@ export const Button = ({ primary, backgroundColor, size, label, ...props }) => {
     >
       {label}
     </button>
+    <style jsx>
+      {`
+      .storybook-button {
+          font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+          font-weight: 700;
+          border: 0;
+          border-radius: 3em;
+          cursor: pointer;
+          display: inline-block;
+          line-height: 1;
+        }
+        .storybook-button--primary {
+          color: white;
+          background-color: #1ea7fd;
+        }
+        .storybook-button--secondary {
+          color: #333;
+          background-color: transparent;
+          box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 0px 1px inset;
+        }
+        .storybook-button--small {
+          font-size: 12px;
+          padding: 10px 16px;
+        }
+        .storybook-button--medium {
+          font-size: 14px;
+          padding: 11px 20px;
+        }
+        .storybook-button--large {
+          font-size: 16px;
+          padding: 12px 24px;
+        }
+`}
+    </style>
+    </div>
   );
 };
-
-export const FlatButton = (props) => {const { label, link} = props
-  return (
-    <a href={link} class="u-align-center-xs u-btn u-button-style u-custom-color-16 u-hover-custom-color-3 u-btn-2">{label}</a>
-  )
-}
-
-export const FlatButtonIndexed = (props) => {const {label, link}= props
-  return (
-    <a href={link} class="u-align-center-sm u-align-center-xs u-btn u-button-style u-custom-color-18 u-hover-custom-color-3 u-btn-1">{label}</a>
-  )
-}
-
-FlatButton.propTypes = {
-  label: PropTypes.string,
-  link: PropTypes.string,
-}
-
-FlatButtonIndexed.propTypes = {
-  label: PropTypes.string,
-  link: PropTypes.string,
-}
-
-FlatButton.defaultProps = {
-  label: 'Button',
-  link: '#',
-}
-
-FlatButtonIndexed.defaultProps = {
-  label: 'Button',
-  link: '#',
-}
 
 Button.propTypes = {
   /**

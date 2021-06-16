@@ -1,0 +1,30 @@
+{
+  "collectionName": "components_wage_total_wages",
+  "info": {
+    "name": "totalWage",
+    "icon": "donate",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "basicWage": {
+      "type": "float"
+    },
+    "bonus": {
+      "type": "float"
+    },
+    "unit": {
+      "type": "enumeration",
+      "enum": [
+        "USD",
+        "VND"
+      ]
+    },
+    "optionType": {
+      "type": "string"
+    },
+    "descOption": {
+      "type": "text"
+    }
+  }
+}

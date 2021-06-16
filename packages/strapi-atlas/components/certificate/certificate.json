@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_certificate_certificates",
+  "info": {
+    "name": "certificate",
+    "icon": "money-check"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "desc": {
+      "type": "text"
+    },
+    "proof": {
+      "type": "richtext"
+    }
+  }
+}

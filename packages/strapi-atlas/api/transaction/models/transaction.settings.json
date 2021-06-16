@@ -2,7 +2,7 @@
   "kind": "collectionType",
   "collectionName": "transactions",
   "info": {
-    "name": "Transaction",
+    "name": "transaction",
     "description": ""
   },
   "options": {
@@ -12,30 +12,24 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "seller": {
-      "plugin": "users-permissions",
-      "model": "user",
-      "via": "transactions"
-    },
-    "buyer": {
-      "via": "transactions",
+    "seeker": {
       "plugin": "users-permissions",
       "model": "user"
     },
-    "wage": {
-      "type": "biginteger"
+    "job": {
+      "model": "job"
+    },
+    "pickedOption": {
+      "type": "component",
+      "repeatable": false,
+      "component": "option.job-option"
     },
     "note": {
-      "type": "richtext"
-    },
-    "updateDate": {
-      "type": "date"
-    },
-    "status": {
       "type": "string"
     },
-    "job": {
-      "model": "jobs"
+    "log": {
+      "via": "transaction",
+      "model": "logs"
     }
   }
 }

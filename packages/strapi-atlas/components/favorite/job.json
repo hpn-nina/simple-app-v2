@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_favorite_jobs",
+  "info": {
+    "name": "job",
+    "icon": "laugh-beam"
+  },
+  "options": {},
+  "attributes": {
+    "job_freelancer": {
+      "model": "job"
+    }
+  }
+}

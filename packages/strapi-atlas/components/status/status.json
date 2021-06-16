@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_status_statuses",
+  "info": {
+    "name": "status",
+    "icon": "check-double"
+  },
+  "options": {},
+  "attributes": {
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "New",
+        "WorkingOn",
+        "Finished"
+      ]
+    }
+  }
+}

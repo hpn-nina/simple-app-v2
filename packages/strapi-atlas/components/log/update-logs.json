@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_log_update_logs",
+  "info": {
+    "name": "updateLogs",
+    "icon": "book-open"
+  },
+  "options": {},
+  "attributes": {
+    "currentStatus": {
+      "type": "component",
+      "repeatable": false,
+      "component": "status.status"
+    },
+    "note": {
+      "type": "text"
+    },
+    "proof": {
+      "type": "richtext"
+    },
+    "updateDate": {
+      "type": "date"
+    }
+  }
+}

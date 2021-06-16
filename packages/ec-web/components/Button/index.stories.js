@@ -1,9 +1,9 @@
 import React from 'react';
 
-import {  Button, FlatButton, FlatButtonIndexed } from '.';
+import { Button } from '.';
 
 export default {
-  title: 'components/Button',
+  title: 'Example/Button',
   component: Button,
   argTypes: {
     backgroundColor: { control: 'color' },
@@ -34,21 +34,3 @@ Small.args = {
   size: 'small',
   label: 'Button',
 };
-
-export const Submit = Template.bind({});
-Submit.args = {
-  primary: true,
-  label: 'Submit',
-}
-
-const But = (args) => <FlatButtonIndexed {...args} />
-export const DemoFlatButtonIndexed = But.bind({});
-DemoFlatButtonIndexed.args = {
-  label: 'DASHBOARD',
-}
-
-const But2 = (args) => <FlatButton {...args}/>
-export const DemoFlatButton = But2.bind({});
-DemoFlatButton.args={
-  label: 'MyProfile',
-}

@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_skill_skills",
+  "info": {
+    "name": "skill",
+    "icon": "brain"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "desc": {
+      "type": "text"
+    },
+    "relatedProjectsDetail": {
+      "type": "richtext"
+    }
+  }
+}

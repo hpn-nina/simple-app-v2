@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "jobs",
+  "info": {
+    "name": "JobFreelancer",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "jobFreelancer": {
+      "type": "component",
+      "repeatable": false,
+      "component": "job.job-freelancer"
+    }
+  }
+}

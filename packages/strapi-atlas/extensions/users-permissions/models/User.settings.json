@@ -58,33 +58,6 @@
       "via": "users",
       "plugin": "users-permissions",
       "configurable": false
-    },
-    "avatarImg": {
-      "model": "file",
-      "via": "related",
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos"
-      ],
-      "plugin": "upload",
-      "required": false,
-      "pluginOptions": {}
-    },
-    "jobs": {
-      "collection": "jobs"
-    },
-    "ratings": {
-      "via": "from_id",
-      "collection": "rating"
-    },
-    "transactions": {
-      "via": "buyer",
-      "collection": "transaction"
-    },
-    "tickets": {
-      "via": "from_user",
-      "collection": "ticket"
     }
   }
 }
