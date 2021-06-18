@@ -10,8 +10,6 @@ import axios from 'axios';
 import Head from 'next/head';
 
 
-
-
 export default function App({ Component, pageProps }) {
   return (
     <div className="grid-container">
@@ -23,6 +21,7 @@ export default function App({ Component, pageProps }) {
         onLogout={(...p) => {
           console.log('-- on logout:', p);
         }}
+        
       />
       <Component {...pageProps} />
       <Footer />

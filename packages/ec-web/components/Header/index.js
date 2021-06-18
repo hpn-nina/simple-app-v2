@@ -9,7 +9,8 @@ import NavLink from '../NavLink';
 import axios from 'axios';
 
 
-const Header = ({ user, onLogout, error, navList }) => {
+
+const Header = ({ user, onLogout, error, data }) => {
   if (error){
     return <div>An error occured: {error.message}</div>;
   }
@@ -34,23 +35,13 @@ const Header = ({ user, onLogout, error, navList }) => {
           </div>
         </div>
         <nav className='nav'>
-            {navList ? (
-              navList.map(link => {
-                return(
-                  <NavLink key={link._id} link={link}/>
-                )
-              })
-            ) : (
-              <>
-              </>
-            )}
+            
         </nav>
         <style jsx>
           {`
               .header{
                 display: grid;
                 grid-template-columns: 1fr auto;
-                grid-template-rows: 65px 50px;
                 width: 100%;
                 height: auto;
                 #logo{

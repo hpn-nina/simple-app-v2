@@ -15,13 +15,14 @@ export default function Logo() {
                     display: block;
                     width: 140px;
                     border-radius: 10px;
+                    background-color: black;
                     color: var(--main-color);
                     margin: 8px;
                     .logo-text{
                         font-family: Azonix;
                         font-size: 2rem;
                         padding: 5px;
-                        
+                        color: var(--main-color);
                     }
                     :hover{
                         background-color: var(--main-color);
