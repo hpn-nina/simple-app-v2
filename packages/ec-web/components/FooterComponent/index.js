@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import './style.module.css';
+
 
 export const FooterCPN = (props) => { const {type, tieude, link_name1, link1, link_name2, link2, link_name3, link3, link_name4, link4, link_name5, link5} = props
     const mode = type ? 'big' : 'normal';

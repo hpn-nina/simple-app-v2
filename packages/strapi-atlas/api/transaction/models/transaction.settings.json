@@ -8,7 +8,7 @@
   "options": {
     "increments": true,
     "timestamps": true,
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "pluginOptions": {},
   "attributes": {
@@ -19,17 +19,17 @@
     "job": {
       "model": "job"
     },
-    "pickedOption": {
-      "type": "component",
-      "repeatable": false,
-      "component": "option.job-option"
-    },
     "note": {
       "type": "string"
     },
     "log": {
       "via": "transaction",
       "model": "logs"
+    },
+    "pickedOption": {
+      "type": "component",
+      "repeatable": false,
+      "component": "option.job-option"
     }
   }
 }

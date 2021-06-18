@@ -8,7 +8,7 @@
   "options": {
     "increments": true,
     "timestamps": true,
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "pluginOptions": {},
   "attributes": {
@@ -38,6 +38,10 @@
     "Slug": {
       "type": "uid",
       "targetField": "name"
+    },
+    "job": {
+      "via": "category",
+      "model": "job"
     }
   }
 }

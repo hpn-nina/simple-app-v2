@@ -1,5 +1,20 @@
 import React from 'react'
 import Link from 'next/link'
+import axios from 'axios';
+
+function clicksubmitbtn(){
+    
+}
+
+async function submit(){
+    const username = document.getElementById('username');
+    const password = document.getElementById('password');
+    const { data } = await axios.post('http://localhost:1337/auth/local',{
+        identifier: username,
+        password: password,
+    });
+    alert(data);
+}
 
 export default function logIn() {
     return (
@@ -9,15 +24,15 @@ export default function logIn() {
                     <h1 className='center white form-heading'>Đăng nhập ngay</h1>
                     <hr className='seperator'></hr>
                 </div>
-                <form method="POST" action='/' id='login-form'>
+                <form id='login-form'>
                     <dl>
                         <dd><label for = 'username'>Tên đăng nhập</label></dd>
-                        <dt><input type='text' name='username' id='username' placeholder='Điền username của bạn' /></dt>
+                        <dt><input type='text' name='username' id='username' placeholder='Điền username hoặc email của bạn' /></dt>
                         <dd><label for = 'password'>Mật khẩu</label></dd>
-                        <dt><input type='text' name='password' id='password' placeholder='Điền mật khẩu của bạn'/></dt>
+                        <dt><input type='password' name='password' id='password' placeholder='Điền mật khẩu của bạn'/></dt>
                     </dl>
                     <div className='form-row '>
-                        <button className='submitbtn' type='submit'>Đăng nhập</button>
+                        <div><button id='submitbtn'>Đăng nhập</button></div>
                     </div>
                     <div className='registerlnk'>
                         Chưa có tài khoản? <Link href='/register'> Hãy nhấp vào đây để đi đến trang đăng ký</Link>

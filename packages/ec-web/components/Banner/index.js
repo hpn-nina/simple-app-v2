@@ -1,5 +1,5 @@
 import React from 'react'
-import './style.module.css'
+
 
 export default function Banner({src,name}) {
     return (

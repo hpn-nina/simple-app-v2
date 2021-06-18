@@ -1,6 +1,6 @@
 import React from 'react';
 import urlImage from 'D:/Uit/HK4/Web/simple-app/packages/ec-web/public/LamThanhTin_image.jpg'
-import './style.module.css';
+
 import PropTypes from 'prop-types';
 import { Button } from '../Button';
 

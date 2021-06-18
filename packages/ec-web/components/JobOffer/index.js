@@ -1,6 +1,6 @@
 import React from 'react'
 import { Small, Submit } from '../Button/index.stories'
-import './style.module.css'
+
 
 export default function JobOffer({action,method,name}) {
     return (

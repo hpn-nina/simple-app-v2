@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import axios from 'axios';
 
 function validateEmail(email) {
     var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -24,7 +25,7 @@ export default function register() {
                     <input type="text" placeholder="Tên của bạn" class="form__input" id='name' required />
                     <input type="email" placeholder="Email" class="form__input" id='email' required/>
                     <input type='number' placeholder='Số điện thoại'/>
-                    <input type = 'submit' value='Đăng ký'/>
+                    <div>Đăng ký</div>
                 </div>
             </form>
             <style jsx>
@@ -40,25 +41,29 @@ export default function register() {
                 input[type=number] {
                 -moz-appearance: textfield;
                 }
+                input[type=submit]{
+                    display: block;
+                    text-align: center;
+                }
 
                 #register-form{
                     width: 80%;
                     margin: 50px auto;
-                    display: flex;
                     flex-wrap: wrap;
+                    background-color: pink;
+                    border: 1px solid pink;
+                    text-align: center;
+                    border-radius: 10px;
+                    >*{
+                        margin: 5px;
+                    }
                     .header-box.column{
                         font-weight: bold;
                         font-family: Verdana, san-serif;
                         font-size: 3rem;
-                    }
-                    column{
-                        flex: 1;
                         display: block;
-                        margin: 10px;
                     }
-                    input{
-                        width: 100%;
-                    }
+                    
                 }
 
                 `

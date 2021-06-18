@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './style.module.css';
+
 import PropTypes from 'prop-types';
 
 import { InformationPanel } from '../InformationPanel';

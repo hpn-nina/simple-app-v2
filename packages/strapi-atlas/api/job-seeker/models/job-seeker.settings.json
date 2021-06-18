@@ -2,19 +2,78 @@
   "kind": "collectionType",
   "collectionName": "job_seekers",
   "info": {
-    "name": "jobSeeker"
+    "name": "jobSeeker",
+    "description": ""
   },
   "options": {
     "increments": true,
     "timestamps": true,
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "pluginOptions": {},
   "attributes": {
-    "jobSeeker": {
-      "type": "component",
-      "repeatable": false,
-      "component": "job.job-seeker"
+    "name": {
+      "type": "string"
+    },
+    "desc": {
+      "type": "text"
+    },
+    "coverImage": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    },
+    "wage": {
+      "type": "biginteger",
+      "required": true,
+      "min": "0",
+      "default": "0"
+    },
+    "wageUnit": {
+      "type": "enumeration",
+      "enum": [
+        "perPerson",
+        "perJob"
+      ]
+    },
+    "numberOfPeople": {
+      "type": "integer",
+      "default": 1,
+      "required": true,
+      "min": 1
+    },
+    "expireDate": {
+      "type": "date"
+    },
+    "timeFinish": {
+      "type": "integer"
+    },
+    "timeFinishUnit": {
+      "type": "enumeration",
+      "enum": [
+        "Hours",
+        "Days",
+        "Weeks",
+        "Months",
+        "Years"
+      ]
+    },
+    "bonusDesc": {
+      "type": "text"
+    },
+    "profile": {
+      "via": "job_seeker",
+      "model": "profile"
+    },
+    "category": {
+      "model": "category"
     }
   }
 }

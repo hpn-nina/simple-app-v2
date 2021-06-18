@@ -1,18 +1,9 @@
 import Image from 'next/image';
 import React from 'react'
-import PostCard from '../../components/Post'
-import StrapiClient from '../../lib/strapi-client'
+import PostCard from '../../ec-web/components/Post'
+import StrapiClient from '../../ec-web/lib/strapi-client'
 
 const client = new StrapiClient();
-
-export const getStaticProps = async () => {
-    const allPosts = await client.fetchData('/posts');
-    return {
-        props: {
-            postList: allPosts
-        }
-    }
-}
 
 const Posts = ({ postList }) => {
 
@@ -74,6 +65,14 @@ const Posts = ({ postList }) => {
             </style>
         </div>
     )
+}
+export const getStaticProps = async () => {
+    const allPosts = await client.fetchData('/posts');
+    return {
+        props: {
+            postList: allPosts
+        }
+    }
 }
 
 export default Posts;

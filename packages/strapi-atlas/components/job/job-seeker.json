@@ -35,11 +35,6 @@
       "repeatable": false,
       "component": "wage.wage"
     },
-    "bonus": {
-      "type": "component",
-      "repeatable": true,
-      "component": "wage.bonus"
-    },
     "timeFinish": {
       "type": "component",
       "repeatable": false,

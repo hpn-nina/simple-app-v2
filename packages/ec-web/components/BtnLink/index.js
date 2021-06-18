@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import './style.module.css';
+
 
 const LinkBtn = (props) => {
   const { label, onClick, href } = props;

@@ -4,14 +4,14 @@ import Link from 'next/link'
 
 
 
-export default function NavLink( {items} ) {
+export default function NavLink( {link} ) {
     return (
         <div className='link-container'>
-            <a href={'/categories/' + items._id} className='link'>{items.name}</a>
+            <a href={'/categories/' + link._id} className='link'>{link.name}</a>
             <style jsx>
                 { `
                     .link-container{
-                        display: block;
+                        display: inline-block;
                         background-color: var(--main-color);
                         opacity: 50%;
                         text-align: center;

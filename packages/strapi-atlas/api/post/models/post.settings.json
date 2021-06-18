@@ -8,14 +8,37 @@
   "options": {
     "increments": true,
     "timestamps": true,
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "pluginOptions": {},
   "attributes": {
-    "post": {
-      "type": "component",
-      "repeatable": false,
-      "component": "post.post"
+    "title": {
+      "type": "string"
+    },
+    "desc": {
+      "type": "text"
+    },
+    "body": {
+      "type": "richtext"
+    },
+    "coverImage": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    },
+    "author": {
+      "type": "string"
+    },
+    "name": {
+      "type": "uid",
+      "targetField": "title"
     }
   }
 }

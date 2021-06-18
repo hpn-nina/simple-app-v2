@@ -2,15 +2,11 @@
   "collectionName": "components_log_update_logs",
   "info": {
     "name": "updateLogs",
-    "icon": "book-open"
+    "icon": "book-open",
+    "description": ""
   },
   "options": {},
   "attributes": {
-    "currentStatus": {
-      "type": "component",
-      "repeatable": false,
-      "component": "status.status"
-    },
     "note": {
       "type": "text"
     },
@@ -19,6 +15,14 @@
     },
     "updateDate": {
       "type": "date"
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "New",
+        "WorkingOn",
+        "Finished"
+      ]
     }
   }
 }

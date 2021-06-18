@@ -1,8 +1,8 @@
 import Image from 'next/image';
 import React from 'react'
-import PostCard from '../../components/Post'
-import aPost from '../../components/Post/aPost';
-import StrapiClient from '../../lib/strapi-client'
+import PostCard from '../../ec-web/components/Post'
+import aPost from '../../ec-web/components/Post/aPost';
+import StrapiClient from '../../../ec-web/lib/strapi-client'
 
 const client = new StrapiClient();
 

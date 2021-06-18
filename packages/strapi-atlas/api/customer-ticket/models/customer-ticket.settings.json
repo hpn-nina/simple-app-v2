@@ -8,14 +8,35 @@
   "options": {
     "increments": true,
     "timestamps": true,
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "pluginOptions": {},
   "attributes": {
-    "tickets": {
-      "type": "component",
-      "repeatable": true,
-      "component": "ticket.ticket"
+    "name": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "email": {
+      "type": "email"
+    },
+    "body": {
+      "type": "richtext"
+    },
+    "transaction": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "New",
+        "WorkingOn",
+        "Finished"
+      ]
     }
   }
 }

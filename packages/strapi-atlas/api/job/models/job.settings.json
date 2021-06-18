@@ -8,14 +8,61 @@
   "options": {
     "increments": true,
     "timestamps": true,
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "pluginOptions": {},
   "attributes": {
-    "jobFreelancer": {
+    "name": {
+      "type": "string"
+    },
+    "desc": {
+      "type": "text"
+    },
+    "coverImage": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    },
+    "startingPrice": {
+      "type": "biginteger"
+    },
+    "timeFinish": {
+      "type": "integer"
+    },
+    "timeFinishUnit": {
+      "type": "enumeration",
+      "enum": [
+        "Hours",
+        "Days",
+        "Weeks",
+        "Months",
+        "Years"
+      ]
+    },
+    "profile": {
+      "via": "job_freelancer",
+      "model": "profile"
+    },
+    "rating": {
       "type": "component",
-      "repeatable": false,
-      "component": "job.job-freelancer"
+      "repeatable": true,
+      "component": "rating.rating"
+    },
+    "option": {
+      "type": "component",
+      "repeatable": true,
+      "component": "option.job-option"
+    },
+    "category": {
+      "via": "job",
+      "model": "category"
     }
   }
 }

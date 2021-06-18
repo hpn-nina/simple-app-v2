@@ -58,6 +58,14 @@
       "via": "users",
       "plugin": "users-permissions",
       "configurable": false
+    },
+    "checkout_info": {
+      "via": "user",
+      "model": "checkout-info"
+    },
+    "profile": {
+      "via": "user",
+      "model": "profile"
     }
   }
 }

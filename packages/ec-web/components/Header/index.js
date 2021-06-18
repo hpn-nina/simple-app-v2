@@ -1,61 +1,67 @@
 import React from 'react';
-import Navigation from '../Navigation';
-import './style.module.css';
+
 import Link from 'next/link'
 import PropTypes from 'prop-types';
 import Logo from '../Logo/index';
-import { Button } from '../button'
+import { Button } from '../button';
+import StrapiClient from '../../lib/strapi-client';
+import NavLink from '../NavLink';
+import axios from 'axios';
 
-const client = new StrapiClient();
 
-export const getStaticProps = async () =>{
-  const allNavLink = await client.fetch('/categories');
-  return {
-    props: {
-      NavLinkList: allNavLink
-    }
+const Header = ({ user, onLogout, error, navList }) => {
+  if (error){
+    return <div>An error occured: {error.message}</div>;
   }
-}
-
-export default function Header({user, onLogin, onLogout,onCreateAccount}) {
-    return (
+  return (
       <header>
         <div className='header'>
-          <Logo></Logo>
+          <Logo id='logo'></Logo>
+          <div id='headerEnd'>
           {
             user ? (
                 <>
+                  <div>Hi, {user.username}</div>
                   <Button size='small' onClick={onLogout} label='Log out'/>
                 </>
             ) : (
               <>
-                <Button size="small" onClick={onLogin} label="Log in" />
-                <Button primary size="small" onClick={onCreateAccount} label="Sign up" />
+                <a href='/logIn' className='btn btn-primary'>Log In</a>
+                <a href='/register' className='btn btn-secondary'>Register</a>
               </>
             )
           }
+          </div>
         </div>
-        <nav>
-
+        <nav className='nav'>
+            {navList ? (
+              navList.map(link => {
+                return(
+                  <NavLink key={link._id} link={link}/>
+                )
+              })
+            ) : (
+              <>
+              </>
+            )}
         </nav>
         <style jsx>
           {`
-              header{
-                display: block;
+              .header{
+                display: grid;
+                grid-template-columns: 1fr auto;
+                grid-template-rows: 65px 50px;
                 width: 100%;
                 height: auto;
-                .header{
-                  display: flex;
-                  content-align: sretch;
-                  >*{
-                    flex: 1;
+                #logo{
+                    display: inline;
                   }
-                  Logo{
-                    flex: 2;
+                #headerEnd{
+                  margin: 5px;
+                  right: 0px;
+                  > *{
+                    margin: 5px;
                   }
-                }
-                nav{
-
                 }
               }
           `}
@@ -63,14 +69,27 @@ export default function Header({user, onLogin, onLogout,onCreateAccount}) {
       </header>
     )
 }
+Header.getInitialProps =async ctx =>{
+  try
+  {
+    const res = await axios.get('http://localhost:1337/categories');
+    const navList = res.data;
+    console.log(navList);
+    return { navList };
+  } catch(error){
+    return { error };
+  }
+};
 
 Header.propTypes = {
     user: PropTypes.shape({}),
     onLogin: PropTypes.func.isRequired,
     onLogout: PropTypes.func.isRequired,
     onCreateAccount: PropTypes.func.isRequired,
+    navList: PropTypes.object,
   };
   
 Header.defaultProps = {
     user: null,
 };
+export default Header;
