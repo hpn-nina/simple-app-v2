@@ -1,7 +1,8 @@
 import Image from 'next/image';
 import React from 'react'
-import PostCard from '../../ec-web/components/Post'
-import StrapiClient from '../../ec-web/lib/strapi-client'
+import PostCard from '../../components/Post/index'
+import StrapiClient from '../../lib/strapi-client';
+
 
 const client = new StrapiClient();
 
@@ -43,6 +44,7 @@ const Posts = ({ postList }) => {
                         bottom: 0px;
                         right: 35%;
                         left: 30%;
+                        color: green;
                     }
                 }
                 h1.center{

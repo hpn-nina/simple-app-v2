@@ -5,6 +5,7 @@ import ReactDOM from 'react-dom';
 import React, { useState, useEffect } from 'react';
 import $ from 'jquery';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import SwiperCore, { Navigation, Pagination, Scrollbar, A11y, Controller } from 'swiper';
 //import Posts from './posts'
 
 const client = new StrapiClient()
@@ -16,10 +17,11 @@ export const getStaticProps = async () => {
         }
     }
 }
-
+SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Controller]);
 
 
 export default function Home({ data }) {
+    const [controlledSwiper, setControlledSwiper] = useState(null);
     useEffect(() => {
         
           
@@ -47,7 +49,12 @@ export default function Home({ data }) {
         <div className='title'>Những phân loại được yêu thích</div>
         <Swiper
             spaceBetween={50}
-            slidesPerView={3}
+            slidesPerView={'auto'} centeredSlides={true} spaceBetween={30} pagination={{
+            "clickable": true}} 
+            className='mySwipper'
+            navigation
+            pagination={{ clickable: true }}
+            scrollbar={{ draggable: true }}
             onSlideChange={() => console.log('slide change')}
             onSwiper={(swiper) => console.log(swiper)}
         >

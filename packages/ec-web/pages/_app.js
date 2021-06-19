@@ -1,7 +1,7 @@
 
 import "../styles/globals.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Swiper, SwiperSlide } from 'swiper/react';
+import "swiper/components/pagination/pagination.min.css";
 import 'swiper/swiper.scss';
 import React from 'react';
 import Header from '../../ec-web/components/Header';

@@ -23,7 +23,14 @@ export const FooterCPN = (props) => { const {type, tieude, link_name1, link1, li
                 {`
                 .u-container-layout{
                     padding: 5% 5% 5% 5%;
-                }`}
+                }
+                .FooterCPN{
+                    a{
+                        font-family: Verdana Roboto sans-serif;
+                        font-weight: 600;
+                    }
+                }
+                `}
             </style>
         </div>
     )
