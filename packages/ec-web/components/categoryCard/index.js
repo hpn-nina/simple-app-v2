@@ -6,8 +6,8 @@ export default function Card( {props} ) {
             <img  className="card-img-top" src={'http://localhost:1337' + props.coverImg.url} alt="Card image cap"/>
             <div className="card-body">
                 <h5 className="card-title">{props.name}</h5>
-                <p className="card-text">{props.desc}</p>
-                <a href={"/categories/" + props.Slug} className="btn btn-primary">Click for more</a>
+                <p className="card-text">{props.desc.substring(0,50) + '...'}</p>
+                <a href={"/categories/" + props.Slug} className="btn btn-primary">Tìm hiểu thêm</a>
             </div>
             <style jsx>
                 {

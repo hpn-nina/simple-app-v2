@@ -19,102 +19,96 @@ async function submit(){
 export default function logIn() {
     return (
         <div className='login-pg'>
-            <div className='form-card'>
-                <div>
-                    <h1 className='center white form-heading'>Đăng nhập ngay</h1>
-                    <hr className='seperator'></hr>
+            <form action='/logIn' method='POST' id='login-form'>
+                <div className='header-box column'>
+                    Thông tin đăng nhập
                 </div>
-                <form id='login-form'>
-                    <dl>
-                        <dd><label for = 'username'>Tên đăng nhập</label></dd>
-                        <dt><input type='text' name='username' id='username' placeholder='Điền username hoặc email của bạn' /></dt>
-                        <dd><label for = 'password'>Mật khẩu</label></dd>
-                        <dt><input type='password' name='password' id='password' placeholder='Điền mật khẩu của bạn'/></dt>
-                    </dl>
-                    <div className='form-row '>
-                        <div><button id='submitbtn'>Đăng nhập</button></div>
-                    </div>
-                    <div className='registerlnk'>
-                        Chưa có tài khoản? <Link href='/register'> Hãy nhấp vào đây để đi đến trang đăng ký</Link>
-                    </div>
-                </form>
-            </div>
+                <div className='input group'>
+                    <label for='username'>Hãy nhập tên người dùng hoặc email của bạn</label>
+                    <input className='form-control' name='username' type="text" placeholder="Tên người dùng" className="form__input" id='name' required />
+                </div>
+                <div className='input group'>
+                    <label for='pasword'>Hãy nhập mật khẩu của bạn</label>
+                    <input className='form-control' name='password' type="password" placeholder="Mật khẩu" className="form__input" id='password' required/>
+                    
+                    
+                </div>
+                <div className="form-check">
+                    <input name='checkbox' className="form-check-input position-static" type="checkbox" id="check" value="Allow" aria-label="..."/>
+                    <label for='checkbox'>Cho phép chúng tôi ghi nhớ thông tin tài khoản của bạn</label>
+                </div>
+                <input className="center btn block btn-outline-danger" type='submit' value='Đăng nhập'/>
+            </form>
             <style jsx>
                 {
                     `
-                    .login-pg{
-                        background-color: var(--secondary-color);
-                        padding: 30px;
-                        margin-top: 20px;
-                        margin-bottom: 30px;
+                input::-webkit-outer-spin-button,
+                input::-webkit-inner-spin-button {
+                -webkit-appearance: none;
+                margin: 0;
+                }
+                .block{
+                    display: block;
+                }
+
+                input[type=submit]{
+                    display: block;
+                    text-align: center;
+                }
+                #loginr-pg{
+                    width: 100%;
+                }
+                #login-form{
+                    width: 80%;
+                    margin: 50px auto;
+                    color: var(--main-color);
+                    background-color: white;
+                    border: 1rem solid pink;
+                    text-align: center;
+                    border-radius: 10px;
+                    .header-box.column{
+                        font-weight: bold;
+                        font-family: Verdana, san-serif;
+                        font-size: 3rem;
+                        display: block;
+                        margin-top: 2%;
+                        margin-bottom: 2%;
                     }
-                    #login-form{
-                        input{
-                            border-radius: 10px;
-                            margin-bottom: 10px;
-                        }
-                        dl{
-                            margin: 10px;
-                        }
-                    
+                    .form__input{
+                        display: block;
+                        width: 90%;
+                        padding: 1rem 0px;
+
+                        margin-left: auto;
+                        margin-right: auto;
                     }
-                    .form-card{
-                     
-                        background-color: var(--main-color);
-                        color: white;
-                        border: 1rem solid white;
-                        border-radius: 20px;
-                        margin-top: 50px;
+                    .btn.block{
+                        margin-left: auto;
+                        margin-right: auto;
+                        margin-top: 2%;
+                        margin-bottom: 2%;
+                    }
+                    .form-check{
+                        margin-top: 2%;
+
                         margin-right: auto;
                         margin-left: auto;
-                        margin-bottom: 50px;
-                        width: 50%;
-                        text-align: center;
                         display: block;
-                        
-                        .center{
-                            text-align: center;
+                        width: 70%;
+
+                    }
+                    .input.group{
+                        label{
+                            margin: 2% 2%;
+                            text-align: left;
                         }
-                        .white{
-                            color: white;
-                        }
-                        .form-heading{
-                            font-size: 3rem;
-                            padding-top: 10px;
-                            padding-bottom: 10px;
-                            font-family: Verdana,sans-serif;
-                        }
-                        .form-row{
-                            padding: 10px;
-                        }
-                        
-                        hr.seperator{
-                            width: 80%;
-                            color: white;
-                            margin: auto;
-                            font-size: bold;
-                        }
-                        .submitbtn{
-                            background-color: rgb(225,115,159);
-                            border: .3rem solid white;
-                            color: white;
+                        input{
                             border-radius: 10px;
-                            padding: 5px;
-                            margin: auto;
-                            font-size: medium;
-                            font-weight: 800;
-                        }
-                        .submitbtn:hover{
-                            background-color: white;
-                            color: rgb(225,115,159);
-                            transition-delay: .1s;
-                            transition-timing-function: linear;
-                        }
-                        
-                        .registerlnk{
-                            padding: 8px 20px;
                         }
                     }
+                }
+
+                    
                     `
                 }
             </style>

@@ -34,6 +34,7 @@ export default function categories({ data }) {
                     .container{
                         display: grid;
                         grid-template-columns: 1fr 1fr 1fr;
+                        items-align: center;
                         margin-left: auto;
                         margin-right: auto;
                         .one-card{
