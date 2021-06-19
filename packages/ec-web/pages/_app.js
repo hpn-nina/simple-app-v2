@@ -21,8 +21,9 @@ export default function App({ Component, pageProps }) {
       <Header
         onLogout={(...p) => {
           console.log('-- on logout:', p);
-        }}
-        
+        }
+        }
+        user='NULL'
       />
       <Component {...pageProps} />
       <Footer />

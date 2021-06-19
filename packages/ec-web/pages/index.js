@@ -49,7 +49,7 @@ export default function Home({ data }) {
         <div className='title'>Những phân loại được yêu thích</div>
         <Swiper
             spaceBetween={50}
-            slidesPerView={'auto'} centeredSlides={true} spaceBetween={30} pagination={{
+            slidesPerView={2} centeredSlides={true} spaceBetween={30} pagination={{
             "clickable": true}} 
             className='mySwipper'
             navigation
