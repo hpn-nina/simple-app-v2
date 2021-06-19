@@ -17,6 +17,10 @@
       "default": "1989-12-31T17:00:00.000Z",
       "required": true
     },
+    "name": {
+      "type": "string",
+      "required": true
+    },
     "sex": {
       "type": "enumeration",
       "enum": [
@@ -74,5 +78,6 @@
     "favorite_jobs": {
       "collection": "job"
     }
+    
   }
 }

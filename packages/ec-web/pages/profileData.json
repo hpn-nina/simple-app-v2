@@ -1,0 +1,188 @@
+{
+    "profiles" : [
+        {
+            "birthday": "0001-01-01",
+            "sex": "Female",
+            "favorite_jobs": [],
+            "_id": "60cc19862de1286164893380",
+            "skills": "Python, HTML, CSS, JS, C++, PHP.",
+            "certificates": "Coursera:\n- Computational Thinking for Problem Solving",
+            "phone": "0352024820",
+            "interests": "Fashion, Arts, Tech",
+            "occupations": "Student at UIT ",
+            "rating": [],
+            "createdAt": "2021-06-18T03:56:54.499Z",
+            "updatedAt": "2021-06-18T04:41:37.756Z",
+            "__v": 0,
+            "avatar": {
+                "_id": "60bb2b1eb1c6195748c715df",
+                "name": "HuynhPhuongNhu_image.jpg",
+                "alternativeText": "",
+                "caption": "",
+                "hash": "Huynh_Phuong_Nhu_image_ea1f33fd73",
+                "ext": ".jpg",
+                "mime": "image/jpeg",
+                "size": 17.38,
+                "width": 320,
+                "height": 320,
+                "url": "/uploads/Huynh_Phuong_Nhu_image_ea1f33fd73.jpg",
+                "formats": {
+                    "thumbnail": {
+                        "name": "thumbnail_HuynhPhuongNhu_image.jpg",
+                        "hash": "thumbnail_Huynh_Phuong_Nhu_image_ea1f33fd73",
+                        "ext": ".jpg",
+                        "mime": "image/jpeg",
+                        "width": 156,
+                        "height": 156,
+                        "size": 5.3,
+                        "path": null,
+                        "url": "/uploads/thumbnail_Huynh_Phuong_Nhu_image_ea1f33fd73.jpg"
+                    }
+                },
+                "provider": "local",
+                "related": [
+                    "60ba33b66831c55ab46b25fe",
+                    "60cc19862de1286164893380"
+                ],
+                "createdAt": "2021-06-05T07:43:26.353Z",
+                "updatedAt": "2021-06-18T03:56:54.774Z",
+                "__v": 0,
+                "id": "60bb2b1eb1c6195748c715df"
+            },
+            "user": {
+                "confirmed": true,
+                "blocked": false,
+                "_id": "60cb6799982533458c8e5e32",
+                "email": "yuna2001cute@gmail.com",
+                "username": "nhuwlaftooi",
+                "provider": "local",
+                "createdAt": "2021-06-17T15:17:45.705Z",
+                "updatedAt": "2021-06-18T04:41:38.645Z",
+                "__v": 0,
+                "role": "60b4765f9920a111a4bcf1e5",
+                "checkout_info": "60cc233b13dbca60502d11a7",
+                "profile": "60cc19862de1286164893380",
+                "id": "60cb6799982533458c8e5e32"
+            },
+            "job_freelancer": {
+                "timeFinishUnit": "Weeks",
+                "_id": "60cc1e92c31a2d4f846bed72",
+                "timeFinish": 2,
+                "startingPrice": "10000",
+                "desc": "Do all related jobs with Python",
+                "name": "Python",
+                "rating": [],
+                "option": [
+                    {
+                        "optionName": "Basic",
+                        "wage": "10000",
+                        "_id": "60cc1e92c31a2d4f846bed73",
+                        "desc": "Basic 100 line coding for ML: regression",
+                        "__v": 0,
+                        "id": "60cc1e92c31a2d4f846bed73"
+                    },
+                    {
+                        "optionName": "Premium",
+                        "wage": "100000",
+                        "_id": "60cc1e92c31a2d4f846bed74",
+                        "desc": "AI assignment: Implement algorithm on GYM OpenAi basic games.",
+                        "__v": 0,
+                        "id": "60cc1e92c31a2d4f846bed74"
+                    }
+                ],
+                "createdAt": "2021-06-18T04:18:26.373Z",
+                "updatedAt": "2021-06-19T03:36:14.273Z",
+                "__v": 1,
+                "category": "60bc4e10cd3b615898dfef63",
+                "coverImage": {
+                    "_id": "60bc4de5cd3b615898dfef62",
+                    "name": "programming-coding.jpg",
+                    "alternativeText": "",
+                    "caption": "",
+                    "hash": "programming_coding_2fa4df56a0",
+                    "ext": ".jpg",
+                    "mime": "image/jpeg",
+                    "size": 62.87,
+                    "width": 494,
+                    "height": 348,
+                    "url": "/uploads/programming_coding_2fa4df56a0.jpg",
+                    "formats": {
+                        "thumbnail": {
+                            "name": "thumbnail_programming-coding.jpg",
+                            "hash": "thumbnail_programming_coding_2fa4df56a0",
+                            "ext": ".jpg",
+                            "mime": "image/jpeg",
+                            "width": 221,
+                            "height": 156,
+                            "size": 15.63,
+                            "path": null,
+                            "url": "/uploads/thumbnail_programming_coding_2fa4df56a0.jpg"
+                        }
+                    },
+                    "provider": "local",
+                    "related": [
+                        "60cc1e92c31a2d4f846bed72"
+                    ],
+                    "createdAt": "2021-06-06T04:24:05.689Z",
+                    "updatedAt": "2021-06-19T03:36:14.228Z",
+                    "__v": 0,
+                    "id": "60bc4de5cd3b615898dfef62"
+                },
+                "profile": "60cc19862de1286164893380",
+                "id": "60cc1e92c31a2d4f846bed72"
+            },
+            "id": "60cc19862de1286164893380"
+        },
+        {
+            "birthday": "1990-01-01",
+            "sex": "Male",
+            "favorite_jobs": [],
+            "_id": "60cc1a872de1286164893383",
+            "skills": "HTML,CSS,JS,PHP",
+            "certificates": "No",
+            "phone": "028389948",
+            "interests": "Coding",
+            "occupations": "Student at UIT",
+            "rating": [],
+            "createdAt": "2021-06-18T04:01:11.214Z",
+            "updatedAt": "2021-06-18T04:42:14.726Z",
+            "__v": 0,
+            "avatar": {
+                "_id": "60ba34f86831c55ab46b2600",
+                "name": "bootstrap-solid.svg",
+                "alternativeText": "",
+                "caption": "",
+                "hash": "bootstrap_solid_27329c7d68",
+                "ext": ".svg",
+                "mime": "image/svg+xml",
+                "size": 0.78,
+                "url": "/uploads/bootstrap_solid_27329c7d68.svg",
+                "provider": "local",
+                "width": 612,
+                "height": 612,
+                "related": [
+                    "60cc1a872de1286164893383"
+                ],
+                "createdAt": "2021-06-04T14:13:12.783Z",
+                "updatedAt": "2021-06-18T04:01:11.702Z",
+                "__v": 0,
+                "id": "60ba34f86831c55ab46b2600"
+            },
+            "user": {
+                "confirmed": true,
+                "blocked": false,
+                "_id": "60cc1a1f2de1286164893382",
+                "email": "19521020@gm.uit.edu.vn",
+                "username": "lamthanhtin",
+                "provider": "local",
+                "createdAt": "2021-06-18T03:59:27.179Z",
+                "updatedAt": "2021-06-18T04:42:14.798Z",
+                "__v": 0,
+                "role": "60b4765f9920a111a4bcf1e5",
+                "profile": "60cc1a872de1286164893383",
+                "id": "60cc1a1f2de1286164893382"
+            },
+            "id": "60cc1a872de1286164893383"
+        }
+    ]
+}

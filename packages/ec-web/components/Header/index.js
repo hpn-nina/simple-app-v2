@@ -7,6 +7,8 @@ import { Button } from '../button';
 import StrapiClient from '../../lib/strapi-client';
 import NavLink from '../NavLink';
 import axios from 'axios';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import SwiperCore, { Navigation, Pagination, Scrollbar, A11y, Controller } from 'swiper';
 
 class Header extends React.Component{
   constructor(props){
@@ -70,16 +72,27 @@ class Header extends React.Component{
           </>
         )
       }
+      
       </div>
     </div>
-    <nav className='nav navbar'>
+    <nav className='nav'>
+      <Swiper
+            spaceBetween={70}
+            slidesPerView={5} centeredSlides={true} spaceBetween={30} 
+            navigation
+            className='mySwipper'
+            scrollbar={{ draggable: true }}
+            onSlideChange={() => console.log('slide change')}
+            onSwiper={(swiper) => console.log(swiper)}
+        >
         {
-          items.forEach(item => <NavLink key={item._id} link={item} className='nav-link'></NavLink>)
+          items.map(item => <SwiperSlide><NavLink key={item._id} link={item} className='nav-link'></NavLink></SwiperSlide>)
         }
+        </Swiper>
     </nav>
     <style jsx>
       {`
-          .header{
+      .header{
             display: grid;
             grid-template-columns: 1fr auto;
             width: 100%;
@@ -96,9 +109,8 @@ class Header extends React.Component{
             }
           }
           .nav{
-            nav-link: {
-              color: pink;
-            }
+            margin-bottom: 2%;
+            margin-top: 2%;
           }
           
       `}

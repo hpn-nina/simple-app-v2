@@ -6,40 +6,45 @@ import React, { useState, useEffect } from 'react';
 import $ from 'jquery';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Navigation, Pagination, Scrollbar, A11y, Controller } from 'swiper';
+import FreelancerCard from '../components/FreelancerCard';
+import profileData from './profileData'
 //import Posts from './posts'
 
 const client = new StrapiClient()
 export const getStaticProps = async () => {
     const lists = await client.fetchData('/navigation');
+    const results = await client.fetchData('/profiles');
+    
     return {
         props: {
-            data: lists
+            pofiles: results,
+            data: lists,
+            
         }
     }
 }
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Controller]);
 
 
-export default function Home({ data }) {
+export default function Home(props) {
     const [controlledSwiper, setControlledSwiper] = useState(null);
+    var newData = new Object;
+    newData["data"] = props.profiles;
+    console.log(newData);
     useEffect(() => {
         
           
     });
     return (
         <div className="container">
-        <Head>
-          <link rel="preconnect" href="https://fonts.gstatic.com"/>
-          <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet"/> 
-        </Head>
+        
         <section className="u-clearfix u-custom-color-1 u-section-1" id="sec-9709" >
-        <div className="u-clearfix u-sheet u-sheet-1">
+
             <div className='title'>Cần tìm người? Hãy đến với chúng tôi</div>
             <div className="input-group">
               <input type="search" className="form-control rounded" placeholder="logo design" aria-label="logo design"
                 aria-describedby="search-addon" />
               <button type="button" className="btn btn-outline-primary">Tìm kiếm</button>
-            </div>
         </div>
       </section>
       <section
@@ -59,7 +64,7 @@ export default function Home({ data }) {
             onSwiper={(swiper) => console.log(swiper)}
         >
             {
-                (data.categories).map(card => (
+                (props.data.categories).map(card => (
                     <SwiperSlide><Card key={card._id} props={card} className='one-card'/></SwiperSlide>
                 ))
             }
@@ -71,9 +76,23 @@ export default function Home({ data }) {
         id="sec-3036"
       >
         <div className='title'>BEST FREELANCER</div>
-        <div className='container'>
 
-        </div>
+        <Swiper
+            spaceBetween={50}
+            slidesPerView={2} centeredSlides={true} spaceBetween={30} pagination={{
+            "clickable": true}} 
+            className='mySwipper'
+            navigation
+            pagination={{ clickable: true }}
+            scrollbar={{ draggable: true }}
+            onSlideChange={() => console.log('slide change')}
+            onSwiper={(swiper) => console.log(swiper)}
+        >
+            {
+                profileData.profiles.map(card => (<SwiperSlide><FreelancerCard key={card._id} card={card} ></FreelancerCard></SwiperSlide>))
+            }
+            
+        </Swiper>
     </section>
         
     <style jsx>
@@ -91,7 +110,7 @@ export default function Home({ data }) {
             #sec-9709{
                 font-family: Georgia, sans-serif;
                 padding: 20px;
-                
+                padding-bottom: 5%;
                 .input-group{
                 width: 90%;
                 margin-left: auto;
@@ -100,6 +119,9 @@ export default function Home({ data }) {
                     align-items: center;
                 }
                 }
+            }
+            #sec-3036{
+                padding: 5%;
             }
             #sec-b0f3{
                 padding: 5%;
