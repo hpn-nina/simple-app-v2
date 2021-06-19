@@ -24,11 +24,11 @@ export default function logIn() {
                     Thông tin đăng nhập
                 </div>
                 <div className='input group'>
-                    <label for='username'>Hãy nhập tên người dùng hoặc email của bạn</label>
+                    <label className='label' for='username'>Hãy nhập tên người dùng hoặc email của bạn</label>
                     <input className='form-control' name='username' type="text" placeholder="Tên người dùng" className="form__input" id='name' required />
                 </div>
                 <div className='input group'>
-                    <label for='pasword'>Hãy nhập mật khẩu của bạn</label>
+                    <label className='label' for='pasword'>Hãy nhập mật khẩu của bạn</label>
                     <input className='form-control' name='password' type="password" placeholder="Mật khẩu" className="form__input" id='password' required/>
                     
                     
@@ -98,9 +98,10 @@ export default function logIn() {
 
                     }
                     .input.group{
-                        label{
+                        .label{
                             margin: 2% 2%;
-                            text-align: left;
+                            font-size: .75rem;
+                            font-weight: 600;
                         }
                         input{
                             border-radius: 10px;

@@ -1,6 +1,10 @@
 import StrapiClient from '../lib/strapi-client';
 import Card from '../components/categoryCard';
-import Head from 'next/head'
+import Head from 'next/head';
+import ReactDOM from 'react-dom';
+import React, { useState, useEffect } from 'react';
+import $ from 'jquery';
+import { Swiper, SwiperSlide } from 'swiper/react';
 //import Posts from './posts'
 
 const client = new StrapiClient()
@@ -13,7 +17,13 @@ export const getStaticProps = async () => {
     }
 }
 
+
+
 export default function Home({ data }) {
+    useEffect(() => {
+        
+          
+    });
     return (
         <div className="container">
         <Head>
@@ -34,14 +44,19 @@ export default function Home({ data }) {
         className="u-clearfix u-custom-color-6 u-section-2"
         id="sec-b0f3"
       >
-          <div className='title'>Những phân loại được yêu thích</div>
-          <div className='container'>
-          {
+        <div className='title'>Những phân loại được yêu thích</div>
+        <Swiper
+            spaceBetween={50}
+            slidesPerView={3}
+            onSlideChange={() => console.log('slide change')}
+            onSwiper={(swiper) => console.log(swiper)}
+        >
+            {
                 (data.categories).map(card => (
-                    <Card key={card._id} props={card} className='one-card'/>
+                    <SwiperSlide><Card key={card._id} props={card} className='one-card'/></SwiperSlide>
                 ))
-          }
-          </div>
+            }
+        </Swiper>
       </section>
 
     <section
@@ -56,6 +71,8 @@ export default function Home({ data }) {
         
     <style jsx>
         {`
+        
+
             .title{
                 text-align: center;
                 font-size: 3.5rem;
@@ -77,13 +94,21 @@ export default function Home({ data }) {
                 }
                 }
             }
+            #sec-b0f3{
+                padding: 5%;
+            }
             section > .container{
                 display: grid;
+                min-height: 0;
+                min-width: 0;
+                width: 100%;
                 grid-template-columns: 1fr 1fr 1fr;
                 margin-left: 4%;
                 margin-right: 5%;
                 .one-card{
                     margin-bottom: 10px;
+                    min-width: 0;
+                    overflow: hidden;
                 }
             }
         `}
