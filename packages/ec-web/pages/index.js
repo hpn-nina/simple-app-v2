@@ -59,8 +59,8 @@ export default function Home(props) {
       >
         <div className='title'>Những phân loại được yêu thích</div>
         <Swiper
-            spaceBetween={50}
-            slidesPerView={3} centeredSlides={true} spaceBetween={30} pagination={{
+            spaceBetween={30}
+            slidesPerView={3} spaceBetween={30} pagination={{
             "clickable": true}} 
             className='mySwipper'
             navigation
@@ -84,8 +84,8 @@ export default function Home(props) {
         <div className='title'>BEST FREELANCER</div>
 
         <Swiper
-            spaceBetween={50}
-            slidesPerView={3} centeredSlides={true} spaceBetween={30} pagination={{
+            spaceBetween={30}
+            slidesPerView={3} spaceBetween={30} pagination={{
             "clickable": true}} 
             className='mySwipper'
             navigation

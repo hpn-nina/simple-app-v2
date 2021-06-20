@@ -78,7 +78,7 @@ class Header extends React.Component{
     <nav className='nav'>
       <Swiper
             spaceBetween={70}
-            slidesPerView={5} centeredSlides={true} spaceBetween={30} 
+            slidesPerView={5} spaceBetween={30} 
             navigation
             className='mySwipper'
             scrollbar={{ draggable: true }}

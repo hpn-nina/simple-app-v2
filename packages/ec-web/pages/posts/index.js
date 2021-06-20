@@ -11,15 +11,10 @@ const Posts = ({ postList }) => {
     return (
         <div className='post-page'>
             <div className='page-banner'>
-                <Image
-                    src = '/banner/posts.jpg'
-                    alt = 'true'
-                    layout = "responsive"
-                    width={8}
-                    height={2.5}
-                />
+                
                 <h1 className='center'>Blog Posts Area</h1>
             </div>
+            
             <div className = 'post-container'>
                 {
                     postList.map((post) => {
@@ -32,30 +27,28 @@ const Posts = ({ postList }) => {
             <style jsx>
                 {`
                 .page-banner{
-                    margin: 20px 0px;
+                    
                     position: relative;
                     width: 100%;
                     height: auto;
-                    Image{
-                        position: absolute;
-                    }
-                    h1{
-                        position: absolute;
-                        bottom: 0px;
-                        right: 35%;
-                        left: 30%;
-                        color: green;
-                    }
+                    padding-bottom: 5%;
+                    padding-top: 2%;
+                    background-color: var(--main-color);
                 }
                 h1.center{
                     font-family: Verdana, san-serif;
                     font-weight: 900;
+                    position: relative;
+                    text-align: center;    
+                    color: var(--main-color);
                 }
                 .post-container{
                     display: grid;
                     width: 100%;
                     height: auto;
-                    grid-template-columns: 1fr 1fr 1fr;
+                    items-align: center;
+                    position: relative;
+                    grid-template-columns: 1fr 1fr 1fr 1fr;
                     grid-template-rows: auto;
                     justify-content: center;
                     margin: 2%;
