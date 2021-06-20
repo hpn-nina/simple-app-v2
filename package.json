@@ -5,6 +5,7 @@
     "lerna": "^4.0.0"
   },
   "dependencies": {
-    "axios": "^0.21.1"
+    "axios": "^0.21.1",
+    "global-prefix": "^3.0.0"
   }
 }

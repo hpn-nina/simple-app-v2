@@ -23,6 +23,14 @@ export default function App({ Component, pageProps }) {
           console.log('-- on logout:', p);
         }
         }
+        onCreateAccount={(...p) => {
+          console.log('-- on create acc:', p);
+        }
+        }
+        onLogin={(...p) => {
+          console.log('-- on login:', p);
+        }
+        }
         user='NULL'
       />
       <Component {...pageProps} />

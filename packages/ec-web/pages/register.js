@@ -1,34 +1,61 @@
 import React from 'react';
 import axios from 'axios';
+import { SyntheticEvent, useState } from 'react';
 
 function validateEmail(email) {
     var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(email);
-  }
-
+}
 
 
 export default function register() {
+    const [username, setUsername] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+    async function submit (){
+        const registerInfo = {
+            username: username,
+            email: email,
+            password: password,
+        };
+
+        const register = await fetch(`http://localhost:1337/auth/local/register`,{
+            method: "POST",
+            handlers: {
+                "Accept": 'application/json',
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify(registerInfo)
+        })
+
+        const registerResponse = await register.json();
+        console.log(registerResponse)
+        
+
+    }
     return (
         <div id='register-pg'>
-            <form action='/logIn' method='POST' id='register-form'>
+            <form id='register-form'>
                 <div className='header-box column'>
                     Thông tin đăng ký
                 </div>
                 <div className=''>
-                    <input className='form-control' type="text" placeholder="Tên người dùng" className="form__input" id='name' required />
-                    <input className='form-control' type="email" placeholder="Email" className="form__input" id='email' required/> 
-                </div>
-                <div className=''>
-                    <input className='form-control' type="password" placeholder="Mật khẩu" className="form__input" id='password' required/>
-                    <input className='form-control' type="password" placeholder="Nhập lại mật khẩu" className="form__input" id='re-password' required/>
-                    
+                    <input className='form-control' type="text" placeholder="Tên người dùng" className="form__input" required 
+                        onChange={e => setUsername(e.target.value)} value={username}
+                    />
+                    <input className='form-control' type="email" placeholder="Email" className="form__input" required
+                        onChange={e => setEmail(e.target.value)} value={email}
+                    /> 
+                    <input className='form-control' type="password" placeholder="Mật khẩu" className="form__input" required 
+                        onChange={e => setPassword(e.target.value)} value={password}
+                    />
                 </div>
                 <div className="form-check">
-                    <input name='checkbox' className="form-check-input position-static" type="checkbox" id="check" value="Allow" aria-label="..."/>
+                    <input name='checkbox' className="form-check-input position-static" type="checkbox" id="check" aria-label="..."/>
                     <label for='checkbox'>Cho phép chúng tôi ghi nhớ thông tin tài khoản của bạn</label>
                 </div>
-                <input className="center btn block btn-outline-danger" type='submit' value='Đăng ký'/>
+                <button type="button" onClick={() => submit()} className="center btn block btn-outline-danger">Đăng ký</button>
             </form>
             <style jsx>
             {

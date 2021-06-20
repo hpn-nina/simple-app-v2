@@ -7,7 +7,7 @@ export default function Card( {props} ) {
             <div className="card-body">
                 <h5 className="card-title">{props.name}</h5>
                 <p className="card-text">{props.desc.substring(0,50) + '...'}</p>
-                <a href={"/categories/" + props.Slug} className="btn btn-primary">Tìm hiểu thêm</a>
+                <a href={"/categories/" + props._id} className="btn btn-primary">Tìm hiểu thêm</a>
             </div>
             <style jsx>
                 {

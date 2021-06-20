@@ -1,35 +1,55 @@
 import React from 'react'
 import Link from 'next/link'
 import axios from 'axios';
+import { useState } from 'react';
+import { setCookie } from 'nookies';
 
-function clicksubmitbtn(){
-    
-}
 
-async function submit(){
-    const username = document.getElementById('username');
-    const password = document.getElementById('password');
-    const { data } = await axios.post('http://localhost:1337/auth/local',{
-        identifier: username,
-        password: password,
-    });
-    alert(data);
-}
 
 export default function logIn() {
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+
+    async function handleSignIn() {
+        const loginInfo = {
+            identifier: username,
+            password: password
+        }
+
+        const login = await fetch('http://localhost:1337/auth/local', {
+            method: "POST",
+            handler: {
+                "Accept": 'application/json',
+                "Content-Type": 'application/json'
+            },
+            body: JSON.stringify(loginInfo)
+        });
+
+        const loginResponse = await login.json();
+
+        setCookie(null, 'jwt', loginResponse.jwt, {
+            maxAge: 30 * 24 * 60 * 60,
+            path: '/'
+        })
+    };
+
     return (
         <div className='login-pg'>
-            <form action='/logIn' method='POST' id='login-form'>
+            <form id='login-form'>
                 <div className='header-box column'>
                     Thông tin đăng nhập
                 </div>
                 <div className='input group'>
                     <label className='label' for='username'>Hãy nhập tên người dùng hoặc email của bạn</label>
-                    <input className='form-control' name='username' type="text" placeholder="Tên người dùng" className="form__input" id='name' required />
+                    <input className='form-control' name='username' type="text" placeholder="Tên người dùng" className="form__input" id='username' required 
+                        onChange={e => setUsername(e.target.value)} value={username}
+                    />
                 </div>
                 <div className='input group'>
-                    <label className='label' for='pasword'>Hãy nhập mật khẩu của bạn</label>
-                    <input className='form-control' name='password' type="password" placeholder="Mật khẩu" className="form__input" id='password' required/>
+                    <label className='label' for='password'>Hãy nhập mật khẩu của bạn</label>
+                    <input className='form-control' name='password' type="password" placeholder="Mật khẩu" className="form__input" id='password' required
+                        onChange={e => setPassword(e.target.value)} value={password}
+                    />
                     
                     
                 </div>
