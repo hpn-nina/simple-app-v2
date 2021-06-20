@@ -67,7 +67,7 @@ class Header extends React.Component{
             </>
         ) : (
           <>
-            <a href='/logIn' className='btn btn-primary'>Log In</a>
+            <a href='/login' className='btn btn-primary'>Log In</a>
             <a href='/register' className='btn btn-secondary'>Register</a>
           </>
         )

@@ -12,7 +12,7 @@
             "occupations": "Student at UIT ",
             "rating": [],
             "createdAt": "2021-06-18T03:56:54.499Z",
-            "updatedAt": "2021-06-18T04:41:37.756Z",
+            "updatedAt": "2021-06-19T14:55:20.068Z",
             "__v": 0,
             "avatar": {
                 "_id": "60bb2b1eb1c6195748c715df",
@@ -57,7 +57,7 @@
                 "username": "nhuwlaftooi",
                 "provider": "local",
                 "createdAt": "2021-06-17T15:17:45.705Z",
-                "updatedAt": "2021-06-18T04:41:38.645Z",
+                "updatedAt": "2021-06-19T14:55:19.876Z",
                 "__v": 0,
                 "role": "60b4765f9920a111a4bcf1e5",
                 "checkout_info": "60cc233b13dbca60502d11a7",
@@ -91,7 +91,7 @@
                     }
                 ],
                 "createdAt": "2021-06-18T04:18:26.373Z",
-                "updatedAt": "2021-06-19T03:36:14.273Z",
+                "updatedAt": "2021-06-19T14:55:19.875Z",
                 "__v": 1,
                 "category": "60bc4e10cd3b615898dfef63",
                 "coverImage": {
@@ -131,6 +131,7 @@
                 "profile": "60cc19862de1286164893380",
                 "id": "60cc1e92c31a2d4f846bed72"
             },
+            "name": "Huynh Phuong Nhu",
             "id": "60cc19862de1286164893380"
         },
         {
@@ -145,28 +146,41 @@
             "occupations": "Student at UIT",
             "rating": [],
             "createdAt": "2021-06-18T04:01:11.214Z",
-            "updatedAt": "2021-06-18T04:42:14.726Z",
+            "updatedAt": "2021-06-20T04:29:07.708Z",
             "__v": 0,
             "avatar": {
-                "_id": "60ba34f86831c55ab46b2600",
-                "name": "bootstrap-solid.svg",
+                "_id": "60bfc64f41052e3998c54a82",
+                "name": "LamThanhTin_image.jpg",
                 "alternativeText": "",
                 "caption": "",
-                "hash": "bootstrap_solid_27329c7d68",
-                "ext": ".svg",
-                "mime": "image/svg+xml",
-                "size": 0.78,
-                "url": "/uploads/bootstrap_solid_27329c7d68.svg",
+                "hash": "Lam_Thanh_Tin_image_53237fc1e5",
+                "ext": ".jpg",
+                "mime": "image/jpeg",
+                "size": 21.12,
+                "width": 320,
+                "height": 321,
+                "url": "/uploads/Lam_Thanh_Tin_image_53237fc1e5.jpg",
+                "formats": {
+                    "thumbnail": {
+                        "name": "thumbnail_LamThanhTin_image.jpg",
+                        "hash": "thumbnail_Lam_Thanh_Tin_image_53237fc1e5",
+                        "ext": ".jpg",
+                        "mime": "image/jpeg",
+                        "width": 156,
+                        "height": 156,
+                        "size": 7.11,
+                        "path": null,
+                        "url": "/uploads/thumbnail_Lam_Thanh_Tin_image_53237fc1e5.jpg"
+                    }
+                },
                 "provider": "local",
-                "width": 612,
-                "height": 612,
                 "related": [
                     "60cc1a872de1286164893383"
                 ],
-                "createdAt": "2021-06-04T14:13:12.783Z",
-                "updatedAt": "2021-06-18T04:01:11.702Z",
+                "createdAt": "2021-06-08T19:34:39.351Z",
+                "updatedAt": "2021-06-20T04:29:07.614Z",
                 "__v": 0,
-                "id": "60ba34f86831c55ab46b2600"
+                "id": "60bfc64f41052e3998c54a82"
             },
             "user": {
                 "confirmed": true,
@@ -176,13 +190,163 @@
                 "username": "lamthanhtin",
                 "provider": "local",
                 "createdAt": "2021-06-18T03:59:27.179Z",
-                "updatedAt": "2021-06-18T04:42:14.798Z",
+                "updatedAt": "2021-06-20T04:29:07.670Z",
                 "__v": 0,
                 "role": "60b4765f9920a111a4bcf1e5",
                 "profile": "60cc1a872de1286164893383",
                 "id": "60cc1a1f2de1286164893382"
             },
+            "name": "Lam Thanh Tin",
             "id": "60cc1a872de1286164893383"
+        },
+        {
+            "birthday": "1990-01-18",
+            "sex": "Male",
+            "favorite_jobs": [],
+            "_id": "60cec388ed64ee4f789e0638",
+            "skills": "Surfing, Design, Art",
+            "phone": "2798379749",
+            "occupations": "Graduated Student",
+            "name": "Thien Nhan",
+            "rating": [],
+            "createdAt": "2021-06-20T04:26:48.300Z",
+            "updatedAt": "2021-06-20T04:28:48.974Z",
+            "__v": 0,
+            "user": {
+                "confirmed": true,
+                "blocked": false,
+                "_id": "60cea1659d6a9008e44bdffa",
+                "email": "123@strapi.io",
+                "username": "A New Day",
+                "provider": "local",
+                "createdAt": "2021-06-20T02:01:09.759Z",
+                "updatedAt": "2021-06-20T04:28:48.702Z",
+                "__v": 0,
+                "role": "60b4765f9920a111a4bcf1e5",
+                "profile": "60cec388ed64ee4f789e0638",
+                "id": "60cea1659d6a9008e44bdffa"
+            },
+            "avatar": {
+                "_id": "60bfc64f41052e3998c54a81",
+                "name": "LeDoanThienNhan_image.jpg",
+                "alternativeText": "",
+                "caption": "",
+                "hash": "Le_Doan_Thien_Nhan_image_37c5c42ab4",
+                "ext": ".jpg",
+                "mime": "image/jpeg",
+                "size": 69.83,
+                "width": 960,
+                "height": 960,
+                "url": "/uploads/Le_Doan_Thien_Nhan_image_37c5c42ab4.jpg",
+                "formats": {
+                    "thumbnail": {
+                        "name": "thumbnail_LeDoanThienNhan_image.jpg",
+                        "hash": "thumbnail_Le_Doan_Thien_Nhan_image_37c5c42ab4",
+                        "ext": ".jpg",
+                        "mime": "image/jpeg",
+                        "width": 156,
+                        "height": 156,
+                        "size": 12.18,
+                        "path": null,
+                        "url": "/uploads/thumbnail_Le_Doan_Thien_Nhan_image_37c5c42ab4.jpg"
+                    },
+                    "medium": {
+                        "name": "medium_LeDoanThienNhan_image.jpg",
+                        "hash": "medium_Le_Doan_Thien_Nhan_image_37c5c42ab4",
+                        "ext": ".jpg",
+                        "mime": "image/jpeg",
+                        "width": 750,
+                        "height": 750,
+                        "size": 68.92,
+                        "path": null,
+                        "url": "/uploads/medium_Le_Doan_Thien_Nhan_image_37c5c42ab4.jpg"
+                    },
+                    "small": {
+                        "name": "small_LeDoanThienNhan_image.jpg",
+                        "hash": "small_Le_Doan_Thien_Nhan_image_37c5c42ab4",
+                        "ext": ".jpg",
+                        "mime": "image/jpeg",
+                        "width": 500,
+                        "height": 500,
+                        "size": 38.66,
+                        "path": null,
+                        "url": "/uploads/small_Le_Doan_Thien_Nhan_image_37c5c42ab4.jpg"
+                    }
+                },
+                "provider": "local",
+                "related": [
+                    "60cec388ed64ee4f789e0638"
+                ],
+                "createdAt": "2021-06-08T19:34:39.220Z",
+                "updatedAt": "2021-06-20T04:28:48.662Z",
+                "__v": 0,
+                "id": "60bfc64f41052e3998c54a81"
+            },
+            "id": "60cec388ed64ee4f789e0638"
+        },
+        {
+            "birthday": "2001-10-02",
+            "sex": "Other",
+            "favorite_jobs": [],
+            "_id": "60cec3f1ed64ee4f789e0639",
+            "skills": "Translate, Dance, Photograph",
+            "phone": "349879579734",
+            "interests": "Dance, Kpop",
+            "occupations": "Student",
+            "name": "Nguyen Van Dung",
+            "rating": [],
+            "createdAt": "2021-06-20T04:28:33.429Z",
+            "updatedAt": "2021-06-20T04:28:33.763Z",
+            "__v": 0,
+            "avatar": {
+                "_id": "60bfc64f41052e3998c54a80",
+                "name": "NguyenVanDung_image.jpg",
+                "alternativeText": "",
+                "caption": "",
+                "hash": "Nguyen_Van_Dung_image_1a07dbc505",
+                "ext": ".jpg",
+                "mime": "image/jpeg",
+                "size": 29.71,
+                "width": 320,
+                "height": 320,
+                "url": "/uploads/Nguyen_Van_Dung_image_1a07dbc505.jpg",
+                "formats": {
+                    "thumbnail": {
+                        "name": "thumbnail_NguyenVanDung_image.jpg",
+                        "hash": "thumbnail_Nguyen_Van_Dung_image_1a07dbc505",
+                        "ext": ".jpg",
+                        "mime": "image/jpeg",
+                        "width": 156,
+                        "height": 156,
+                        "size": 8.65,
+                        "path": null,
+                        "url": "/uploads/thumbnail_Nguyen_Van_Dung_image_1a07dbc505.jpg"
+                    }
+                },
+                "provider": "local",
+                "related": [
+                    "60cec3f1ed64ee4f789e0639"
+                ],
+                "createdAt": "2021-06-08T19:34:39.119Z",
+                "updatedAt": "2021-06-20T04:28:33.667Z",
+                "__v": 0,
+                "id": "60bfc64f41052e3998c54a80"
+            },
+            "user": {
+                "confirmed": true,
+                "blocked": false,
+                "_id": "60ceb47d4bcfa92fe43f6406",
+                "username": "nguyenvandung",
+                "email": "19521400@gm.uit.edu.vn",
+                "provider": "local",
+                "createdAt": "2021-06-20T03:22:37.804Z",
+                "updatedAt": "2021-06-20T04:28:33.719Z",
+                "__v": 0,
+                "role": "60b4765f9920a111a4bcf1e5",
+                "profile": "60cec3f1ed64ee4f789e0639",
+                "id": "60ceb47d4bcfa92fe43f6406"
+            },
+            "id": "60cec3f1ed64ee4f789e0639"
         }
     ]
 }

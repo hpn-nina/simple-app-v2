@@ -8,6 +8,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Navigation, Pagination, Scrollbar, A11y, Controller } from 'swiper';
 import FreelancerCard from '../components/FreelancerCard';
 import profileData from './profileData'
+
 //import Posts from './posts'
 
 const client = new StrapiClient()
@@ -35,17 +36,22 @@ export default function Home(props) {
         
           
     });
+    const [keyword, setKeyword] = useState('');
+
+    async function search(){
+
+    }
     return (
         <div className="container">
         
         <section className="u-clearfix u-custom-color-1 u-section-1" id="sec-9709" >
 
             <div className='title'>Cần tìm người? Hãy đến với chúng tôi</div>
-            <div className="input-group">
-              <input type="search" className="form-control rounded" placeholder="logo design" aria-label="logo design"
-                aria-describedby="search-addon" />
-              <button type="button" className="btn btn-outline-primary">Tìm kiếm</button>
-        </div>
+            <form className="input-group">
+              <input type="text" className="form-control rounded" placeholder="logo design" aria-label="logo design"
+                aria-describedby="search-addon" onChange={e => setKeyword(e.target.value)} value={keyword}/>
+              <button type="button" className="btn btn-outline-danger" onClick={() => search()}>Tìm kiếm</button>
+            </form>
       </section>
       <section
         className="u-clearfix u-custom-color-6 u-section-2"
@@ -54,7 +60,7 @@ export default function Home(props) {
         <div className='title'>Những phân loại được yêu thích</div>
         <Swiper
             spaceBetween={50}
-            slidesPerView={2} centeredSlides={true} spaceBetween={30} pagination={{
+            slidesPerView={3} centeredSlides={true} spaceBetween={30} pagination={{
             "clickable": true}} 
             className='mySwipper'
             navigation
@@ -79,7 +85,7 @@ export default function Home(props) {
 
         <Swiper
             spaceBetween={50}
-            slidesPerView={2} centeredSlides={true} spaceBetween={30} pagination={{
+            slidesPerView={3} centeredSlides={true} spaceBetween={30} pagination={{
             "clickable": true}} 
             className='mySwipper'
             navigation

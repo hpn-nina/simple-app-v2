@@ -9,6 +9,8 @@ import Footer from '../../ec-web/components/Footer';
 import StrapiClient from '../../ec-web/lib/strapi-client';
 import axios from 'axios';
 import Head from 'next/head';
+import { fetchAPI } from '../lib/api';
+import { getStrapiMedia } from '../lib/media';
 
 
 export default function App({ Component, pageProps }) {

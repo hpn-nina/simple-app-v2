@@ -26,7 +26,7 @@ export default function logIn() {
         });
 
         const loginResponse = await login.json();
-
+        console.log(loginResponse);
         setCookie(null, 'jwt', loginResponse.jwt, {
             maxAge: 30 * 24 * 60 * 60,
             path: '/'
@@ -57,7 +57,7 @@ export default function logIn() {
                     <input name='checkbox' className="form-check-input position-static" type="checkbox" id="check" value="Allow" aria-label="..."/>
                     <label for='checkbox'>Cho phép chúng tôi ghi nhớ thông tin tài khoản của bạn</label>
                 </div>
-                <input className="center btn block btn-outline-danger" type='submit' value='Đăng nhập'/>
+                <button className="center btn block btn-outline-danger" type='button' onClick={() => handleSignIn()} >Đăng nhập</button>
             </form>
             <style jsx>
                 {
