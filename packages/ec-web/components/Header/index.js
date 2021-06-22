@@ -55,7 +55,7 @@ class Header extends React.Component{
         return <div>Loading...</div>;
     }
     else {
-    return <header>
+    return <header className='popup'>
     <div className='header'>
       <Logo id='logo'></Logo>
       <div id='headerEnd'>
@@ -92,6 +92,26 @@ class Header extends React.Component{
     </nav>
     <style jsx>
       {`
+      header.popup{
+        transform: translate3d(0, 0%, 0);
+        box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+        background: none;
+        border-radius: 10px;
+        width: 100%;
+
+        :after{
+          content: "";
+          width: 20px;
+          height: 20px;
+          transform: rotate(-45deg);
+          background: #fff;
+          position: absolute;
+          box-shadow: 1px 4px 8px rgba(0, 0, 0, 0.5);
+          z-index: -1;
+          bottom: -10px;
+          left: calc(50% - 10px);
+        }
+      }
       .header{
             display: grid;
             grid-template-columns: 1fr auto;
@@ -107,9 +127,11 @@ class Header extends React.Component{
                 margin: 5px;
               }
             }
+            border-bottom: 1px solid #CDCDCD;
           }
+          
           .nav{
-            margin-bottom: 2%;
+            margin-bottom: 5%;
             margin-top: 2%;
           }
           

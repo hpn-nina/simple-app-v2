@@ -23,6 +23,7 @@ export default function NavLink( {link} ) {
                     .link{
                         color: var(--main-color);
                         text-decoration: none;
+                        font-family: Raleway;
                         font-size: 1rem;
                         font-weight: 600;
                         text-align: center;

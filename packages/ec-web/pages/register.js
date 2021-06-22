@@ -51,10 +51,7 @@ export default function register() {
                         onChange={e => setPassword(e.target.value)} value={password}
                     />
                 </div>
-                <div className="form-check">
-                    <input name='checkbox' className="form-check-input position-static" type="checkbox" id="check" aria-label="..."/>
-                    <label for='checkbox'>Cho phép chúng tôi ghi nhớ thông tin tài khoản của bạn</label>
-                </div>
+                
                 <button type="button" onClick={() => submit()} className="center btn block btn-outline-danger">Đăng ký</button>
             </form>
             <style jsx>

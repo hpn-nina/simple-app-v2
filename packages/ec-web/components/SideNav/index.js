@@ -1,20 +1,42 @@
 import React from 'react'
+import Link from 'next/link';
+import UserProfile from '../../pages/users';
 
 export default function SideNav(props) {
     return (
         <div className='sidenav'>
-            <a className='nav-row' href='/user/dashboard'>
+            <Link href={{
+                pathname:'/users/dashboard',
+                query: { dashboard: UserProfile.dashboard}
+            }}>
+            <a className='nav-row'>
                 Bảng Điều Khiển
             </a>
-            <a className='nav-row' href='/user'>
+            </Link>
+            <Link href={{
+                pathname: '/users',
+                query: {}
+            }}>
+            <a className='nav-row' >
                 Thông tin của tôi
             </a>
-            <a className='nav-row' href='/user/message'>
+            </Link>
+            <Link href={{
+                pathname: '/users/message',
+                query: { message: UserProfile.message }
+            }}>
+            <a className='nav-row'>
                 Tin nhắn
             </a>
-            <a className='nav-row' href='/user/jobmanager'>
+            </Link>
+            <Link href={{
+                pathname:'/users/jobmanager',
+                query:{ jobmanager: UserProfile.jobmanager}
+            }}>
+            <a className='nav-row'>
                 Quản lý công việc
             </a>
+            </Link>
             
 
             <style jsx>

@@ -7,20 +7,23 @@ import $ from 'jquery';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Navigation, Pagination, Scrollbar, A11y, Controller } from 'swiper';
 import FreelancerCard from '../components/FreelancerCard';
-import profileData from './profileData'
-
+import { API_URL } from '../utils/urls'
+import JobCard from '../components/JobCard/index.js';
 //import Posts from './posts'
 
 const client = new StrapiClient()
 export const getStaticProps = async () => {
     const lists = await client.fetchData('/navigation');
-    const results = await client.fetchData('/profiles');
+    const results_res = await fetch(`${API_URL}/profiles/`);
+    const results = await results_res.json();
+    const jobs_res = await fetch(`${API_URL}/jobs/`);
+    const jobs = await jobs_res.json();
     
     return {
         props: {
-            pofiles: results,
+            profiles: results,
             data: lists,
-            
+            jobs: jobs,
         }
     }
 }
@@ -29,9 +32,14 @@ SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Controller]);
 
 export default function Home(props) {
     const [controlledSwiper, setControlledSwiper] = useState(null);
-    var newData = new Object;
-    newData["data"] = props.profiles;
-    console.log(newData);
+    var profiles = {"profiles": []};
+    for( var i of props.profiles){
+        profiles.profiles.push(i);
+    }
+    var jobs = {"jobs": []};
+    for( var i of props.jobs){
+        jobs.jobs.push(i);
+    }
     useEffect(() => {
         
           
@@ -46,7 +54,7 @@ export default function Home(props) {
         
         <section className="u-clearfix u-custom-color-1 u-section-1" id="sec-9709" >
 
-            <div className='title'>Cần tìm người? Hãy đến với chúng tôi</div>
+            <div className='title'>Chúng tôi cung cấp những tài năng bậc nhất. Tìm kiếm ngay!</div>
             <form className="input-group">
               <input type="text" className="form-control rounded" placeholder="logo design" aria-label="logo design"
                 aria-describedby="search-addon" onChange={e => setKeyword(e.target.value)} value={keyword}/>
@@ -60,20 +68,21 @@ export default function Home(props) {
         <div className='title'>Những phân loại được yêu thích</div>
         <Swiper
             spaceBetween={30}
-            slidesPerView={3} spaceBetween={30} pagination={{
+            slidesPerView={4} spaceBetween={30} pagination={{
             "clickable": true}} 
             className='mySwipper'
             navigation
             pagination={{ clickable: true }}
             scrollbar={{ draggable: true }}
-            onSlideChange={() => console.log('slide change')}
-            onSwiper={(swiper) => console.log(swiper)}
+            onSlideChange={() => <div></div>}
+            onSwiper={(swiper) => <div></div>}
         >
             {
                 (props.data.categories).map(card => (
                     <SwiperSlide><Card key={card._id} props={card} className='one-card'/></SwiperSlide>
                 ))
             }
+            
         </Swiper>
       </section>
 
@@ -81,25 +90,48 @@ export default function Home(props) {
         className="u-clearfix u-custom-color-8 u-section-3"
         id="sec-3036"
       >
-        <div className='title'>BEST FREELANCER</div>
+        <div className='title'>Những freelancer được yêu thích</div>
 
         <Swiper
             spaceBetween={30}
-            slidesPerView={3} spaceBetween={30} pagination={{
+            slidesPerView={4} spaceBetween={30} pagination={{
             "clickable": true}} 
             className='mySwipper'
             navigation
             pagination={{ clickable: true }}
             scrollbar={{ draggable: true }}
-            onSlideChange={() => console.log('slide change')}
-            onSwiper={(swiper) => console.log(swiper)}
+            onSlideChange={() => <div></div>}
+            onSwiper={(swiper) => <div></div>}
         >
             {
-                profileData.profiles.map(card => (<SwiperSlide><FreelancerCard key={card._id} card={card} ></FreelancerCard></SwiperSlide>))
+                profiles.profiles.map(card => (<SwiperSlide><FreelancerCard key={card._id} card={card} ></FreelancerCard></SwiperSlide>))
             }
             
         </Swiper>
     </section>
+    <section
+        className="u-clearfix u-custom-color-11 u-section-4"
+        id='sec-3038'
+      >
+        <div className='title'>Những công việc được yêu thích</div>
+
+        <Swiper
+            spaceBetween={30}
+            slidesPerView={4} spaceBetween={30} pagination={{
+            "clickable": true}} 
+            className='mySwipper'
+            navigation
+            pagination={{ clickable: true }}
+            scrollbar={{ draggable: true }}
+            onSlideChange={() => <div></div>}
+            onSwiper={(swiper) => <div></div>}
+        >
+            {
+                jobs.jobs.map(card =><SwiperSlide><JobCard key={jobs._id} job={card} className='one-card'></JobCard></SwiperSlide>)
+            }
+            
+        </Swiper>
+      </section>
         
     <style jsx>
         {`
@@ -112,9 +144,10 @@ export default function Home(props) {
                 margin: 25px;
                 display: block;
                 padding: 10px;
+                font-family: 'Montserrat';
                 }
             #sec-9709{
-                font-family: Georgia, sans-serif;
+                
                 padding: 20px;
                 padding-bottom: 5%;
                 .input-group{
@@ -124,28 +157,16 @@ export default function Home(props) {
                 .form-control.rounded{
                     align-items: center;
                 }
+                .title{
+                    font-weight: 900;
+                }
                 }
             }
-            #sec-3036{
+            #sec-3036, #sec-3038, #sec-b0f3{
                 padding: 5%;
             }
-            #sec-b0f3{
-                padding: 5%;
-            }
-            section > .container{
-                display: grid;
-                min-height: 0;
-                min-width: 0;
-                width: 100%;
-                grid-template-columns: 1fr 1fr 1fr;
-                margin-left: 4%;
-                margin-right: 5%;
-                .one-card{
-                    margin-bottom: 10px;
-                    min-width: 0;
-                    overflow: hidden;
-                }
-            }
+            
+            
         `}
     </style>
     </div>

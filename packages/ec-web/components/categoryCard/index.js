@@ -13,7 +13,7 @@ export default function Card( {props} ) {
                 {
                     `
                     .card{
-                        width: 20rem;
+                        width: 10rem;
                         .card-title{
                             font-weight: 700;
                         }

@@ -13,12 +13,17 @@ export default function FreelancerCard(props) {
             <style jsx>
                 {`
                 .card{
-                        width: 20rem;
+                        font-family: 'Raleway';
+                        
+                        width: 10rem;
                         .card-title{
                             font-weight: 700;
                         }
                         >*{
                             color: purple;
+                        }
+                        a{
+                            text-decoration: none;
                         }
                         margin-bottom: 30px;
                     }

@@ -39,13 +39,13 @@ export default function logIn() {
                 <div className='header-box column'>
                     Thông tin đăng nhập
                 </div>
-                <div className='input group'>
+                <div className='form-group'>
                     <label className='label' for='username'>Hãy nhập tên người dùng hoặc email của bạn</label>
                     <input className='form-control' name='username' type="text" placeholder="Tên người dùng" className="form__input" id='username' required 
                         onChange={e => setUsername(e.target.value)} value={username}
                     />
                 </div>
-                <div className='input group'>
+                <div className='form-group'>
                     <label className='label' for='password'>Hãy nhập mật khẩu của bạn</label>
                     <input className='form-control' name='password' type="password" placeholder="Mật khẩu" className="form__input" id='password' required
                         onChange={e => setPassword(e.target.value)} value={password}
@@ -58,6 +58,7 @@ export default function logIn() {
                     <label for='checkbox'>Cho phép chúng tôi ghi nhớ thông tin tài khoản của bạn</label>
                 </div>
                 <button className="center btn block btn-outline-danger" type='button' onClick={() => handleSignIn()} >Đăng nhập</button>
+                <div className='forgot'><a href='/forgotPassword'>Quên mật khẩu?</a> Hãy nhấn vào đây để tìm lại mật khẩu ngay nhé!</div>
             </form>
             <style jsx>
                 {
@@ -88,7 +89,7 @@ export default function logIn() {
                     border-radius: 10px;
                     .header-box.column{
                         font-weight: bold;
-                        font-family: Verdana, san-serif;
+                        font-family: 'Playfair Display', sans-serif;
                         font-size: 3rem;
                         display: block;
                         margin-top: 2%;
@@ -114,17 +115,24 @@ export default function logIn() {
                         margin-right: auto;
                         margin-left: auto;
                         display: block;
-                        width: 70%;
+                        width: 30%;
 
                     }
-                    .input.group{
+                    .form-group{
                         .label{
-                            margin: 2% 2%;
-                            font-size: .75rem;
+                           text-align: left; 
+                            margin: 2%;
                             font-weight: 600;
                         }
                         input{
                             border-radius: 10px;
+                        }
+                    }
+                    .forgot{
+                        margin-top: 2%;
+                        margin-bottom: 2%;
+                        a{
+                            color: red;
                         }
                     }
                 }
