@@ -74,6 +74,12 @@
     },
     "category": {
       "model": "category"
+    },
+    "meta_title": {
+      "type": "string"
+    },
+    "meta_desc": {
+      "type": "text"
     }
   }
 }

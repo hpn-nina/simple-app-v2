@@ -30,11 +30,6 @@
       "required": false,
       "pluginOptions": {}
     },
-    "subCategories": {
-      "type": "component",
-      "repeatable": true,
-      "component": "sub-category.sub-category"
-    },
     "Slug": {
       "type": "uid",
       "targetField": "name"
@@ -42,6 +37,12 @@
     "job": {
       "via": "category",
       "model": "job"
+    },
+    "meta_title": {
+      "type": "string"
+    },
+    "meta_desc": {
+      "type": "text"
     }
   }
 }

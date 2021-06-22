@@ -79,7 +79,7 @@ export default function Home(props) {
         >
             {
                 (props.data.categories).map(card => (
-                    <SwiperSlide><Card key={card._id} props={card} className='one-card'/></SwiperSlide>
+                    <SwiperSlide><Card key={card.Slug} props={card} className='one-card'/></SwiperSlide>
                 ))
             }
             

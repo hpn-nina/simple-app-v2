@@ -39,6 +39,12 @@
     "name": {
       "type": "uid",
       "targetField": "title"
+    },
+    "meta_title": {
+      "type": "string"
+    },
+    "meta_desc": {
+      "type": "text"
     }
   }
 }

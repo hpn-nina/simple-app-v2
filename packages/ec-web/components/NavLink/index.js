@@ -6,8 +6,8 @@ import Link from 'next/link'
 
 export default function NavLink( {link} ) {
     return (
-        <div className='link-container' key={link._id}>
-            <a href={'/categories/' + link._id} className='link'>{link.name}</a>
+        <div className='link-container' key={link.Slug}>
+            <a href={'/categories/' + link.Slug} className='link'>{link.name}</a>
             <style jsx>
                 { `
                     .link-container{
