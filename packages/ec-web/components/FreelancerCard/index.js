@@ -15,7 +15,8 @@ export default function FreelancerCard(props) {
                 .card{
                         font-family: 'Raleway';
                         
-                        width: 10rem;
+                        width: 13rem;
+                        height: 100%;
                         .card-title{
                             font-weight: 700;
                         }

@@ -1,25 +1,36 @@
 import Head from "next/dist/next-server/lib/head";
 import Link from 'next/link';
-import { fromImageToURL, API_URL } from "../../utils/urls";
-import { fromURLToImage } from '../../utils/format';
-import Job from '../../components/JobCard'
+import { API_URL } from "../../utils/urls";
+import { BigJob } from '../../components/JobCard'
 
-const Category = ({ category }) => {
+const Category = (props) => {
+    const temp = {"jobs" : []};
+    for(var i of props.jobs){
+        temp.jobs.push(i);
+    }
+    
     return (
         <div className='content-container'>
             <Head>
                 {
-                    category.meta_title &&
-                        <title>{category.meta_title}</title>
+                    props.category.meta_title &&
+                        <title>{props.category.meta_title}</title>
                 }
                 {
-                    category.meta_desc &&
-                        <meta name='desc' content={category.meta_desc}></meta>
+                    props.category.meta_desc &&
+                        <meta name='desc' content={props.category.meta_desc}></meta>
                 }
             </Head>
             <div className='banner-container' >
-                <div className='title'>{category.name}</div>
-                <img className='banner' src={`${API_URL}${category.coverImg.url}`}/>
+                <div className='title'>{props.category.name}</div>
+                <div className='title-desc'>{props.category.desc}</div>
+            </div>
+            <div className='content-container'>
+                <div className='card-container'>
+                { 
+                    temp.jobs.map(job => <BigJob job={job} key={job._id}></BigJob>)
+                }
+                </div>
             </div>
             <div>
                 
@@ -30,27 +41,30 @@ const Category = ({ category }) => {
                         width: 100%;
                     }
                     .banner-container{
-                        width: 100%;
-                        position: relative;
+                        text-align: center;
+                        margin-bottom: 5%;
                         .title{
-                            position: absolute;
-                            right: 40%;
-                            left: 40%;
-                            bottom: 30%;
-                            top: 30%;
-                            color: black;
-                            font-size: 2rem;
-                            font-weight: 900;
-                            font-family: 'Montserrat', 'Raleway', sans-serif;
-                            opacity: 100%;
+                            font-size: 2.5rem;
+                            font-weight: 700;
                         }
-                        margin-bottom: 10%;
+                        .title-desc{
+                            font-size: 1rem;
+                            font-weight: 400;
+                        }
+                        
                     }
-                    .banner{
-                        width: 100%;
-                        height: 150px;
-                        opacity: 60%;
-                    }
+                    .content-container{
+                            margin: auto;
+                            width: 100%;
+                            .card-container{
+                                width: 80%;
+                                margin: auto;
+                                display: grid;
+                                grid-template-columns: 1fr 1fr 1fr;
+                                grid-template-rows: auto;
+                                items-align: center;
+                            }
+                        }
                     `}
                 </style>
         </div>
@@ -60,9 +74,15 @@ const Category = ({ category }) => {
 export async function getStaticProps({ params: { Slug } }) {
      const category_res = await fetch(`${API_URL}/categories/?Slug=${Slug}`);
      const found = await category_res.json();
+
+     const categoryId = found[0]._id;
+     const jobs_res = await fetch(`${API_URL}/jobs/?category=${categoryId}`);
+     const jobs_found = await jobs_res.json();
+
      return {
          props: {
-            category: found[0]
+            category: found[0],
+            jobs: jobs_found
          }
      }
 

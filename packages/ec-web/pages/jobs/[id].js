@@ -1,86 +1,74 @@
-import React from 'react'
-import jobs from '../jobs.json'
-import Head from 'next/head';
-import { API_URL } from '../../utils/urls';
-const job = jobs[0];
+import Head from "next/dist/next-server/lib/head";
+import Link from 'next/link';
+import { fromImageToURL, API_URL } from "../../utils/urls";
+import { fromURLToImage } from '../../utils/format';
+import Job from '../../components/JobCard'
 
-export async function getStaticProps({params : { _id }}){
-    const jobs_res = await fetch(`${API_URL}/jobs/?id=${_id}`);
-    const found = await jobs_res.json()
-
-    return {
-        props:{
-            jobs: found[0]
-        }
-    }
-}
-
-export async function getStaticPaths() {
-    //Retrive all possible paths
-    const jobs_res = await fetch(`${API_URL}/jobs/`);
-    const jobs = await jobs_res.json();
-
-    //Return them to NEXTJS context
-    return{
-        paths: jobs.map(job => ({
-            params: { id: String(job._id) }
-        })),
-        fallback: false //SHow 404 page if the param does not match
-    }
-}
-
-export default function Job({jobs}) {
+const Category = (props) => {
     return (
-        <div className='container'>
+        <div className='content-container'>
             <Head>
                 {
-                    jobs.meta_title &&
-                        <title>{jobs.meta_title}</title>
+                    props.job.meta_title &&
+                        <title>{props.job.meta_title}</title>
                 }
                 {
-                    jobs.meta_desc && 
-                        <title>{jobs.meta_desc}</title>
+                    props.job.meta_desc &&
+                        <meta name='desc' content={props.job.meta_desc}></meta>
                 }
             </Head>
-            <div className='part-1'>
-                <div>{jobs.name}</div>
-                <div className='job-details'>
-                    <h1 className='job-title'>Mô tả công việc</h1>
-                    <div className='job'>
-                        <div className='cover-name'>
-                            
-                        </div>
-                        <div className='desc'>
-
-                        </div>
-                    </div>
-                </div>
-                <div></div>
+            <div className='banner-container' >
+                {props.job.name}
+                {props.profile.name}
             </div>
-            <div className='part-2'>
-                <div></div>
-                <div></div>
-                <div></div>
+            <div>
+                
             </div>
-            <style jsx>
-                {
-                    `
-                    .container{
-                        width: 100%;
-                        .part-1{
-                            width: 100%;
-                            display: grid;
-                            grid-template-columns: .1fr 1fr .1fr;
-                        }
-                        .part-2{
-                            width: 100%;
-                            display: grid;
-                            grid-template-columns: .1fr 1fr .1fr;
-                        }
-                    }
-                    `
-                }
-            </style>
+                <style jsx>
+                    {`
+                    
+                    `}
+                </style>
         </div>
     )
 }
+
+export async function getStaticProps({ params: { id } }) {
+     const job_res = await fetch(`${API_URL}/jobs/?id=${id}`);
+     const found = await job_res.json();
+
+     const profile_res = await fetch (`${API_URL}/profiles/?id=${found[0].profile.id}`);
+     const profile_found = await profile_res.json();
+
+     return {
+         props: {
+            job: found[0],
+            profile: profile_found[0]
+         }
+     }
+
+    }
+
+
+
+export async function getStaticPaths() {
+    //Retrive all the possible paths
+    const jobs_res = await fetch(`${API_URL}/jobs`);
+    const jobs = await jobs_res.json();
+
+    const paths = jobs.map(job => {
+        return {
+            params: {
+                id: String(job._id)
+            }
+        }
+    })
+    
+    //Return them to NextJS context
+    return {
+        paths,
+        fallback: false
+    }
+}
+
+export default Job;

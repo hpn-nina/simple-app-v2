@@ -9,9 +9,10 @@ import SwiperCore, { Navigation, Pagination, Scrollbar, A11y, Controller } from 
 import FreelancerCard from '../components/FreelancerCard';
 import { API_URL } from '../utils/urls'
 import JobCard from '../components/JobCard/index.js';
-//import Posts from './posts'
+
 
 const client = new StrapiClient()
+
 export const getStaticProps = async () => {
     const lists = await client.fetchData('/navigation');
     const results_res = await fetch(`${API_URL}/profiles/`);
@@ -40,10 +41,7 @@ export default function Home(props) {
     for( var i of props.jobs){
         jobs.jobs.push(i);
     }
-    useEffect(() => {
-        
-          
-    });
+    
     const [keyword, setKeyword] = useState('');
 
     async function search(){
@@ -70,7 +68,7 @@ export default function Home(props) {
             spaceBetween={30}
             slidesPerView={4} spaceBetween={30} pagination={{
             "clickable": true}} 
-            className='mySwipper'
+            className='mySwipper swiper-slide'
             navigation
             pagination={{ clickable: true }}
             scrollbar={{ draggable: true }}
@@ -79,7 +77,7 @@ export default function Home(props) {
         >
             {
                 (props.data.categories).map(card => (
-                    <SwiperSlide><Card key={card.Slug} props={card} className='one-card'/></SwiperSlide>
+                    <SwiperSlide><Card key={card.Slug} props={card} className='card h-100'/></SwiperSlide>
                 ))
             }
             
@@ -93,8 +91,8 @@ export default function Home(props) {
         <div className='title'>Những freelancer được yêu thích</div>
 
         <Swiper
-            spaceBetween={30}
-            slidesPerView={4} spaceBetween={30} pagination={{
+            spaceBetween={20}
+            slidesPerView={3} spaceBetween={30} pagination={{
             "clickable": true}} 
             className='mySwipper'
             navigation
@@ -104,7 +102,7 @@ export default function Home(props) {
             onSwiper={(swiper) => <div></div>}
         >
             {
-                profiles.profiles.map(card => (<SwiperSlide><FreelancerCard key={card._id} card={card} ></FreelancerCard></SwiperSlide>))
+                profiles.profiles.map(card => (<SwiperSlide><FreelancerCard key={card._id} card={card} className='h-100' ></FreelancerCard></SwiperSlide>))
             }
             
         </Swiper>
@@ -117,6 +115,7 @@ export default function Home(props) {
 
         <Swiper
             spaceBetween={30}
+            direction='horizontal'
             slidesPerView={4} spaceBetween={30} pagination={{
             "clickable": true}} 
             className='mySwipper'
@@ -135,7 +134,9 @@ export default function Home(props) {
         
     <style jsx>
         {`
-        
+            .swiper-slide{
+                height: auto;
+            }
 
             .title{
                 text-align: center;
