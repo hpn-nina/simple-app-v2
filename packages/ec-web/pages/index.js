@@ -14,7 +14,9 @@ import JobCard from '../components/JobCard/index.js';
 const client = new StrapiClient()
 
 export const getStaticProps = async () => {
-    const lists = await client.fetchData('/navigation');
+    const categories_res = await fetch(`${API_URL}/categories`);
+    const lists = await categories_res.json();
+
     const results_res = await fetch(`${API_URL}/profiles/`);
     const results = await results_res.json();
     const jobs_res = await fetch(`${API_URL}/jobs/`);
@@ -41,7 +43,10 @@ export default function Home(props) {
     for( var i of props.jobs){
         jobs.jobs.push(i);
     }
-    
+    var categories = {"categories": []};
+    for(var i of props.data){
+        categories.categories.push(i);
+    }
     const [keyword, setKeyword] = useState('');
 
     async function search(){
@@ -76,7 +81,7 @@ export default function Home(props) {
             onSwiper={(swiper) => <div></div>}
         >
             {
-                (props.data.categories).map(card => (
+                (categories.categories).map(card => (
                     <SwiperSlide><Card key={card.Slug} props={card} className='card h-100'/></SwiperSlide>
                 ))
             }

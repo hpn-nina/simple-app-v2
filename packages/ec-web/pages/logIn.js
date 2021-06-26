@@ -3,22 +3,24 @@ import Link from 'next/link'
 import axios from 'axios';
 import { useState } from 'react';
 import { setCookie } from 'nookies';
+import  Router  from 'next/router';
 
 
 
-export default function logIn() {
-    const [identifier, setIndentifier] = useState('');
+export default function login() {
+    const [identifier, setIdentifier] = useState('');
     const [password, setPassword] = useState('');
+    const { API_URL } = process.env;
 
-    async function handleSignIn() {
+    async function handleLogin() {
         const loginInfo = {
             identifier: identifier,
             password: password
         }
 
-        const login = await fetch('http://localhost:1337/auth/local', {
+        const login = await fetch(`${API_URL}/auth/local`, {
             method: "POST",
-            handler: {
+            headers: {
                 "Accept": 'application/json',
                 "Content-Type": 'application/json'
             },
@@ -26,11 +28,13 @@ export default function logIn() {
         });
 
         const loginResponse = await login.json();
-        console.log(loginResponse);
+        
         setCookie(null, 'jwt', loginResponse.jwt, {
             maxAge: 30 * 24 * 60 * 60,
             path: '/'
         })
+
+        Router.push('/');
     };
 
     return (
@@ -41,13 +45,14 @@ export default function logIn() {
                 </div>
                 <div className='form-group'>
                     <label className='label' for='identifier'>Hãy nhập tên người dùng hoặc email của bạn</label>
-                    <input className='form-control' name='identifier' type="text" placeholder="Tên người dùng hoặc email của bạn" className="form__input" id='identifier' required 
-                        onChange={e => setUsername(e.target.value)} value={identifier}
+                    <input className='form-control form__input' name='identifier' type="text" placeholder="Tên người dùng hoặc email của bạn" 
+                         id='identifier' required 
+                        onChange={e => setIdentifier(e.target.value)} value={identifier}
                     />
                 </div>
                 <div className='form-group'>
                     <label className='label' for='password'>Hãy nhập mật khẩu của bạn</label>
-                    <input className='form-control' name='password' type="password" placeholder="Mật khẩu" className="form__input" id='password' required
+                    <input className='form-control form__input' name='password' type="password" placeholder="Mật khẩu"  id='password' required
                         onChange={e => setPassword(e.target.value)} value={password}
                     />
                     
@@ -57,7 +62,7 @@ export default function logIn() {
                     <input name='checkbox' className="form-check-input position-static" type="checkbox" id="check" value="Allow" aria-label="..."/>
                     <label for='checkbox'>Cho phép chúng tôi ghi nhớ thông tin tài khoản của bạn</label>
                 </div>
-                <button className="center btn block btn-outline-danger" type='button' onClick={() => handleSignIn()} >Đăng nhập</button>
+                <button className="center btn block btn-outline-danger" type='button' onClick={() => handleLogin()} >Đăng nhập</button>
                 <div className='forgot'><a href='/forgotPassword'>Quên mật khẩu?</a> Hãy nhấn vào đây để tìm lại mật khẩu ngay nhé!</div>
             </form>
             <style jsx>

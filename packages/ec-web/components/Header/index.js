@@ -82,8 +82,7 @@ class Header extends React.Component{
             navigation
             className='mySwipper'
             scrollbar={{ draggable: true }}
-            onSlideChange={() => console.log('slide change')}
-            onSwiper={(swiper) => console.log(swiper)}
+            
         >
         {
           items.map(item => <SwiperSlide><NavLink key={item._id} link={item} className='nav-link'></NavLink></SwiperSlide>)

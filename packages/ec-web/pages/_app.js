@@ -12,6 +12,9 @@ import Head from 'next/head';
 import { useTheme, ThemeProvider, withTheme } from '@emotion/react'
 import { getConfig } from 'next/config'
 import fetch from 'isomorphic-unfetch'
+import { DefaultSeo } from 'next-seo'
+import Router from 'next/router'
+import { parseCookies } from "nookies";
 
 const theme = {
   breakpoints: [
@@ -28,6 +31,17 @@ const theme = {
 }
 
 export const GlobalContext = createContext({});
+
+function redirectUser(ctx, location){
+  if(ctx.req) {
+    ctx.res.writeHead(302, {location: location});
+    ctx.res.end();
+
+  }
+  else{
+    Router.push(location);
+  }
+}
 
 export default function App({ Component, pageProps, navigation }) {
   const { global } = pageProps;
@@ -59,24 +73,35 @@ export default function App({ Component, pageProps, navigation }) {
         
         </GlobalContext.Provider>
         <Footer />
-        <style jsx global>
-          {`
-            html, body{
-              font-family: 'Playfair Display', sans-serif;
-            }
-          `}
-        </style>
       </div>
     </ThemeProvider>
   );
 }
 
 
-/**const { publicRunTimeConfig } = getConfig();
+// const { publicRuntimeConfig } = getConfig();
+// console.log(publicRuntimeConfig.API_URL)
 
-App.getInitialPorps = async () => {
-  const res = await fetch(`${publicRunTimeConfig.API_URL}/navigation`);
+App.getInitialProps = async ({ Component, ctx}) => {
+  const { API_URL } = process.env;
+  let pageProps = {};
+  const jwt =  parseCookies(ctx).jwt;
+
+  const res = await fetch(`${API_URL}/navigation`);
   const navigation = await res.json();
 
-  return { navigation }
-}**/
+  if(Component.getInitialProps){
+    pageProps = await Compononent.getInitialProps(ctx)
+  }
+
+  if(!jwt){
+    if (ctx.pathname === "/users" || ctx.pathname === "/admin"){
+      redirectUser(ctx, "/login");
+    }
+  }
+
+  return { 
+    pageProps,
+    navigation 
+  }
+}

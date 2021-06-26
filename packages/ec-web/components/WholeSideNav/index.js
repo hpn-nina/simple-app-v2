@@ -26,7 +26,7 @@ export default function WholeSideNav(props) {
         <div className='side-nav'>
                 <div className='ava-name-card'>
                     <div className='ava-box'>
-                        <img className='ava' src={props.user ? `${process.env.API_URL}`+ props.user.profile.avatar.url : '../../LamThanhTin_image.png'}  width='50px' height='50px'></img>
+                        <img className='ava' src={props.user ? `${process.env.API_URL}`+ props.user.profile.avatar.url : `${process.env.API_URL} + '/uploads/Le_Doan_Thien_Nhan_image_37c5c42ab4.jpg'`}  width='50px' height='50px'></img>
                     </div>
                     <div className='name-tag'>
                         { props.user ? props.user.profile.name : "Lâm Thành Tín"}

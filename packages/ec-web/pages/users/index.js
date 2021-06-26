@@ -2,6 +2,8 @@ import React from 'react'
 import SideNav from '../../components/SideNav';
 import Link from 'next/link';
 import WholeSideNav from '../../components/WholeSideNav';
+import getConfig from 'next/config'
+import { parseCookies } from 'nookies';
 
 
 export default function UserProfile(props) {
@@ -9,7 +11,7 @@ export default function UserProfile(props) {
         <div className='body-container'>
             <div className='content-container'>
             <div></div>
-            <WholeSideNav props={props.user}></WholeSideNav>
+            <WholeSideNav user={props.user}></WholeSideNav>
             <div className='main-body'>
                 <div className='profile'>
                     <form className='form'>
@@ -28,7 +30,7 @@ export default function UserProfile(props) {
                         </div>
                         <div className='form-group'>
                             <label for='sex'>Giới tính</label>
-                            <select className='form-control' id='sex'>
+                            <select className='form-control' id='sex' defaultValue={props.user.profile.sex ? props.user.profile.sex : 'Male'}>
                                 <option>Male</option>
                                 <option>Female</option>
                                 <option>Other</option>
@@ -36,24 +38,24 @@ export default function UserProfile(props) {
                         </div>
                         <div className='form-group'>
                             <label for='occupations'>Công việc</label>
-                            <input type='text' className='form-control' id='occupations'></input>
+                            <input type='text' className='form-control' id='occupations' defaultValue={props.user.profile.occupations ? props.user.profile.occupations : '' }></input>
                         </div>
                         <div className='form-group'>
                             <label for='certificates'>Bằng cấp</label>
-                            <textarea className='form-control' id='certificates'></textarea>
+                            <textarea className='form-control' id='certificates' defaultValue={props.user.profile.certificates ? props.user.profile.certificates : ''}></textarea>
                         </div>
                         <div className='form-group'>
                             <label for='skills'>Kỹ năng</label>
-                            <textarea className='form-control' id='skills'></textarea>
+                            <textarea className='form-control' id='skills' defaultValue={props.user.profile.skills ? props.user.profile.skills : ''}></textarea>
                         </div>
                         
                         <div className='form-group'>
                             <label for='interests'>Sở thích</label>
-                            <textarea className='form-control' id='interests'></textarea>
+                            <textarea className='form-control' id='interests' defaultValue={props.user.profile.interests ? props.user.profile.interests : ''}></textarea>
                         </div>
                         <div className='form-group'>
                             <label for='interests'>Giới thiệu</label>
-                            <textarea className='form-control' id='interests'></textarea>
+                            <textarea className='form-control' id='desc' defaultValue={props.user.profile.desc ? props.user.profile.desc : ''}></textarea>
                         </div>
                         <div className='form-group'>
                             <label for='avatar'>Ảnh đại diện</label>
@@ -163,4 +165,43 @@ export default function UserProfile(props) {
             </style>
         </div>
     )
+}
+
+const { publicRuntimeConfig } = getConfig();
+
+export async function getStaticProps(ctx) {
+    const {API_URL} = process.env;
+    const loginInfo = {
+        identifier: "nhuwlaftooi",
+        password: "1647645024"
+    }
+    
+    const jwt = parseCookies(ctx).jwt;
+    
+    const login = await fetch(`${API_URL}/auth/local`, {
+        method: "POST",
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(loginInfo)
+    });
+
+    const loginResponse = await login.json();
+    const user = loginResponse.user;
+    
+    const res = await fetch(`${API_URL}/profiles`, {
+        headers: {
+            Authorization: `Bearer ${jwt}`
+        }
+    })
+    const data = await res.json();
+
+    return {
+        props: {
+            data: data,
+            authData: loginResponse,
+            user: user
+        }
+    }
 }
