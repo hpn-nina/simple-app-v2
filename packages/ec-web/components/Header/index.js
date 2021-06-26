@@ -24,7 +24,7 @@ class Header extends React.Component{
     };
   }
   componentDidMount(){
-    fetch("http://localhost:1337/categories")
+    fetch(`${process.env.API_URL}/categories`)
     .then(res=>res.json())
     .then(
       (result) => {

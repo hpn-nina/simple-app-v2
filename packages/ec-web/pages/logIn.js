@@ -7,12 +7,12 @@ import { setCookie } from 'nookies';
 
 
 export default function logIn() {
-    const [username, setUsername] = useState('');
+    const [identifier, setIndentifier] = useState('');
     const [password, setPassword] = useState('');
 
     async function handleSignIn() {
         const loginInfo = {
-            identifier: username,
+            identifier: identifier,
             password: password
         }
 
@@ -40,9 +40,9 @@ export default function logIn() {
                     Thông tin đăng nhập
                 </div>
                 <div className='form-group'>
-                    <label className='label' for='username'>Hãy nhập tên người dùng hoặc email của bạn</label>
-                    <input className='form-control' name='username' type="text" placeholder="Tên người dùng" className="form__input" id='username' required 
-                        onChange={e => setUsername(e.target.value)} value={username}
+                    <label className='label' for='identifier'>Hãy nhập tên người dùng hoặc email của bạn</label>
+                    <input className='form-control' name='identifier' type="text" placeholder="Tên người dùng hoặc email của bạn" className="form__input" id='identifier' required 
+                        onChange={e => setUsername(e.target.value)} value={identifier}
                     />
                 </div>
                 <div className='form-group'>

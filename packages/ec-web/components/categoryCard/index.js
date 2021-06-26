@@ -1,9 +1,11 @@
 import React from 'react'
 
+
 export default function Card( {props} ) {
+    const { API_URL } = process.env;
     return (
         <div className="card" key={props._id}>
-            <img  className="card-img-top" src={'http://localhost:1337' + props.coverImg.url} alt="Card image cap"/>
+            <img  className="card-img-top" src={API_URL + props.coverImg.url} alt="Card image cap"/>
             <div className="card-body">
                 <h5 className="card-title">{props.name}</h5>
                 <p className="card-text">{props.desc.substring(0,50) + '...'}</p>

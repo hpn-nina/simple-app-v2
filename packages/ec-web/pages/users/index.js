@@ -1,28 +1,15 @@
 import React from 'react'
 import SideNav from '../../components/SideNav';
 import Link from 'next/link';
+import WholeSideNav from '../../components/WholeSideNav';
+
 
 export default function UserProfile(props) {
     return (
         <div className='body-container'>
             <div className='content-container'>
             <div></div>
-            <div className='side-nav'>
-                <div className='ava-name-card'>
-                    <div className='ava-box'>
-                        <img className='ava' src={props.user ? `http://localhost:1337`+ props.user.profile.avatar.url : '../../LamThanhTin_image.png'}  width='50px' height='50px'></img>
-                    </div>
-                    <div className='name-tag'>
-                        { props.user ? props.user.profile.name : "Lâm Thành Tín"}
-                    </div>
-                </div>
-                <div className='nav'> 
-                    <SideNav></SideNav>
-                    <div className='logoutbtn'>
-                        <button className='btn' type='button'>Đăng xuất</button>
-                    </div>
-                </div>
-            </div>
+            <WholeSideNav props={props.user}></WholeSideNav>
             <div className='main-body'>
                 <div className='profile'>
                     <form className='form'>
@@ -119,49 +106,7 @@ export default function UserProfile(props) {
                         padding: 0px 2%;
                         display: grid;
                         grid-template-columns: .1fr .3fr 1fr .1fr;
-                        .side-nav{
-                            width: 95%;
-                            height: 100%;
-                            position: relative;
-                            
-                            background-color: white;
-                            border: 1px solid grey;
-                            border-radius: 10px;
-                            .ava-name-card{
-                                display: block;
-                                margin: 5% 10%;
 
-                                .name-tag{
-                                    font-size: 1.5rem;
-                                    font-weight: 400;
-                                    display: inline;
-                                }
-                                img.ava{
-                                    display: inline;
-                                    border-radius: 50%;
-                                    margin: 7% 2%;
-
-                                }
-                            }
-                            .nav{
-                                
-                                width: 100%;
-                                margin-top: 20%;
-                                .logoutbtn{
-                                    margin-right: auto;
-                                    margin-left: auto;
-                                    margin-top: 40%;
-                                    button{
-                                        padding: 5% 5%;
-                                        border-raidus: 10px;
-                                        background-color: var(--main-color);
-                                        color: white;
-                                        font-size: 1rem;
-                                        font-weight: 700;
-                                    }
-                                }
-                            }
-                        }
                         .change-pass-form{
                             border: 1px solid grey;
                             border-radius: 10px;

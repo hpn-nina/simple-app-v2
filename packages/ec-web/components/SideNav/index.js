@@ -9,7 +9,7 @@ export default function SideNav(props) {
                 pathname:'/users/dashboard',
                 query: { dashboard: UserProfile.dashboard}
             }}>
-            <a className='nav-row'>
+            <a className={'nav-row ' + (props.active === 'dashboard' ? 'active' : '')}>
                 Bảng Điều Khiển
             </a>
             </Link>
@@ -17,7 +17,7 @@ export default function SideNav(props) {
                 pathname: '/users',
                 query: {}
             }}>
-            <a className='nav-row' >
+            <a className={'nav-row ' + (props.active === 'index' ? 'active' : '')} >
                 Thông tin của tôi
             </a>
             </Link>
@@ -25,7 +25,7 @@ export default function SideNav(props) {
                 pathname: '/users/message',
                 query: { message: UserProfile.message }
             }}>
-            <a className='nav-row'>
+            <a className={'nav-row ' + (props.active === 'message' ? 'active' : '')}>
                 Tin nhắn
             </a>
             </Link>
@@ -33,7 +33,7 @@ export default function SideNav(props) {
                 pathname:'/users/jobmanager',
                 query:{ jobmanager: UserProfile.jobmanager}
             }}>
-            <a className='nav-row'>
+            <a className={'nav-row ' + (props.active === 'jobmanager' ? 'active' : '')}>
                 Quản lý công việc
             </a>
             </Link>
@@ -56,6 +56,10 @@ export default function SideNav(props) {
                     border-bottom: 1px solid white;
                     text-decoration: none;
                     color: white;
+                }
+                .active.nav-row{
+                    color: grey;
+                    
                 }
                 `}
             </style>

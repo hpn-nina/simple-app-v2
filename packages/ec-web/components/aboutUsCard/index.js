@@ -1,6 +1,7 @@
 import React from 'react'
 
 export default function Card( { props } ) {
+    const { API_URL } = process.env;
     return (
         <div className='big-card' key={props._id}>
             <div>
@@ -8,7 +9,7 @@ export default function Card( { props } ) {
                 <div className='desc'>{props.desc}</div>
             </div>
             <div className='image'>
-                <img src={'http://localhost:1337'+props.img.url} alt={props.name} height='350px' width= 'auto'/>
+                <img src={API_URL +props.img.url} alt={props.name} height='350px' width= 'auto'/>
             </div>
             <style jsx>
                 {`

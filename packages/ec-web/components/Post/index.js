@@ -1,10 +1,11 @@
 import React from 'react'
 
 export default function PostCard({ post }) {
+    const { API_URL } = process.env;
     return (
         <div key = {post._id} className='card'>
             <a href = { `/posts/${post._id}`}>
-                <img className='card-img-top' src={'http://localhost:1337'+ post.coverImage.url} alt={post.title} height='100px' width='auto'/>
+                <img className='card-img-top' src={API_URL+ post.coverImage.url} alt={post.title} height='100px' width='auto'/>
                 <div className='card-body'>
                     <h5 className='card-title'>{post.title}</h5>
                     <div>Written by: {post.author}</div>

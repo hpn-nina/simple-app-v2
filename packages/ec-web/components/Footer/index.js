@@ -1,7 +1,5 @@
 import React from 'react';
 
-import PropTypes from 'prop-types';
-
 import { FooterCPN } from '../FooterComponent';
 
 export default function Footer({}) {
