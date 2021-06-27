@@ -1,8 +1,8 @@
-**Contributors:**\
-1. *Huỳnh Phương Như* - FE and BE data model\
-2. *Lâm Thành Tín* - Design and FE\
-3. *Nguyễn Văn Dũng* - Content Writer and FE\
-4. *Lê Đoàn Thiện Nhân* - BE\
+**Contributors:**
+1. *Huỳnh Phương Như* - FE and BE data model
+2. *Lâm Thành Tín* - Design and FE
+3. *Nguyễn Văn Dũng* - Content Writer and FE
+4. *Lê Đoàn Thiện Nhân* - BE
 
 For running, using `npm i` to install.
 Then, `lerna bootstrap`
@@ -10,7 +10,7 @@ Then, `lerna bootstrap`
 - Our back-end is located at: [./packages/strapi-atlas/api](./packages/strapi-atlas/api)
 - Our front-end code is located at: [./packages/ec-web/pages](./packages/ec-web/pages)
 
-Initialized from the begining:\
+Initialized from the beginning:
 
 1. For the whole projects:\
 npm i -g lerna
