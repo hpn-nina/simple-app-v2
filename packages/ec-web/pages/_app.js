@@ -12,7 +12,8 @@ import Head from 'next/head';
 import { useTheme, ThemeProvider, withTheme } from '@emotion/react'
 import { getConfig } from 'next/config'
 import fetch from 'isomorphic-unfetch'
-import { DefaultSeo } from 'next-seo'
+import { DefaultSeo } from 'next-seo';
+import SEO from '../next-seo.config'
 import Router from 'next/router'
 import { parseCookies } from "nookies";
 
@@ -47,7 +48,10 @@ export default function App({ Component, pageProps, navigation }) {
   const { global } = pageProps;
 
   return (
-    <ThemeProvider theme={theme}>
+    <>
+      <DefaultSeo {...SEO}/>
+      <ThemeProvider theme={theme}>
+        
         <div className="grid-container">
         <Head>
           <link rel="preconnect" href="https://fonts.gstatic.com"/>
@@ -75,6 +79,8 @@ export default function App({ Component, pageProps, navigation }) {
         <Footer />
       </div>
     </ThemeProvider>
+
+    </>
   );
 }
 
@@ -82,7 +88,7 @@ export default function App({ Component, pageProps, navigation }) {
 // const { publicRuntimeConfig } = getConfig();
 // console.log(publicRuntimeConfig.API_URL)
 
-App.getInitialProps = async ({ Component, ctx}) => {
+App.getInitialProps = async ({ Component, ctx }) => {
   const { API_URL } = process.env;
   let pageProps = {};
   const jwt =  parseCookies(ctx).jwt;

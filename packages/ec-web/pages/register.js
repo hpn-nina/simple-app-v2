@@ -1,6 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 import { SyntheticEvent, useState } from 'react';
+import Router from 'next/router'
+
 
 function validateEmail(email) {
     var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -22,7 +24,7 @@ export default function register() {
 
         const register = await fetch(`http://localhost:1337/auth/local/register`,{
             method: "POST",
-            handlers: {
+            headers: {
                 "Accept": 'application/json',
                 'Content-type': 'application/json'
             },
@@ -31,8 +33,15 @@ export default function register() {
 
         const registerResponse = await register.json();
         console.log(registerResponse)
+        if(registerResponse.jwt){
+            alert('Bạn đã tạo tài khoản thành công')
+            Router.push('/login');
+        }
+        else{
+            alert(registerResponse.data[0].messages[0].message);
+        }
         
-
+        
     }
     return (
         <div id='register-pg'>
