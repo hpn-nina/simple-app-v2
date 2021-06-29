@@ -72,8 +72,10 @@ function Header (props) {
             
         >
         {
-          categoriesItems ? (categoriesItems.map(item => <SwiperSlide><NavLink key={item._id} link={item} className='nav-link'></NavLink></SwiperSlide>)) : <div></div>
+          categoriesItems ? (categoriesItems.map(item => <SwiperSlide><NavLink key={item._id} link={item} name={null} className='nav-link'></NavLink></SwiperSlide>)) : <div></div>
         }
+        <SwiperSlide><NavLink name="About" name_link="/aboutUs"></NavLink></SwiperSlide>
+        <SwiperSlide><NavLink name="Find Job" name_link="/jobs/seekingJob"></NavLink></SwiperSlide>
         </Swiper>
     </nav>
     <style jsx>

@@ -1,6 +1,42 @@
-import React from 'react'
+import { React, useState} from 'react'
+import Router  from 'next/router'
 
 export default function customerService() {
+    const { API_URL }= process.env;
+    const [name, setName] = useState('');
+    const [phone, setPhone] = useState('');
+    const [email, setEmail] = useState('');
+    const [transactionID, setTransactionID] = useState('');
+    const [title, setTitle] = useState('');
+    const [body, setBody] = useState('');
+    const [media, setMedia] = useState('');
+
+    async function handleSubmit(){
+        const Info = {
+            name: name,
+            phone: phone, 
+            email: email,
+            transaction: transactionID,
+            title: title,
+            body: body,
+            status: "New"
+        }
+        
+        const Submit = await fetch(`${API_URL}/customer-tickets`,{
+            method: "POST",
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(Info)
+        })
+        console.log(Info);
+        const res = await Submit.json();
+        if(res._id){
+            alert("Gửi thành công");
+            Router.push('/');
+        }
+    }
     return (
         <div className='pg-container'>
             <div className='banner'>
@@ -12,19 +48,29 @@ export default function customerService() {
                     <div className='main'>
                         <div className='form-group '>
                             <label for='name'>Tên khách hàng</label>
-                            <input type='text' className='form-control' id='name' placeholder='Tên người dùng' required></input>
+                            <input type='text' className='form-control' 
+                            id='name' placeholder='Tên người dùng' required
+                            value={name} onChange={e => setName(e.target.value)}></input>
                         </div>
                         <div className='form-group '>
                             <label for='phone'>Số điện thoại</label>
-                            <input type='text' className='form-control' id='phone' placeholder='Điền vào số điện thoại bạn nhé'></input>
+                            <input type='text' className='form-control' 
+                            id='phone' 
+                            placeholder='Điền vào số điện thoại bạn nhé'
+                            value={phone} onChange={ e => setPhone(e.target.value)}></input>
                         </div>
                         <div className='form-group '>
                             <label for='email'>Email</label>
-                            <input type='email' id='email' className='form-control' placeholder='Điền vào email của bạn để chúng tôi có thể liên hệ sớm nhất' required></input>
+                            <input type='email' id='email' 
+                            className='form-control' 
+                            placeholder='Điền vào email của bạn để chúng tôi có thể liên hệ sớm nhất' 
+                            value={email} onChange={e => setEmail(e.target.value)} required></input>
                         </div>
                         <div className='form-group '>
-                            <label for='job'>Mã công việc liên quan</label>
-                            <input type='text' className='form-control' id='job' placeholder='Nếu như muốn nói điều gì về một công việc trên hệ thống của chúng tôi, hãy điền vào đây nhé'></input>
+                            <label for='transaction'>Mã đơn hàng liên quan</label>
+                            <input type='text' className='form-control' id='transaction' 
+                            placeholder='Nếu như muốn nói điều gì về một đơn hàng trên hệ thống của chúng tôi, hãy điền vào đây nhé'
+                            onChange={e => setTransactionID(e.target.value)} value={transactionID}></input>
                         </div>
                         <div className='form-group'>
                             <label for='topic'>Bạn điền đơn này để làm gì</label>
@@ -38,18 +84,25 @@ export default function customerService() {
                         </div>
                         <div className='form-group '>
                             <label for='title'>Tiêu đề</label>
-                            <input type='text' className='form-control' name='title' id='title' placeholder='Hãy điền vào chủ đề chính của thông tin bạn muốn nhắn gửi' required></input>
+                            <input type='text' className='form-control' 
+                            name='title' id='title' 
+                            placeholder='Hãy điền vào chủ đề chính của thông tin bạn muốn nhắn gửi' 
+                            onChange={e => setTitle(e.target.value)} value={title} required></input>
                         </div>
                         <div className='form-group '>
                             <label for='desc'>Mô tả chi tiết</label>
-                            <textarea className='form-control' id='desc' placeholder='Hãy nêu chi tiết yêu cầu của bạn để chúng tôi có thể giúp đỡ nhanh nhất nhé' required></textarea>
+                            <textarea className='form-control' id='desc' 
+                            placeholder='Hãy nêu chi tiết yêu cầu của bạn để chúng tôi có thể giúp đỡ nhanh nhất nhé' 
+                            value={body} onChange={e => setBody(e.target.value)} required></textarea>
                         </div>
                         <div className='form-group'>
                             <label for='file'>Hình ảnh liên quan</label>
-                            <input type='file' className='form-control-file' id='file' name='file'></input>
+                            <input type='file' className='form-control-file' 
+                            id='file' name='file'
+                            value={media} onChange={e => setMedia(e.target.value)}></input>
                         </div>
                         <div className='form-group'>
-                            <input className="center btn block btn-outline-danger" type='submit' value='Gửi ngay'/>
+                            <button className="center form-control btn block btn-outline-danger" onClick={() => handleSubmit()} type='button'>Gửi ngay</button>
                         </div>
                     </div>
                 </form>

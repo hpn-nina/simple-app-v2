@@ -1,5 +1,4 @@
 import StrapiClient from '../lib/strapi-client';
-import Card from '../components/categoryCard';
 import Head from 'next/head';
 import ReactDOM from 'react-dom';
 import React, { useState, useEffect } from 'react';
@@ -9,6 +8,7 @@ import SwiperCore, { Navigation, Pagination, Scrollbar, A11y, Controller } from 
 import FreelancerCard from '../components/FreelancerCard';
 import { API_URL } from '../utils/urls'
 import JobCard from '../components/JobCard/index.js';
+import { Carousel } from 'react-bootstrap'
 
 
 const client = new StrapiClient()
@@ -69,24 +69,22 @@ export default function Home(props) {
         id="sec-b0f3"
       >
         <div className='title'>Những phân loại được yêu thích</div>
-        <Swiper
-            spaceBetween={30}
-            slidesPerView={4} spaceBetween={30} pagination={{
-            "clickable": true}} 
-            className='mySwipper swiper-slide'
-            navigation
-            pagination={{ clickable: true }}
-            scrollbar={{ draggable: true }}
-            onSlideChange={() => <div></div>}
-            onSwiper={(swiper) => <div></div>}
-        >
+        <Carousel fade>
             {
-                (categories.categories).map(card => (
-                    <SwiperSlide><Card key={card.Slug} props={card} className='card h-100'/></SwiperSlide>
+                categories.categories.map((card) => (
+                    <Carousel.Item>
+                        <img src={API_URL + card.coverImg.url} 
+                            className="d-block w-100"
+                            alt={card.name}
+                        />
+                        <Carousel.Caption>
+                            <h3 className='black'>{card.name}</h3>
+                            <p className='black'>{card.desc}</p>
+                        </Carousel.Caption>
+                    </Carousel.Item>
                 ))
             }
-            
-        </Swiper>
+        </Carousel>
       </section>
 
     <section
@@ -142,7 +140,10 @@ export default function Home(props) {
             .swiper-slide{
                 height: auto;
             }
-
+            .black{
+                color: grey;
+                font-weight: 700;
+            }
             .title{
                 text-align: center;
                 font-size: 3.5rem;
