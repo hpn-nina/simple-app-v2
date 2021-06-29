@@ -6,15 +6,51 @@ import Job from '../../components/JobCard'
 import React from 'react'
 import Rating from "../../components/Rating";
 import ProfileCard from "../../components/ProfileCard";
+import { Form, Row, Col, Carousel } from 'react-bootstrap'
+import { useState } from 'react';
+import { useContext } from "react";
+import HeaderContext from "../../context/HeaderContext";
+import Router from 'next/router'
 
 
 const JobDetail = (props) => {
+    const {userProfile} = useContext(HeaderContext);
+    if(userProfile){
+        const user = userProfile[0].user;
+    }
+    else{
+        const user = null;
+    }
+    
     var AvgRating = 0;
     var numsOfReviews = 0;
     for(var i of props.job.rating){
         AvgRating += i.rating;
         numsOfReviews += 1;
     }
+    
+    const [option, setOption] = useState('');
+    const [note, setNote] = useState('');
+
+
+    async function buyJobs(){
+        if(!user){
+            const buyJobInfo = {
+                seeker: user._id,
+                job: props.job,
+                note: note,
+                pickedOption: {
+                    optionName: '',
+                }
+            };
+
+        }
+        else{
+            alert('Bạn phải đăng nhập mới có thể thuê công việc này.');
+            Router.push('/login')
+        }
+    }
+
     return (
         <div className='content-container'>
             <Head>
@@ -32,30 +68,30 @@ const JobDetail = (props) => {
             </div>
             <div className='container'>
                 <div className='img-desc'>
-                    <div id='carouselControls' className='carousel slide' data-ride="carousel">
-                        <div className='carousel-inner'>
-                            <div className='carousel-item active'>
-                                <img className='d-block w-100' src={API_URL + props.job.coverImage.url}></img>
-                            </div>
-                            {
-                                props.job.Image ? (
-                                    props.job.Image.map(image => 
-                                        (<div className='carousel-item'>
-                                            <img src={API_URL + image.url}></img>
-                                        </div>)
-                                    )
-                                ) : <div className=''></div>
-                            }
-                        </div>
-                        <a className='carousel-control-prev' href='#carouselControls' role='button' data-slide='prev'>
-                            <span className='carousel-control-prev-icon' aria-hidden='true'></span>
-                            <span className='sr-only'>Previous</span>
-                        </a>
-                        <a className="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                            <span className="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span className="sr-only">Next</span>
-                        </a>
-                    </div>
+                    <Carousel>
+                        {
+                            props.job.coverIamge ? (
+                                <Carousel.Item interval={1500}>
+                                    <img src = {process.env.API_URL + props.job.coverImage.url}
+                                        alt= 'Cover Image'
+                                        className = 'd-block w-100'
+                                    />
+                                </Carousel.Item>
+                            ) : ''
+                        }
+                        {
+                            props.job.Image ? (
+                                props.job.Image.map(image => (
+                                    <Carousel.Item interval={1500}>
+                                        <img src={process.env.API_URL + image.url}
+                                            alt='Image'
+                                            className = 'd-block w-100'
+                                        />
+                                    </Carousel.Item>
+                                ))
+                            ) : ''
+                        }
+                    </Carousel>
                     <div className='desc'>
                         <div className='title'>
                             {props.job.name}
@@ -70,19 +106,30 @@ const JobDetail = (props) => {
                             <Rating rating={AvgRating} numReviews={numsOfReviews}></Rating>
                         </div>
                         <div>
-                            <select className='selectpicker'>
-                                {
-                                    props.job.option.map(option => (
-                                        <option aria-live={option.desc}>{option.optionName}</option>
+                            <Form>
+                                <Form.Group as={Row} controlId="optionSelect">
+                                    <Form.Control placeholder='Lựa chọn' as="select" custom>
+                                    {
+                                        props.job.option.map(option => (
+                                        <option data-subtext={option.desc} value={option}
+                                        onChange={e => (setOption(e.value.target))}>{option.optionName}</option>
                                     ))
-                                }
-                            </select>
+                                    }
+                                    </Form.Control>
+                                    <Form.Control as="textarea"r rows={3} placeholder='Ghi chú'>
+                                    </Form.Control>
+                                </Form.Group>
+                            </Form>
+                        </div>
+                        <div>
+                            <button type='button' onClick={() => buyJobs()} className='btn btn-outline-danger'>Thuê công việc</button>
                         </div>
                     </div>
+                    <div className='profile'>
+                        <ProfileCard profile={props.job.profile}></ProfileCard>
+                    </div>
                 </div>
-                <div className='profile'>
-                    <ProfileCard profile={props.job.profile}></ProfileCard>
-                </div>
+                
             </div>
                 <style jsx>
                     {`
@@ -116,9 +163,12 @@ export async function getStaticProps({ params: { id } }) {
      const job_res = await fetch(`${API_URL}/jobs/?id=${id}`);
      const found = await job_res.json();
 
+     
+
      return {
         props: {
            job: found[0],
+           
         }
     }
      

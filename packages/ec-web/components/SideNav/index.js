@@ -30,10 +30,10 @@ export default function SideNav(props) {
             </a>
             </Link>
             <Link href={{
-                pathname:'/users/jobmanager',
-                query:{ jobmanager: UserProfile.jobmanager}
+                pathname:'/users/jobs',
+                query:{ jobs: UserProfile.jobs}
             }}>
-            <a className={'nav-row ' + (props.active === 'jobmanager' ? 'active' : '')}>
+            <a className={'nav-row ' + (props.active === 'jobs' ? 'active' : '')}>
                 Quản lý công việc
             </a>
             </Link>

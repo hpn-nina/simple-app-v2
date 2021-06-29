@@ -15,8 +15,8 @@ export default function WholeSideNav(props) {
         case '/users/message':
             name = 'message';
             break;
-        case '/users/jobmanager':
-            name = 'jobmanager';
+        case '/users/jobs':
+            name = 'jobs';
             break;
         default:
             name = '';

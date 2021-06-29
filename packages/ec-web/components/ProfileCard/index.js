@@ -19,7 +19,7 @@ export default function ProfileCard(props) {
             <style jsx>
                 {`
                 .card-container{
-                    width: 40%;
+                    width: 60%;
                     background-color: white;
                     border: 1px solid black;
                     border-radius: 10px;

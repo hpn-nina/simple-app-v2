@@ -387,7 +387,11 @@ span.fr-img-caption.fr-view {
  *
  * Copyright (c) 2019 Daniel Eden
  */
-
+.title{
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 700;
+}
 @-webkit-keyframes bounce {
   from,
   20%,

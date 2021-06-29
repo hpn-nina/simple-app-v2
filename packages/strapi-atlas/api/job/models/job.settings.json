@@ -46,10 +46,6 @@
         "Years"
       ]
     },
-    "profile": {
-      "via": "job_freelancer",
-      "model": "profile"
-    },
     "rating": {
       "type": "component",
       "repeatable": true,
@@ -81,6 +77,9 @@
     },
     "meta_desc": {
       "type": "text"
+    },
+    "profile": {
+      "model": "profile"
     }
   }
 }

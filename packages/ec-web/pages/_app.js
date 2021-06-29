@@ -6,8 +6,6 @@ import 'swiper/swiper.scss';
 import React, { createContext } from 'react';
 import Header from '../../ec-web/components/Header';
 import Footer from '../../ec-web/components/Footer';
-import StrapiClient from '../../ec-web/lib/strapi-client';
-import axios from 'axios';
 import Head from 'next/head';
 import { useTheme, ThemeProvider, withTheme } from '@emotion/react'
 import { getConfig } from 'next/config'
@@ -16,6 +14,7 @@ import { DefaultSeo } from 'next-seo';
 import SEO from '../next-seo.config'
 import Router from 'next/router'
 import { parseCookies } from "nookies";
+import ContextWrapper from "../context/ContextWrapper";
 
 const theme = {
   breakpoints: [
@@ -44,7 +43,7 @@ function redirectUser(ctx, location){
   }
 }
 
-export default function App({ Component, pageProps, navigation }) {
+export default function App({ Component, pageProps, categoriesItems, userProfile }) {
   const { global } = pageProps;
 
   return (
@@ -58,22 +57,11 @@ export default function App({ Component, pageProps, navigation }) {
           <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,300;0,400;0,500;0,700;0,800;0,900;1,300;1,400;1,900&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet"/> 
         </Head>
         <GlobalContext.Provider value={global}>
-        <Header
-          onLogout={(...p) => {
-            console.log('-- on logout:', p);
-          }
-          }
-          onCreateAccount={(...p) => {
-            console.log('-- on create acc:', p);
-          }
-          }
-          onLogin={(...p) => {
-            console.log('-- on login:', p);
-          }
-          }
-          user='NULL'
-        />
+        <ContextWrapper categoriesItems={categoriesItems} userProfile={userProfile}>
+        <Header/>
         <Component {...pageProps} />
+        </ContextWrapper>
+        
         
         </GlobalContext.Provider>
         <Footer />
@@ -92,9 +80,13 @@ App.getInitialProps = async ({ Component, ctx }) => {
   const { API_URL } = process.env;
   let pageProps = {};
   const jwt =  parseCookies(ctx).jwt;
+  const user = parseCookies(ctx).user;
 
-  const res = await fetch(`${API_URL}/navigation`);
-  const navigation = await res.json();
+  const res = await fetch(`${API_URL}/categories`);
+  const categoriesItems = await res.json();
+
+  const res2 = await fetch(`${API_URL}/profiles/?user._id=${user}`)
+  const userProfile = await res2.json();
 
   if(Component.getInitialProps){
     pageProps = await Compononent.getInitialProps(ctx)
@@ -108,6 +100,7 @@ App.getInitialProps = async ({ Component, ctx }) => {
 
   return { 
     pageProps,
-    navigation 
+    categoriesItems,
+    userProfile 
   }
 }

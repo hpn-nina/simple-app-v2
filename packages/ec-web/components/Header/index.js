@@ -9,61 +9,48 @@ import NavLink from '../NavLink';
 import axios from 'axios';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Navigation, Pagination, Scrollbar, A11y, Controller } from 'swiper';
+import { destroyCookie } from 'nookies';
+import { useContext } from 'react'
+import HeaderContext from '../../context/HeaderContext';
+import Router from 'next/router';
+import DropdownButton from 'react-bootstrap/DropdownButton'
+import Dropdown from 'react-bootstrap/Dropdown'
 
-class Header extends React.Component{
-  constructor(props){
-    super(props);
-    this.user= props.user;
-    this.onLogout = props.onLogout;
-    this.onLogin = props.onLogin;
-    this.onRegister = props.onRegister;
-    this.state={
-      error: null,
-      isLoaded: false,
-      items: []
-    };
+
+function Header (props) {
+  const { categoriesItems, userProfile } = useContext(HeaderContext);
+  const user=userProfile[0];
+  async function handleLogout(){
+    console.log('Logging out');
+    destroyCookie(null, 'jwt', {
+      path: '/'
+    })
+    destroyCookie(null,'user', {
+      path: '/'
+    })
+    Router.push('/');
+    alert('Thoat thanh cong');
   }
-  componentDidMount(){
-    fetch(`${process.env.API_URL}/categories`)
-    .then(res=>res.json())
-    .then(
-      (result) => {
-        this.setState({
-          isLoaded:true,
-          items: result
-        });
-      },
-      (error) => {
-        this.setState({
-          isLoaded:true,
-          error
-        })
-      }
-    )
-  }
-  render()
-  {
-    const { error, isLoaded, items } = this.state;
-    const { user } = this.user;
-    const { onLogout } = this.onLogout;
-    //const { onLogin } = this.onLogin;
-    //const { onRegister } = this.onRegister;
-    if (error) {
-      return <div>Error: {error.message}</div>;
-    }
-    else if (!isLoaded) {
-        return <div>Loading...</div>;
-    }
-    else {
-    return <header className='popup'>
+  return (
+    <header className='popup'>
     <div className='header'>
       <Logo id='logo'></Logo>
       <div id='headerEnd'>
       {
         user ? (
             <>
-              <div>Hi, {user.username}</div>
-              <Button size='small' onClick={onLogout} label='Log out'/>
+              <div id='headerEndPart'>
+                
+              <DropdownButton id="dropdown-split-basic" variants='info' title={'Hi, ' + user.name}>
+                <Dropdown.Item href="/users">Thông tin người dùng</Dropdown.Item>
+                <Dropdown.Item href="/users/jobs">Quản lý công việc</Dropdown.Item>
+                <Dropdown.Item href="/users/dashboard">Bảng điều khiển</Dropdown.Item>
+                <Dropdown.Item href="/users/message">Tin nhắn</Dropdown.Item>
+                <Dropdown.Divider />
+                <Dropdown.Item><button type='button' onClick = {() => handleLogout()} className='btn btn-secondary'>Log Out</button></Dropdown.Item>
+              </DropdownButton>
+                
+              </div>
             </>
         ) : (
           <>
@@ -85,12 +72,18 @@ class Header extends React.Component{
             
         >
         {
-          items.map(item => <SwiperSlide><NavLink key={item._id} link={item} className='nav-link'></NavLink></SwiperSlide>)
+          categoriesItems ? (categoriesItems.map(item => <SwiperSlide><NavLink key={item._id} link={item} className='nav-link'></NavLink></SwiperSlide>)) : <div></div>
         }
         </Swiper>
     </nav>
     <style jsx>
       {`
+      #dropdown-split-basic{
+        
+      }
+      .btn.btn-secondary{
+        background-color: var(--main-color);
+      }
       header.popup{
         transform: translate3d(0, 0%, 0);
         box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
@@ -125,6 +118,7 @@ class Header extends React.Component{
               > *{
                 margin: 5px;
               }
+              
             }
             border-bottom: 1px solid #CDCDCD;
           }
@@ -133,25 +127,13 @@ class Header extends React.Component{
             margin-bottom: 5%;
             margin-top: 2%;
           }
-          
+          header{
+            z-index: 2;
+          }
       `}
     </style>
   </header>
-    }
-  }
+    )
 }
 
-
-
-Header.propTypes = {
-    user: PropTypes.shape({}),
-    onLogin: PropTypes.func.isRequired,
-    onLogout: PropTypes.func.isRequired,
-    onCreateAccount: PropTypes.func.isRequired,
-    navList: PropTypes.object,
-  };
-  
-Header.defaultProps = {
-    user: null,
-};
 export default Header;

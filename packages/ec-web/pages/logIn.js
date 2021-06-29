@@ -33,6 +33,10 @@ export default function login() {
             maxAge: 30 * 24 * 60 * 60,
             path: '/'
         })
+        setCookie(null, 'user', loginResponse.user._id,{
+            path: '/',
+            maxAge: 30 * 24 * 60 * 60
+        })
         console.log(loginResponse)
         if(loginResponse.jwt){
             alert('Bạn đã đăng nhập thành công')

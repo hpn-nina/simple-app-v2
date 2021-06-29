@@ -67,13 +67,11 @@
     "skills": {
       "type": "text"
     },
-    "job_freelancer": {
-      "via": "profile",
-      "model": "job"
+    "job_freelancers": {
+      "collection": "job"
     },
-    "job_seeker": {
-      "via": "profile",
-      "model": "job-seeker"
+    "job_seekers": {
+      "collection": "job-seeker"
     },
     "favorite_jobs": {
       "collection": "job"

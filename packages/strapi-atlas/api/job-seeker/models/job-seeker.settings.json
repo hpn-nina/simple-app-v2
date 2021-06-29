@@ -68,10 +68,6 @@
     "bonusDesc": {
       "type": "text"
     },
-    "profile": {
-      "via": "job_seeker",
-      "model": "profile"
-    },
     "category": {
       "model": "category"
     },
