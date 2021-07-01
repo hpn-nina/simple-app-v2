@@ -8,10 +8,10 @@ export default function index() {
     return (
         <div className='container'>
             <div className='title'>Quản lý công việc</div>
-            <div className='small-title'><Link href='/users/jobs/createJobs'><a>Tạo công việc cho Freelancer</a></Link></div>
-            <div className='details'>Để có thể tạo công việc mới và quảng bá bản thân, bạn hãy điền đầy đủ những thông tin cần thiết như tên, ngày sinh, giới tính, công việc và những kỹ năng mình có nhé. </div>
             <div className='small-title'><Link href='/users/jobs/myJobs'><a>Công việc của tôi</a></Link></div>
             <div className='detials'>Đây là nơi để bạn tìm kiếm, xem xét và chỉnh sửa những công việc đã đăng của mình. Hãy đảm bảo bài viết cũng như là công việc mà bạn đăng chất lượng nhé, đó sẽ là một phần làm nên danh tiếng của bạn ấy.</div>
+            <div className='small-title'><Link href='/users/jobs/createJobs'><a>Tạo công việc cho Freelancer</a></Link></div>
+            <div className='details'>Để có thể tạo công việc mới và quảng bá bản thân, bạn hãy điền đầy đủ những thông tin cần thiết như tên, ngày sinh, giới tính, công việc và những kỹ năng mình có nhé. </div>
             <div className='small-title'><Link href='/users/jobs/createJobsSeeker'><a>Tạo công việc tìm người làm cho Seeker</a></Link></div>
             <div className='details'>Bạn đang có một ý tưởng, một dự án, một mối quan tâm nào đó mà không thể tự thực hiện? Đừng lo, Simple sẽ hỗ trợ bạn tìm người nhé. Tạo công việc ngay hôm nay thôi!</div>
             <div className='small-title'><Link href='/users/jobs/workingOn'><a>Công việc đang làm</a></Link></div>

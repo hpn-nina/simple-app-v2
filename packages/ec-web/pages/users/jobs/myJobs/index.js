@@ -15,7 +15,7 @@ import Link from 'next/link'
 
 export default function myJobs(props) {
     var count = 0;
-    
+    console.log(props.jwt)
     console.log(props.userId);
     return (
         <div className='container'>
@@ -80,10 +80,8 @@ export default function myJobs(props) {
     )
 }
 
-// export const getSeverSideProps = async () => {
-//     const { userId } = useContext(AuthContext)
-
-
+// export async function getServerSideProps(req, res) {
+//     const {userId} = useContext(AuthContext);
 //     const res = await fetch(`${process.env.API_URL}/jobs/?profile.user=${userId}`);
 //     const dataF = await res.json();
 //     console.log(res);
@@ -95,7 +93,7 @@ export default function myJobs(props) {
 //         props: {
 //             jobsF: dataF,
 //             jobsS: dataS,
-//             userId: userId
+//             jwt: req.cookies
 //         }
 //     }
 // }

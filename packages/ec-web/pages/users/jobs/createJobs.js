@@ -2,168 +2,282 @@ import React from 'react'
 import dynamic from 'next/dynamic'
 import { SeperatePrice } from '../../../utils/format'
 import CategorySelect from '../../../components/CategoriesSelect'
-import { useState } from 'react'
+import { useState, useContext } from 'react'
+import {Row, Form, Col, Button} from 'react-bootstrap'
+import ReactDOM from 'react-dom'
+import AuthContext from '../../../context/AuthContext'
+import Router from 'next/router'
 
 
 export default function createJobs(props) {
+    const { jwt, userProfile } = useContext(AuthContext)
     const [name, setName] = useState('');
     const [desc, setDesc] = useState('');
     const [coverImage, setCoverImage] = useState('');
     const [timeFinish, setTimeFinish] = useState('');
-    const [timeFinishUnit, setTimeFinishUnit] = useState('');
-    const [category, setCategory] = useState('');
+    const [timeFinishUnit, setTimeFinishUnit] = useState('Hours');
+    const [category, setCategory] = useState('60bc4cd9cd3b615898dfef5a');
     const [startingPrice, setStartingPrice] = useState('');
     const [image, setImage] = useState('');
-    const [user, setUser] = useState('');
-    const [option, setOption] = useState([]);
+    const [validated, setValidated] = useState(false);
+    var count = 0;
 
     function addOptions(){
-        var addPlace = document.getElementById('addOption');
-        var html = "<label style='margin-bottom:2%;'>Tên lựa chọn</label><input style='padding: 1%; border-radius:4px; padding: 2% auto ;display: block; width: 100%; height: $input-height;  ;padding: $input-padding-y $input-padding-x; font-size: $font-size-base; line-height: $input-line-height; color: $input-color; background-color: $input-bg; background-clip: padding-box; border: $input-border-width solid $input-border-color;' type='text' className='form-control' placeholder='Tên lựa chọn'></input><label style='margin-bottom:2%;'>Mô tả lựa chọn</label><textarea style='padding: 1%; width: 100%; border-radius: 5px; background-clip: padding-box; display: block;' className='form-control' type='text' placeholder='Mô tả về lựa chọn'></textarea><label style='margin-bottom:2%;'>Giá lựa chọn</label><input style='padding: 1%; width: 100%; border-radius: 5px; background-clip: padding-box; display: block;' type='number' className='form-control'></input>";
-        var add = document.createElement('div');
-        add.className = 'form-group';
-        
-        add.innerHTML = html;
-        addPlace.appendChild(add);
+        var basic = 'addOption';
+        if (count > 0) {
+            basic += count;
+            console.log(basic)
+        }
+        var addPlace = document.getElementById(basic);
+        var elements = <div>
+                            <Form.Group as={Row}>
+                                <Form.Group as={Col}>
+                                        <Form.Label>Tên lựa chọn</Form.Label>
+                                        <Form.Control
+                                            type='text'
+                                            className='optionName'
+                                            required
+                                            ></Form.Control>
+                                </Form.Group>
+                                <Form.Group as={Col}>
+                                        <Form.Label>Giá lựa chọn</Form.Label>
+                                        <Form.Control
+                                            type='number'
+                                            className='optionWage'
+                                            required
+                                            ></Form.Control>
+                                </Form.Group>
+                            </Form.Group>
+                            <Form.Group>
+                                <Form.Label>Mô tả lựa chọn</Form.Label>
+                                <Form.Control
+                                    as='textarea'
+                                    className='optionDesc'
+                                    required
+                                    ></Form.Control>
+                            </Form.Group>
+                        </div>
+        ++count;
+        ReactDOM.render(elements, addPlace);
+    }
+    const checkValidate = (event) => {
+        const form = event.currentTarget;
+        if(form.checkValidity() === false) {
+            event.preventDefault();
+            event.stopPropagation();
+        }
+
+        setValidated(true);
     }
 
-    async function btnClick(){
-        const createJobInfo = {
-            name: name,
-            desc: desc,
-            coverImage: coverImage,
-            startingPrice: startingPrice,
-            timeFinish: timeFinish,
-            timeFinishUnit: timeFinishUnit,
-            rating: [],
-            option: option,
-            category: category,
-            Image: image,
-            meta_title: title,
-            meta_desc: desc
+    async function btnClick(e){
+        checkValidate(e);
+
+        if(validated) {
+            var tempOption = [];
+            var optionNames = document.getElementsByClassName('optionName');
+            var optionWages = document.getElementsByClassName('optionWage');
+            var optionDescs = document.getElementsByClassName('optionDesc');
+            for(var i in optionNames ){
+                if(optionNames[i].value) {    
+                    tempOption.push({
+                        optionName: optionNames[i].value,
+                        wage: optionWages[i].value,
+                        desc: optionDescs[i].value
+                    })
+                }
+            } 
+            var option = tempOption;
+            var formData = new FormData();
+            const createJobInfo = {
+                name: name,
+                desc: desc,
+                startingPrice: startingPrice,
+                timeFinish: timeFinish,
+                timeFinishUnit: timeFinishUnit,
+                rating: [],
+                option: option,
+                category: category,
+                meta_title: name,
+                meta_desc: desc, 
+                profile: userProfile[0]._id
+            }
+            if(coverImage) {
+                formData.append('files.coverImage', coverImage[0], coverImage[0].name)
+            }
+            if(image) {
+                for(var i of image) {
+                    formData.append('files.Image', i, i.name)
+                }
+            }
+            
+            formData.append('data', JSON.stringify(createJobInfo))
+            const res = await fetch(`${process.env.API_URL}/jobs`, {
+                method: "POST",
+                headers: {
+                    "Authorization": `Bearer ${jwt}`
+                },
+                body: formData
+            });
+            if(res.status === 200) {
+                alert('Đã thành công đăng công việc');
+                Router.push('/users/jobs')
+            }
+            
         }
     }
 
     return (
         <div className='container'>
             <div className='title'>Tạo công việc</div>
-            <form name='createJob'>
-                <div className='form-group'>
-                    <label for='name'>Tên công việc</label>
-                    <input className='form-control' type='tetx'  name='name' 
-                    placeholder='Tên công việc'
-                    onChange={e => setName(e.target.value)}
-                    value={name}
-                    required={true}
-                    ></input>
-
-                </div>
-                <div className='form-group'>
-                    <label for='desc'>Mô tả công việc</label>
-                    <textarea className='form-control'
-                    type='text' name ='desc' 
-                    placeholder='Mô tả'
-                    onChange={e => setDesc(e.target.value)}
-                    value={desc}
-                    required={true}
-                    ></textarea>
-
-                </div>
-                <div className='form-group'>
-                    <label for='coverImage'>Ảnh bìa công việc</label>
-                    <input className='form-control' 
-                    type='file' name='coverImage'
-                    onChange={e => setCoverImage(e.target.value)}
-                    value={coverImage}
-                    ></input>
-
-
-                </div>
-                <div className='form-group'>
-                    <label for='startingPrice'>Giá khởi điểm</label>
-                    <input className='form-control' 
-                    type='number' name='timeFinishUnit'
-                    onChange={e=> setStartingPrice(e.target.value)}
-                    value={coverImage}
-                    ></input>
-
-                </div>
-                <div className='form-group time'>
-                    <label for='timeFinish'>Thời gian cần để hoàn thành công việc (Số)</label>
-                    <input className='form-control-sm' type='number' name='timeFinish'></input>
-                    <label for='timeFinishUnit'>Thời gian cần để hoàn thành công việc (Chữ)</label>
-                    <select className='form-control-sm' name='timeFinishUnit'>
-                        <option value='Hours'>Giờ</option>
-                        <option value='Days'>Ngày</option>
-                        <option value='Weeks'>Tuần</option>
-                        <option value='Months'>Tháng</option>
-                        <option value='Years'>Năm</option>
-                    </select>
-                </div>
-                <div className='form-group' name='option'>
-                    Lựa chọn
-                    <br></br>
-                    <label>Tên lựa chọn</label>
-                    <input type='text' className='form-control' placeholder='Tên lựa chọn'></input>
-                    <label>Mô tả lựa chọn</label>
-                    <textarea className='form-control' type='text' placeholder='Mô tả về lựa chọn'></textarea>
-                    <label>Giá lựa chọn</label>
-                    <input type='number' className='form-control'></input>
-                    <div id='addOption'></div>
-                    <button type='button' className='btn btn-outline-light' onClick={() => addOptions()}>Thêm lựa chọn</button>
-                    
-                    
-                </div>
-                <div className='form-group' name='category'>
-                    <label>Hạng mục công việc</label>
-                    <select name='categories' className='form-control'
-                    value={category}
-                    onChange={e => setCategory(e.target.value)}>
-                        {props.categories.map(category => (
+            <Form noValidate validated={validated}>
+                <Form.Group>
+                    <Form.Label>Tên công việc</Form.Label>
+                    <Form.Control
+                        type='text'  
+                        name='name' 
+                        placeholder='Tên công việc'
+                        onChange={e => setName(e.target.value)}
+                        value={name}
+                        required></Form.Control>
+                </Form.Group>
+                <Form.Group>
+                    <Form.Label>Mô tả công việc</Form.Label>
+                    <Form.Control
+                        as='textarea'
+                        placeholder='Mô tả'
+                        onChange={e => setDesc(e.target.value)}
+                        value={desc}
+                        required></Form.Control>
+                </Form.Group>
+                <Row>
+                    <Form.Group as={Col}>
+                        <Form.Label>Ảnh bìa công việc</Form.Label>
+                        <Form.File
+                            name='coverImage'
+                            onChange={(e) => setCoverImage(e.target.files)}
+                            ></Form.File>
+                    </Form.Group>
+                    <Form.Group as={Col}>
+                        <Form.Label>Hình ảnh liên quan</Form.Label>
+                        <Form.File
+                            name='coverImage'
+                            onChange={(e) => setImage(e.target.files)}
+                            multiple></Form.File>
+                    </Form.Group>
+                </Row>
+                <Form.Group>
+                    <Form.Label>Giá khởi điểm</Form.Label>
+                    <Form.Control
+                        type='number' name='startingPrice'
+                        onChange={e=> setStartingPrice(e.target.value)}
+                        value={startingPrice}
+                        required></Form.Control>
+                </Form.Group>
+                <Row>
+                    <Form.Group as={Col}>
+                        <Form.Label>Thời gian cần để hoàn thành công việc (Số)</Form.Label>
+                        <Form.Control
+                            type='number'
+                            required
+                            value={timeFinish}
+                            onChange={(e) => setTimeFinish(e.target.value)}></Form.Control>
+                    </Form.Group>
+                    <Form.Group as={Col}>
+                        <Form.Label>Thời gian cần để hoàn thành công việc (Chữ)</Form.Label>
+                        <Form.Control
+                            as='select'
+                            value={timeFinishUnit}
+                            onChange={(e) => setTimeFinishUnit(e.target.value)}
+                            defaultValue='Hours'>
+                            <option value='Hours'>Giờ</option>
+                            <option value='Days'>Ngày</option>
+                            <option value='Weeks'>Tuần</option>
+                            <option value='Months'>Tháng</option>
+                            <option value='Years'>Năm</option>
+                        </Form.Control>
+                    </Form.Group>
+                </Row>
+                <Form.Group>
+                    <Form.Label>Hạng mục công việc</Form.Label>
+                    <Form.Control
+                        as='select'
+                        required
+                        value={category}
+                        onChange={e => setCategory(e.target.value)}
+                        defaultValue={props.categories[0].id}
+                        >
+                            {props.categories.map(category => (
                             <option value={category.id}>{category.name}</option>
-                        ))}
-                    </select>
-
+                            ))}
+                        </Form.Control>
+                </Form.Group>
+                <div className='option'>
+                    <Form.Group custom>
+                                <div className='optionTitle'>Lựa chọn</div>
+                        <Form.Group as={Row}>
+                            <Form.Group as={Col}>
+                                    <Form.Label>Tên lựa chọn</Form.Label>
+                                    <Form.Control
+                                        type='text'
+                                        className='optionName'
+                                        required
+                                        ></Form.Control>
+                            </Form.Group>
+                            <Form.Group as={Col}>
+                                    <Form.Label>Giá lựa chọn</Form.Label>
+                                    <Form.Control
+                                        type='number'
+                                        className='optionWage'
+                                        required
+                                        ></Form.Control>
+                            </Form.Group>
+                        </Form.Group>
+                        <Form.Group>
+                            <Form.Label>Mô tả lựa chọn</Form.Label>
+                            <Form.Control
+                                as='textarea'
+                                className='optionDesc'
+                                required
+                                ></Form.Control>
+                        </Form.Group>
+                        <div id='addOption'></div>
+                        <div id='addOption1'></div>
+                        <div id='addOption2'></div>
+                        <div id='addOption3'></div>
+                        <div id='addOption4'></div>
+                        <div id='addOption5'></div>
+                        <div id='addOption6'></div>
+                        <button type='button' className='btn btn-outline-light' onClick={() => addOptions()}>Thêm lựa chọn</button>
+                    </Form.Group>
                 </div>
-                <div className='form-group'>
-                    <label for='Image'>Những hình ảnh liên quan</label>
-                    <input className='form-control' type='file' multiple='true'></input>
-
-                </div>
-                <div className='form-group'>
-                    <button type='button' className='btn btn-outline-danger' onClick={() => btnClick()}>Tạo công việc</button>
-                </div>
-            </form>
+                <Row>
+                    <Button variant='danger' onClick={(e) => btnClick(e)}>Đăng công việc</Button>
+                </Row>
+            </Form>
 
             <style jsx>
                 {`
-                    
-                    .form-group{
+                    .option{
                         margin: 5%;
-                        label{
-                            margin-bottom: 2%;
+                        background-color: var(--main-color);
+                        border-radius: 10px;
+                        .optionTitle{
+                            font-weight: 600;
+                            font-size: 1.5rem;
+                            margin-left: auto;
+                            margin-right: auto;
                         }
-                        
-                    }
-                    .form-group > button {
-                        width: 100%;
-                        margin: auto;
-                    }
-                    .form-group.time{
-                        label{
-                            margin-right: 2%;
+                        .btn{
+                            width: 100%;
+                            border-radius: 10px;
                         }
-                        input, select{
-                            width: 80px;
-                        }
-                    }
-                    #addOPtion{
-                        
                     }
                     .btn.btn-outline-light{
                         color: black;
                         margin-top: 2%;
                     }
+                    
                 `}
             </style>
         </div>

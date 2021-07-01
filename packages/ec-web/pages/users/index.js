@@ -167,7 +167,6 @@ export default function UserProfile(props) {
     )
 }
 
-const { publicRuntimeConfig } = getConfig();
 
 export async function getStaticProps(ctx) {
     const {API_URL} = process.env;
@@ -201,7 +200,7 @@ export async function getStaticProps(ctx) {
         props: {
             data: data,
             authData: loginResponse,
-            user: user
+            user: user,
         }
     }
 }
