@@ -1,0 +1,136 @@
+[
+    {
+        "wage": "500000",
+        "wageUnit": "perJob",
+        "numberOfPeople": 1,
+        "timeFinishUnit": "Weeks",
+        "Image": [],
+        "_id": "60dc95f4b3fe9d3dec3ecacc",
+        "timeFinish": 1,
+        "meta_desc": "Tôi cần gấp một người code web thuê, việc nhẹ nhàng lương cao.",
+        "name": "Code web",
+        "expireDate": "2021-07-15",
+        "bonusDesc": "Làm tốt tôi sẽ gửi bạn thêm tiền",
+        "desc": "Tôi cần gấp một người code web thuê, việc nhẹ nhàng lương cao.",
+        "meta_title": "Code web",
+        "createdAt": "2021-06-30T16:04:04.391Z",
+        "updatedAt": "2021-06-30T16:04:04.867Z",
+        "__v": 0,
+        "category": {
+            "_id": "60bc4e45cd3b615898dfef65",
+            "name": "Lifestyle",
+            "desc": "Tận hưởng cuộc sống với những điều tốt nhất.",
+            "createdAt": "2021-06-06T04:25:41.371Z",
+            "updatedAt": "2021-06-28T05:22:17.244Z",
+            "__v": 0,
+            "coverImg": {
+                "_id": "60bb2330d95d093580afd30f",
+                "name": "lifestyle.jpg",
+                "alternativeText": "",
+                "caption": "",
+                "hash": "lifestyle_663cb4c7b7",
+                "ext": ".jpg",
+                "mime": "image/jpeg",
+                "size": 62.05,
+                "width": 509,
+                "height": 339,
+                "url": "/uploads/lifestyle_663cb4c7b7.jpg",
+                "formats": {
+                    "thumbnail": {
+                        "name": "thumbnail_lifestyle.jpg",
+                        "hash": "thumbnail_lifestyle_663cb4c7b7",
+                        "ext": ".jpg",
+                        "mime": "image/jpeg",
+                        "width": 234,
+                        "height": 156,
+                        "size": 12.6,
+                        "path": null,
+                        "url": "/uploads/thumbnail_lifestyle_663cb4c7b7.jpg"
+                    },
+                    "small": {
+                        "name": "small_lifestyle.jpg",
+                        "hash": "small_lifestyle_663cb4c7b7",
+                        "ext": ".jpg",
+                        "mime": "image/jpeg",
+                        "width": 500,
+                        "height": 333,
+                        "size": 57.4,
+                        "path": null,
+                        "url": "/uploads/small_lifestyle_663cb4c7b7.jpg"
+                    }
+                },
+                "provider": "local",
+                "related": [],
+                "createdAt": "2021-06-05T07:09:36.565Z",
+                "updatedAt": "2021-06-19T03:35:00.505Z",
+                "__v": 0,
+                "id": "60bb2330d95d093580afd30f"
+            },
+            "subCategories": [
+                {
+                    "_id": "60cd65e8476885480c816479",
+                    "kind": "ComponentSubCategorySubCategory",
+                    "ref": "60bfc3ef41052e3998c54a5b"
+                },
+                {
+                    "_id": "60cd65e8476885480c81647a",
+                    "kind": "ComponentSubCategorySubCategory",
+                    "ref": "60bfc3ef41052e3998c54a5c"
+                },
+                {
+                    "_id": "60cd65e8476885480c81647b",
+                    "kind": "ComponentSubCategorySubCategory",
+                    "ref": "60bfc4f041052e3998c54a6c"
+                }
+            ],
+            "Slug": "lifestyle",
+            "job": null,
+            "id": "60bc4e45cd3b615898dfef65"
+        },
+        "profile": {
+            "birthday": "0001-01-01",
+            "sex": "Female",
+            "job_freelancers": [],
+            "job_seekers": [],
+            "favorite_jobs": [],
+            "_id": "60cc19862de1286164893380",
+            "skills": "Python, HTML, CSS",
+            "certificates": "Coursera:\n- Computational Thinking for Problem Solving",
+            "phone": "0352024820",
+            "interests": "Fashion, Arts, Tech",
+            "occupations": "Student at UIT ",
+            "rating": [],
+            "createdAt": "2021-06-18T03:56:54.499Z",
+            "updatedAt": "2021-06-27T03:15:45.655Z",
+            "__v": 0,
+            "avatar": {
+                "_id": "60bb2b1eb1c6195748c715df",
+                "name": "HuynhPhuongNhu_image.jpg",
+                "alternativeText": "",
+                "caption": "",
+                "hash": "Huynh_Phuong_Nhu_image_ea1f33fd73",
+                "ext": ".jpg",
+                "mime": "image/png",
+                "size": 20.15,
+                "width": 157,
+                "height": 156,
+                "url": "/uploads/Huynh_Phuong_Nhu_image_ea1f33fd73.jpg",
+                "formats": {},
+                "provider": "local",
+                "related": [
+                    "60ba33b66831c55ab46b25fe",
+                    "60cc19862de1286164893380"
+                ],
+                "createdAt": "2021-06-05T07:43:26.353Z",
+                "updatedAt": "2021-06-24T09:07:25.911Z",
+                "__v": 0,
+                "id": "60bb2b1eb1c6195748c715df"
+            },
+            "user": "60cb6799982533458c8e5e32",
+            "job_freelancer": "60d192e811029c30b4b39094",
+            "name": "Huynh Phuong Nhu",
+            "id": "60cc19862de1286164893380"
+        },
+        "id": "60dc95f4b3fe9d3dec3ecacc"
+    }
+]

@@ -1,25 +1,23 @@
 import React from 'react';
-
-import Link from 'next/link'
-import PropTypes from 'prop-types';
 import Logo from '../Logo/index';
-import { Button } from '../button';
-import StrapiClient from '../../lib/strapi-client';
 import NavLink from '../NavLink';
-import axios from 'axios';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import SwiperCore, { Navigation, Pagination, Scrollbar, A11y, Controller } from 'swiper';
-import { destroyCookie } from 'nookies';
+import { destroyCookie, setCookie } from 'nookies';
 import { useContext } from 'react'
 import HeaderContext from '../../context/HeaderContext';
 import Router from 'next/router';
 import DropdownButton from 'react-bootstrap/DropdownButton'
 import Dropdown from 'react-bootstrap/Dropdown'
+import AuthContext from '../../context/AuthContext';
 
 
 function Header (props) {
-  const { categoriesItems, userProfile } = useContext(HeaderContext);
-  const user=userProfile[0];
+  const { categoriesItems } = useContext(HeaderContext);
+  const { logoutUser, userProfile, jwt } = useContext(AuthContext);
+  var user = null;
+  if(jwt){
+    user = userProfile[0];
+  }
   async function handleLogout(){
     console.log('Logging out');
     destroyCookie(null, 'jwt', {
@@ -28,8 +26,9 @@ function Header (props) {
     destroyCookie(null,'user', {
       path: '/'
     })
-    Router.push('/');
-    alert('Thoat thanh cong');
+    
+    logoutUser();
+    
   }
   return (
     <header className='popup'>

@@ -1,0 +1,275 @@
+[
+    {
+        "timeFinishUnit": "Weeks",
+        "Image": [
+            {
+                "_id": "60d1928e11029c30b4b39092",
+                "name": "flat-landing-page-template-ux-ui-design_124046-54.jpg",
+                "alternativeText": "",
+                "caption": "",
+                "hash": "flat_landing_page_template_ux_ui_design_124046_54_90d04fa541",
+                "ext": ".jpg",
+                "mime": "image/jpeg",
+                "size": 23.77,
+                "width": 626,
+                "height": 417,
+                "url": "/uploads/flat_landing_page_template_ux_ui_design_124046_54_90d04fa541.jpg",
+                "formats": {
+                    "thumbnail": {
+                        "name": "thumbnail_flat-landing-page-template-ux-ui-design_124046-54.jpg",
+                        "hash": "thumbnail_flat_landing_page_template_ux_ui_design_124046_54_90d04fa541",
+                        "ext": ".jpg",
+                        "mime": "image/jpeg",
+                        "width": 234,
+                        "height": 156,
+                        "size": 5.57,
+                        "path": null,
+                        "url": "/uploads/thumbnail_flat_landing_page_template_ux_ui_design_124046_54_90d04fa541.jpg"
+                    },
+                    "small": {
+                        "name": "small_flat-landing-page-template-ux-ui-design_124046-54.jpg",
+                        "hash": "small_flat_landing_page_template_ux_ui_design_124046_54_90d04fa541",
+                        "ext": ".jpg",
+                        "mime": "image/jpeg",
+                        "width": 500,
+                        "height": 333,
+                        "size": 16.95,
+                        "path": null,
+                        "url": "/uploads/small_flat_landing_page_template_ux_ui_design_124046_54_90d04fa541.jpg"
+                    }
+                },
+                "provider": "local",
+                "related": [
+                    "60da718cff1a7f4c505758bf",
+                    "60da718cff1a7f4c505758bf"
+                ],
+                "createdAt": "2021-06-22T07:34:38.633Z",
+                "updatedAt": "2021-06-29T01:04:12.568Z",
+                "__v": 0,
+                "id": "60d1928e11029c30b4b39092"
+            },
+            {
+                "_id": "60d1928e11029c30b4b39091",
+                "name": "index.jpg",
+                "alternativeText": "",
+                "caption": "",
+                "hash": "index_a3f6f41d8b",
+                "ext": ".jpg",
+                "mime": "image/jpeg",
+                "size": 6.75,
+                "width": 259,
+                "height": 194,
+                "url": "/uploads/index_a3f6f41d8b.jpg",
+                "formats": {
+                    "thumbnail": {
+                        "name": "thumbnail_index.jpg",
+                        "hash": "thumbnail_index_a3f6f41d8b",
+                        "ext": ".jpg",
+                        "mime": "image/jpeg",
+                        "width": 208,
+                        "height": 156,
+                        "size": 6.39,
+                        "path": null,
+                        "url": "/uploads/thumbnail_index_a3f6f41d8b.jpg"
+                    }
+                },
+                "provider": "local",
+                "related": [
+                    "60da718cff1a7f4c505758bf"
+                ],
+                "createdAt": "2021-06-22T07:34:38.614Z",
+                "updatedAt": "2021-06-29T01:04:12.568Z",
+                "__v": 0,
+                "id": "60d1928e11029c30b4b39091"
+            }
+        ],
+        "_id": "60da718cff1a7f4c505758bf",
+        "meta_desc": "Quality products come with quality viewing, we can do all types of UI/UX design according to your choice, come with us now.",
+        "meta_title": "UI/UX Design",
+        "timeFinish": 2,
+        "startingPrice": "30000",
+        "desc": "Quality products come with quality viewing, we can do all types of UI/UX design according to your choice, come with us now.",
+        "name": "UI/UX Design",
+        "rating": [],
+        "option": [
+            {
+                "optionName": "Basic",
+                "wage": "30000",
+                "_id": "60da718cff1a7f4c505758c0",
+                "desc": "Basic 2 screen.",
+                "__v": 0,
+                "id": "60da718cff1a7f4c505758c0"
+            },
+            {
+                "optionName": "Premium",
+                "wage": "1000000",
+                "_id": "60db5e90d81f2913a01e774c",
+                "desc": "More beautiful 10 screen options.",
+                "__v": 0,
+                "id": "60db5e90d81f2913a01e774c"
+            }
+        ],
+        "createdAt": "2021-06-29T01:04:12.253Z",
+        "updatedAt": "2021-06-29T17:55:29.180Z",
+        "__v": 1,
+        "category": {
+            "_id": "60bc4d5acd3b615898dfef5d",
+            "name": "Graphics & Design",
+            "desc": "Cung cấp những hình ảnh sáng tạo bậc nhất từ mọi nơi trên thế giới.",
+            "createdAt": "2021-06-06T04:21:46.500Z",
+            "updatedAt": "2021-06-29T17:55:29.131Z",
+            "__v": 0,
+            "coverImg": {
+                "_id": "60dac0c1ff1a7f4c505758c5",
+                "name": "images.jpg",
+                "alternativeText": "",
+                "caption": "",
+                "hash": "images_1e82a401cb",
+                "ext": ".jpg",
+                "mime": "image/jpeg",
+                "size": 4.67,
+                "width": 259,
+                "height": 194,
+                "url": "/uploads/images_1e82a401cb.jpg",
+                "formats": {
+                    "thumbnail": {
+                        "name": "thumbnail_images.jpg",
+                        "hash": "thumbnail_images_1e82a401cb",
+                        "ext": ".jpg",
+                        "mime": "image/jpeg",
+                        "width": 208,
+                        "height": 156,
+                        "size": 3.96,
+                        "path": null,
+                        "url": "/uploads/thumbnail_images_1e82a401cb.jpg"
+                    }
+                },
+                "provider": "local",
+                "related": [
+                    "60bc4d5acd3b615898dfef5d"
+                ],
+                "createdAt": "2021-06-29T06:42:09.830Z",
+                "updatedAt": "2021-06-29T06:42:17.208Z",
+                "__v": 0,
+                "id": "60dac0c1ff1a7f4c505758c5"
+            },
+            "subCategories": [
+                {
+                    "_id": "60cb07459f937a3ec0938d33",
+                    "kind": "ComponentSubCategorySubCategory",
+                    "ref": "60bfc31b41052e3998c54a52"
+                },
+                {
+                    "_id": "60cb07459f937a3ec0938d34",
+                    "kind": "ComponentSubCategorySubCategory",
+                    "ref": "60bfc31b41052e3998c54a53"
+                },
+                {
+                    "_id": "60cb07459f937a3ec0938d35",
+                    "kind": "ComponentSubCategorySubCategory",
+                    "ref": "60bfc31b41052e3998c54a54"
+                },
+                {
+                    "_id": "60cb07459f937a3ec0938d36",
+                    "kind": "ComponentSubCategorySubCategory",
+                    "ref": "60cb07459f937a3ec0938d31"
+                }
+            ],
+            "Slug": "graphics-and-design",
+            "job": "60da718cff1a7f4c505758bf",
+            "id": "60bc4d5acd3b615898dfef5d"
+        },
+        "coverImage": {
+            "_id": "60d1928e11029c30b4b39092",
+            "name": "flat-landing-page-template-ux-ui-design_124046-54.jpg",
+            "alternativeText": "",
+            "caption": "",
+            "hash": "flat_landing_page_template_ux_ui_design_124046_54_90d04fa541",
+            "ext": ".jpg",
+            "mime": "image/jpeg",
+            "size": 23.77,
+            "width": 626,
+            "height": 417,
+            "url": "/uploads/flat_landing_page_template_ux_ui_design_124046_54_90d04fa541.jpg",
+            "formats": {
+                "thumbnail": {
+                    "name": "thumbnail_flat-landing-page-template-ux-ui-design_124046-54.jpg",
+                    "hash": "thumbnail_flat_landing_page_template_ux_ui_design_124046_54_90d04fa541",
+                    "ext": ".jpg",
+                    "mime": "image/jpeg",
+                    "width": 234,
+                    "height": 156,
+                    "size": 5.57,
+                    "path": null,
+                    "url": "/uploads/thumbnail_flat_landing_page_template_ux_ui_design_124046_54_90d04fa541.jpg"
+                },
+                "small": {
+                    "name": "small_flat-landing-page-template-ux-ui-design_124046-54.jpg",
+                    "hash": "small_flat_landing_page_template_ux_ui_design_124046_54_90d04fa541",
+                    "ext": ".jpg",
+                    "mime": "image/jpeg",
+                    "width": 500,
+                    "height": 333,
+                    "size": 16.95,
+                    "path": null,
+                    "url": "/uploads/small_flat_landing_page_template_ux_ui_design_124046_54_90d04fa541.jpg"
+                }
+            },
+            "provider": "local",
+            "related": [
+                "60da718cff1a7f4c505758bf",
+                "60da718cff1a7f4c505758bf"
+            ],
+            "createdAt": "2021-06-22T07:34:38.633Z",
+            "updatedAt": "2021-06-29T01:04:12.568Z",
+            "__v": 0,
+            "id": "60d1928e11029c30b4b39092"
+        },
+        "profile": {
+            "birthday": "1990-01-01",
+            "sex": "Male",
+            "job_freelancers": [],
+            "job_seekers": [],
+            "favorite_jobs": [],
+            "_id": "60cc1a872de1286164893383",
+            "skills": "HTML,CSS,JS,PHP",
+            "certificates": "No",
+            "phone": "028389948",
+            "interests": "Coding",
+            "occupations": "Student at UIT",
+            "rating": [],
+            "createdAt": "2021-06-18T04:01:11.214Z",
+            "updatedAt": "2021-06-28T05:10:01.989Z",
+            "__v": 0,
+            "avatar": {
+                "_id": "60bfc64f41052e3998c54a81",
+                "name": "LeDoanThienNhan_image.jpg",
+                "alternativeText": "",
+                "caption": "",
+                "hash": "Le_Doan_Thien_Nhan_image_37c5c42ab4",
+                "ext": ".jpg",
+                "mime": "image/png",
+                "size": 19.19,
+                "width": 154,
+                "height": 155,
+                "url": "/uploads/Le_Doan_Thien_Nhan_image_37c5c42ab4.jpg",
+                "formats": {},
+                "provider": "local",
+                "related": [
+                    "60cec388ed64ee4f789e0638",
+                    "60cc1a872de1286164893383",
+                    "60cec3f1ed64ee4f789e0639"
+                ],
+                "createdAt": "2021-06-08T19:34:39.220Z",
+                "updatedAt": "2021-06-29T07:44:34.233Z",
+                "__v": 0,
+                "id": "60bfc64f41052e3998c54a81"
+            },
+            "user": "60cc1a1f2de1286164893382",
+            "name": "Lam Thanh Tin",
+            "job_freelancer": "60d1976211029c30b4b390a0",
+            "id": "60cc1a872de1286164893383"
+        },
+        "id": "60da718cff1a7f4c505758bf"
+    }
+]

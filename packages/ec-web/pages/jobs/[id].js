@@ -1,12 +1,12 @@
 import Head from "next/dist/next-server/lib/head";
 import Link from 'next/link';
 import { fromImageToURL, API_URL } from "../../utils/urls";
-import { fromURLToImage } from '../../utils/format';
+import { fromURLToImage, SeperatePrice } from '../../utils/format';
 import Job from '../../components/JobCard'
 import React from 'react'
 import Rating from "../../components/Rating";
 import ProfileCard from "../../components/ProfileCard";
-import { Form, Row, Col, Carousel } from 'react-bootstrap'
+import { Form, Row, Col, Carousel, Modal, Table } from 'react-bootstrap'
 import { useState } from 'react';
 import { useContext } from "react";
 import HeaderContext from "../../context/HeaderContext";
@@ -14,12 +14,12 @@ import Router from 'next/router'
 
 
 const JobDetail = (props) => {
-    const {userProfile} = useContext(HeaderContext);
-    if(userProfile){
-        const user = userProfile[0].user;
+    const { userProfile, jwt } = useContext(HeaderContext);
+    if(userProfile.length != 0){
+        var user = userProfile[0].user;
     }
     else{
-        const user = null;
+        var user = null;
     }
     
     var AvgRating = 0;
@@ -29,26 +29,54 @@ const JobDetail = (props) => {
         numsOfReviews += 1;
     }
     
-    const [option, setOption] = useState('');
+    const [option, setOption] = useState(props.job.option[0]._id);
     const [note, setNote] = useState('');
-
+    
 
     async function buyJobs(){
-        if(!user){
-            const buyJobInfo = {
-                seeker: user._id,
+        if(user){
+            var pickedOption;
+            for (var i of props.job.option){
+                
+                if(i._id === option){
+                    pickedOption = i;
+                    
+                    break;
+                }
+            }
+            const Info = {
+                seeker: user,
                 job: props.job,
                 note: note,
                 pickedOption: {
-                    optionName: '',
+                    optionName: pickedOption.optionName,
+                    desc: pickedOption.desc,
+                    wage: pickedOption.wage
                 }
-            };
-
+            }
+            console.log(Info);
+            var buy = await fetch(`${API_URL}/transactions`, {
+                method: "POST",
+                headers: {
+                    "Accept": "application/json",
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${jwt}`
+                },
+                body: JSON.stringify(Info)
+            })
+            const res = await buy.json();
+            console.log(res);
+            
         }
         else{
             alert('Bạn phải đăng nhập mới có thể thuê công việc này.');
             Router.push('/login')
         }
+    }
+
+    const handleChange = (e) =>{
+        setOption(e.target.value);
+        
     }
 
     return (
@@ -102,21 +130,48 @@ const JobDetail = (props) => {
                         <div className='time'>
                         Thời gian cần để hoàn thành: {props.job.timeFinish + ' '+ props.job.timeFinishUnit}
                         </div>
+                        <div className='price'>
+                            Giá khởi đầu: {SeperatePrice(props.job.startingPrice)}
+                        </div>
                         <div className='rating'>
                             <Rating rating={AvgRating} numReviews={numsOfReviews}></Rating>
+                        </div>
+                        <div className='option-listing'>
+                            <Table striped bordered hover responsive>
+                                <thead>
+                                    <tr>
+                                        <th>Tên lựa chọn</th>
+                                        <th>Mô tả lựa chọn</th>
+                                        <th>Giá lựa chọn</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {
+                                        props.job.option.map(opt => (
+                                            <tr>
+                                                <td>{opt.optionName}</td>
+                                                <td>{opt.desc}</td>
+                                                <td>{SeperatePrice(opt.wage)}</td>
+                                            </tr>
+                                        ))
+                                    }
+                                </tbody>
+                            </Table>
                         </div>
                         <div>
                             <Form>
                                 <Form.Group as={Row} controlId="optionSelect">
-                                    <Form.Control placeholder='Lựa chọn' as="select" custom>
+                                    <Form.Control placeholder='Lựa chọn' defaultValue={props.job.option[0]} as="select" onChange={e => handleChange(e)}>
                                     {
-                                        props.job.option.map(option => (
-                                        <option data-subtext={option.desc} value={option}
-                                        onChange={e => (setOption(e.value.target))}>{option.optionName}</option>
+                                        props.job.option.map(opt => (
+                                        <option value={opt._id} data-subtext={opt.desc} 
+                                        >{opt.optionName}</option>
+                                        
                                     ))
                                     }
                                     </Form.Control>
-                                    <Form.Control as="textarea"r rows={3} placeholder='Ghi chú'>
+                                    <div id='addPlace'></div>
+                                    <Form.Control as="textarea" rows={3} placeholder='Ghi chú' value={note} onChange={e => setNote(e.target.value)}>
                                     </Form.Control>
                                 </Form.Group>
                             </Form>

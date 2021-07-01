@@ -1,5 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
+import AuthContext from '../../../context/AuthContext'
+import { useContext } from 'react'
 
 
 export default function index() {

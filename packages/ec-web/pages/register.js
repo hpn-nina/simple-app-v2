@@ -3,23 +3,20 @@ import axios from 'axios';
 import { SyntheticEvent, useState } from 'react';
 import Router from 'next/router'
 
-
-function validateEmail(email) {
-    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return re.test(email);
-}
-
-
 export default function register() {
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [name, setName] = useState('');
 
     async function submit (){
         const registerInfo = {
             username: username,
             email: email,
             password: password,
+            profile: {
+                name: name
+            }
         };
 
         const register = await fetch(`http://localhost:1337/auth/local/register`,{
@@ -32,13 +29,14 @@ export default function register() {
         })
 
         const registerResponse = await register.json();
-        console.log(registerResponse)
+        
         if(registerResponse.jwt){
-            alert('Bạn đã tạo tài khoản thành công')
+            
             Router.push('/login');
         }
         else{
             alert(registerResponse.data[0].messages[0].message);
+            Router.push("/register");
         }
         
         
@@ -58,6 +56,9 @@ export default function register() {
                     /> 
                     <input className='form-control' type="password" placeholder="Mật khẩu" className="form__input" required 
                         onChange={e => setPassword(e.target.value)} value={password}
+                    />
+                    <input className='form-control' type="text" placeholder="Tên của bạn" className="form__input" required 
+                        onChange={e => setName(e.target.value)} value={name}
                     />
                 </div>
                 

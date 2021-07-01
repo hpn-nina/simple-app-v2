@@ -17,19 +17,19 @@ export default function UserProfile(props) {
                     <form className='form'>
                     <div className='profile-title'>Thông tin cá nhân</div>
                         <div className='form-group'>
-                            <label for='name'>Họ và tên</label>
+                            <label htmlFor='name'>Họ và tên</label>
                             <input className='form-control' type='text' placeholder='Lâm Thành Tín' defaultValue={props.user ? props.user.profile.name : 'Lâm Thành Tín'}></input>
                         </div>
                         <div className='form-group'>
-                            <label for='phone'>Số điện thoại</label>
+                            <label htmlFor='phone'>Số điện thoại</label>
                             <input className='form-control' type='text' placeholder='0363638292' defaultValue={props.user ? props.user.profile.phone : '0352024820'}></input>
                         </div>
                         <div className='form-group'>
-                            <label for='birthday'>Ngày sinh</label>
+                            <label htmlFor='birthday'>Ngày sinh</label>
                             <input className='form-control' type='date'></input>
                         </div>
                         <div className='form-group'>
-                            <label for='sex'>Giới tính</label>
+                            <label htmlFor='sex'>Giới tính</label>
                             <select className='form-control' id='sex' defaultValue={props.user.profile.sex ? props.user.profile.sex : 'Male'}>
                                 <option>Male</option>
                                 <option>Female</option>
@@ -37,28 +37,28 @@ export default function UserProfile(props) {
                             </select>
                         </div>
                         <div className='form-group'>
-                            <label for='occupations'>Công việc</label>
+                            <label htmlFor='occupations'>Công việc</label>
                             <input type='text' className='form-control' id='occupations' defaultValue={props.user.profile.occupations ? props.user.profile.occupations : '' }></input>
                         </div>
                         <div className='form-group'>
-                            <label for='certificates'>Bằng cấp</label>
+                            <label htmlFor='certificates'>Bằng cấp</label>
                             <textarea className='form-control' id='certificates' defaultValue={props.user.profile.certificates ? props.user.profile.certificates : ''}></textarea>
                         </div>
                         <div className='form-group'>
-                            <label for='skills'>Kỹ năng</label>
+                            <label htmlFor='skills'>Kỹ năng</label>
                             <textarea className='form-control' id='skills' defaultValue={props.user.profile.skills ? props.user.profile.skills : ''}></textarea>
                         </div>
                         
                         <div className='form-group'>
-                            <label for='interests'>Sở thích</label>
+                            <label htmlFor='interests'>Sở thích</label>
                             <textarea className='form-control' id='interests' defaultValue={props.user.profile.interests ? props.user.profile.interests : ''}></textarea>
                         </div>
                         <div className='form-group'>
-                            <label for='interests'>Giới thiệu</label>
+                            <label htmlFor='interests'>Giới thiệu</label>
                             <textarea className='form-control' id='desc' defaultValue={props.user.profile.desc ? props.user.profile.desc : ''}></textarea>
                         </div>
                         <div className='form-group'>
-                            <label for='avatar'>Ảnh đại diện</label>
+                            <label htmlFor='avatar'>Ảnh đại diện</label>
                             <input className='form-control-file' type='file' id='avatar'></input>
                         </div>
                         <div className='form-group'>
