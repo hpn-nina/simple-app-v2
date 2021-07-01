@@ -16,6 +16,8 @@ import Router from 'next/router'
 import { parseCookies } from "nookies";
 import ContextWrapper from "../context/ContextWrapper";
 
+
+
 const theme = {
   breakpoints: [
     '40em', '52em', '64em',

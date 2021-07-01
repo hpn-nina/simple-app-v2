@@ -16,9 +16,9 @@ const JobS = (props) => {
     async function handleDelete() {
         const res = await fetch(`${process.env.API_URL}/job-seekers/${props.id}`, {
             method: "DELETE",
-            "Accept": "application/json",
-            "Content-Type": "application/json",
             headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json",
                 "Authorization": `Bearer ${jwt}`
             }
         })
@@ -39,9 +39,9 @@ const JobS = (props) => {
 
         const res = await fetch(`${process.env.API_URL}/job-seekers/${props.id}`, {
             method: "PUT",
-            "Accept": "application/json",
-            "Content-Type": "application/json",
             headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json",
                 "Authorization": `Bearer ${jwt}`
             },
             body: JSON.stringify(jobInfo)
