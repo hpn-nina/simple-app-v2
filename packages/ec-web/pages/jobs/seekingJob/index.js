@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { SeperatePrice } from '../../../utils/format'
 
 export default function seekingJob(props) {
+    console.log(props.jobs)
     return (
         <div className='container'>
             <div className='title'>Công việc đang tìm kiếm người làm</div>
@@ -13,7 +14,7 @@ export default function seekingJob(props) {
                     props.jobs.map(job => (
                         <Link href={`/jobs/seekingJob/${job._id}`}>
                             <Card style={{width: '18rem'}} key={job._id}>
-                                <Card.Img variant="top" src={process.env.API_URL + job.coverImage.url} />
+                                <Card.Img variant="top" src={job.coverImage ? process.env.API_URL + job.coverImage.url : ''} alt={job.name} />
                                 <Card.Body>
                                     <Card.Title>{job.name}</Card.Title>
                                     <Card.Text>{job.desc}</Card.Text>

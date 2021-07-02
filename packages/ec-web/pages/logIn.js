@@ -4,7 +4,7 @@ import { setCookie } from 'nookies';
 import  Router  from 'next/router';
 import { useContext } from 'react';
 import AuthContext from '../context/AuthContext';
-
+import nookies from 'nookies'
 
 
 export default function login() {
@@ -13,7 +13,7 @@ export default function login() {
     const { API_URL } = process.env;
     const { loginUser } = useContext(AuthContext);
 
-    async function handleLogin() {
+    async function handleLogin(ctx) {
         const loginInfo = {
             identifier: identifier,
             password: password
@@ -32,16 +32,17 @@ export default function login() {
         
         if(loginResponse.jwt){
             alert('Bạn đã đăng nhập thành công');
-            setCookie(null, 'jwt', loginResponse.jwt, {
+            nookies.set(ctx, 'jwt', loginResponse.jwt, {
                 maxAge: 30 * 24 * 60 * 60,
                 path: '/'
-            })
-            setCookie(null, 'user', loginResponse.user._id,{
-                path: '/',
-                maxAge: 30 * 24 * 60 * 60
-            })
+            }) 
+            nookies.set(ctx, 'user', loginResponse.user._id, {
+                maxAge: 30 * 24 * 60 * 60,
+                path: '/'
+            }) 
             
             loginUser()
+
         }
         else{
             alert('Hãy nhập lại');

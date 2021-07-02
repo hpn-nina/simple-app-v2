@@ -9,6 +9,7 @@ import Router from 'next/router';
 import DropdownButton from 'react-bootstrap/DropdownButton'
 import Dropdown from 'react-bootstrap/Dropdown'
 import AuthContext from '../../context/AuthContext';
+import nookies from "nookies"
 
 
 function Header (props) {
@@ -18,14 +19,14 @@ function Header (props) {
   if(jwt){
     user = userProfile[0];
   }
-  async function handleLogout(){
+  async function handleLogout(ctx){
     console.log('Logging out');
-    destroyCookie(null, 'jwt', {
+    nookies.destroy(ctx, 'jwt', {
       path: '/'
     })
-    destroyCookie(null,'user', {
+    nookies.destroy(ctx, 'user', {
       path: '/'
-    })
+    } )
     
     logoutUser();
     

@@ -9,17 +9,8 @@ import { setCookie } from 'nookies';
 
 export default function WholeSideNav(props) {
     const router = useRouter();
-    const { user, logoutUser } = useContext(AuthContext);
-    const { userProfile } = useContext(HeaderContext);
-    if(!user){
-        return(
-            <div className=''>
-                
-            </div>
-        );
-    }
-    else{
-        var name = '';
+    const { userId, logoutUser, userProfile } = useContext(AuthContext);
+    var name = '';
         switch(router.pathname){
             case '/users':
                 name = 'index';
@@ -37,15 +28,14 @@ export default function WholeSideNav(props) {
                 name = '';
                 break;
         }
-        async function handleLogout(){
+        async function handleLogout(ctx){
             console.log('Logging out');
-            destroyCookie(null, 'jwt', {
-            path: '/'
+            nookies.destroy(ctx, 'jwt', {
+              path: '/'
             })
-            destroyCookie(null,'user', {
-            path: '/'
-            })
-            
+            nookies.destroy(ctx, 'user', {
+              path: '/'
+            } )
             logoutUser();
             
         }
@@ -53,7 +43,7 @@ export default function WholeSideNav(props) {
             <div className='side-nav'>
                     <div className='ava-name-card'>
                         <div className='ava-box'>
-                            <img className='ava' src={userProfile ? `${process.env.API_URL}`+ userProfile.avatar.url : `${process.env.API_URL} + '/uploads/Le_Doan_Thien_Nhan_image_37c5c42ab4.jpg'`}  width='50px' height='50px'></img>
+                            <img className='ava' src={userProfile.avatar ? `${process.env.API_URL}`+ userProfile.avatar.url : `${process.env.API_URL} + '/uploads/Le_Doan_Thien_Nhan_image_37c5c42ab4.jpg'`}  width='50px' height='50px'></img>
                         </div>
                         <div className='name-tag'>
                             { userProfile ? userProfile.name : "Lâm Thành Tín"}
@@ -115,5 +105,4 @@ export default function WholeSideNav(props) {
                 </style>
             </div>
         )
-    }
 }
