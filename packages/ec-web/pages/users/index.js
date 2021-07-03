@@ -16,7 +16,40 @@ export default function UserProfile(props) {
     const [sex, setSex] = useState(props.user.sex);
     const [certificates, setCertificates] = useState(props.user.certificates);
     const [skills, setSkills] = useState(props.user.desc);
-    
+    const [interests, setInterests] = useState(props.user.interests);
+    const [desc, setDesc] = useState(props.user.desc);
+    const [avatarImage, setAvatarImage] = useState('');
+
+    async function handleSave(e, ctx) {
+        e.preventDefault();
+        var formData = new FormData();
+        const dataSend = {
+            name: name, 
+            phone: phone,
+            birthday: birthday,
+            occupations: occupations,
+            sex: sex,
+            certificates: certificates,
+            skills: skills,
+            interests: interests,
+            desc: desc,
+        }
+        formData.append('data', JSON.stringify(dataSend));
+        console.log(dataSend)
+        if(avatarImage) {
+            formData.append('files.avatar', avatarImage[0], avatarImage[0].name)
+        }
+        
+        const send = await fetch(`${process.env.API_URL}/profiles/${props.user.id}`, {
+            method: "PUT",
+            headers: {
+                "Authorization": `Bearer ${props.jwt}`
+            },
+            body: formData
+        })
+        console.log(send);
+    }
+
     return (
         <div className='body-container'>
             <div className='content-container'>
@@ -28,19 +61,27 @@ export default function UserProfile(props) {
                     <div className='profile-title'>Thông tin cá nhân</div>
                         <div className='form-group'>
                             <label htmlFor='name'>Họ và tên</label>
-                            <input className='form-control' type='text' placeholder='Lâm Thành Tín' defaultValue={props.user ? props.user.name : 'Lâm Thành Tín'}></input>
+                            <input 
+                                value={name}
+                                onChange={(e) => setName(e.target.value)} className='form-control' type='text' placeholder='Lâm Thành Tín' defaultValue={props.user ? props.user.name : 'Lâm Thành Tín'}></input>
                         </div>
                         <div className='form-group'>
                             <label htmlFor='phone'>Số điện thoại</label>
-                            <input className='form-control' type='text' placeholder='0363638292' defaultValue={props.user ? props.user.phone : '0352024820'}></input>
+                            <input 
+                                value={phone}
+                                onChange={(e) => setPhone(e.target.value)} className='form-control' type='text' placeholder='0363638292' defaultValue={props.user ? props.user.phone : '0352024820'}></input>
                         </div>
                         <div className='form-group'>
                             <label htmlFor='birthday'>Ngày sinh</label>
-                            <input className='form-control' type='date'></input>
+                            <input 
+                                value={birthday}
+                                onChange={(e) => setBirthday(e.target.value)} className='form-control' type='date'></input>
                         </div>
                         <div className='form-group'>
                             <label htmlFor='sex'>Giới tính</label>
-                            <select className='form-control' id='sex' defaultValue={props.user.sex ? props.user.sex : 'Male'}>
+                            <select 
+                                value={sex}
+                                onChange={(e) => setSex(e.target.value)} className='form-control' id='sex' defaultValue={props.user.sex ? props.user.sex : 'Male'}>
                                 <option>Male</option>
                                 <option>Female</option>
                                 <option>Other</option>
@@ -48,31 +89,42 @@ export default function UserProfile(props) {
                         </div>
                         <div className='form-group'>
                             <label htmlFor='occupations'>Công việc</label>
-                            <input type='text' className='form-control' id='occupations' defaultValue={props.user.occupations ? props.user.occupations : '' }></input>
+                            <input 
+                                value={occupations}
+                                onChange={(e) => setOccupations(e.target.value)} type='text' className='form-control' id='occupations' defaultValue={props.user.occupations ? props.user.occupations : '' }></input>
                         </div>
                         <div className='form-group'>
                             <label htmlFor='certificates'>Bằng cấp</label>
-                            <textarea className='form-control' id='certificates' defaultValue={props.user.certificates ? props.user.certificates : ''}></textarea>
+                            <textarea 
+                                value={certificates}
+                                onChange={(e) => setCertificates(e.target.value)} className='form-control' id='certificates' defaultValue={props.user.certificates ? props.user.certificates : ''}></textarea>
                         </div>
                         <div className='form-group'>
                             <label htmlFor='skills'>Kỹ năng</label>
-                            <textarea className='form-control' id='skills' defaultValue={props.user.skills ? props.user.skills : ''}></textarea>
+                            <textarea 
+                                value={skills}
+                                onChange={(e) => setSkills(e.target.value)} className='form-control' id='skills' defaultValue={props.user.skills ? props.user.skills : ''}></textarea>
                         </div>
                         
                         <div className='form-group'>
                             <label htmlFor='interests'>Sở thích</label>
-                            <textarea className='form-control' id='interests' defaultValue={props.user.interests ? props.user.interests : ''}></textarea>
+                            <textarea 
+                                value={interests}
+                                onChange={(e) => setInterests(e.target.value)} className='form-control' id='interests' defaultValue={props.user.interests ? props.user.interests : ''}></textarea>
                         </div>
                         <div className='form-group'>
-                            <label htmlFor='interests'>Giới thiệu</label>
-                            <textarea className='form-control' id='desc' defaultValue={props.user.desc ? props.user.desc : ''}></textarea>
+                            <label htmlFor='desc'>Giới thiệu</label>
+                            <textarea 
+                                value={desc}
+                                onChange={(e) => setDesc(e.target.value)} className='form-control' id='desc' defaultValue={props.user.desc ? props.user.desc : ''}></textarea>
                         </div>
                         <div className='form-group'>
                             <label htmlFor='avatar'>Ảnh đại diện</label>
-                            <input className='form-control-file' type='file' id='avatar'></input>
+                            <input 
+                                onChange={(e) => setAvatarImage(e.target.files)} className='form-control-file' type='file' id='avatar'></input>
                         </div>
                         <div className='form-group'>
-                            <button className='btn btn-outline-danger' type='button'>Lưu</button>
+                            <button className='btn btn-outline-danger' onClick={(e) => handleSave(e)} type='button'>Lưu</button>
                         </div>
                     </form>
                     <div className='profile-details'>
@@ -195,6 +247,7 @@ export const getServerSideProps = async({req, res}) => {
     return {
         props: {
             user: dataProfile[0],
+            userId, jwt
         },
     };
 }

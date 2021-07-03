@@ -27,7 +27,8 @@
         "Male",
         "Female",
         "Other"
-      ]
+      ],
+      "default": "Other"
     },
     "occupations": {
       "type": "text"

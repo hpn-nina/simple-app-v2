@@ -41,6 +41,7 @@ export default function createJobsSeeker() {
                 profile: userProfile[0]._id,
                 category: category
             }
+            
             var formData = new FormData();
             if(coverImage) {
                 formData.append('files.coverImage', coverImage[0], coverImage[0].name)
