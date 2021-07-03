@@ -1,6 +1,7 @@
 import React from 'react'
 import WholeSideNav from '../../components/WholeSideNav'
-
+import StatisticBoard from '../../components/StatisticBoard'
+import NoteBoard from '../../components/NoteBoard'
 export default function dashboard(props) {
     return (
         <div className='body-container'>
@@ -10,7 +11,14 @@ export default function dashboard(props) {
             <div className='main-body'>
                 <div className='main-content'>
                     <div className='title'>Bảng điều khiển</div>
-                    
+                    <br></br>
+                    <div className='own-container'>
+                        <StatisticBoard statistic={[[0,'Tổng số công việc của bạn'],[0, 'Tổng thu nhập'],[0, 'Tổng chi tiêu'],[0, 'Tổng công việc đang làm'],[1, 'Tổng số công việc đang mua'],[0, 'Tổng số công việc đang tìm người làm']]}/>
+                    </div>
+                    <br></br>
+                    <div>
+                        <NoteBoard/>
+                    </div>
                 </div>
             </div>
             
