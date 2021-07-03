@@ -26,10 +26,10 @@ export default function myJobs(props) {
                         <th>Giá khởi điểm</th>
                     </thead>
                     <tbody>
-                        { props.jobF ? props.jobF.map(job => (
+                        { props.jobsF ? props.jobsF.map(job => (
                             <tr>
                                 <td>{++count}</td>
-                                <td><Link href={`/users/jobs/myJobs/jobF/${job._id}`}>{job.name}</Link></td>
+                                <td><Link href={`/users/jobs/myJobs/jobsF/${job._id}`}>{job.name}</Link></td>
                                 <td>{job.option.map(option => (
                                     <p>{option.optionName}</p>
                                 ))}</td>
@@ -51,7 +51,7 @@ export default function myJobs(props) {
                         <th>Tiền lương</th>
                     </thead>
                     <tbody>
-                        { props.jobS ? props.jobS.map(job => (
+                        { props.jobsS ? props.jobsS.map(job => (
                             <tr>
                                 <td>{++count}</td>
                                 <td><Link href={`/users/jobs/myJobs/jobSeek/${job._id}`}>{job.name}</Link></td>
@@ -81,17 +81,19 @@ export async function getServerSideProps({req, res}) {
     const session = await getSession({req});
 
     const userId = session.id;
-    const res = await fetch(`${process.env.API_URL}/jobs/?profile.user=${userId}`);
-    const dataF = await res.json();
-    console.log(res);
+    const jwt = session.jwt;
+    const res1 = await fetch(`${process.env.API_URL}/jobs/?profile.user=${userId}`);
+    const dataF = await res1.json();
 
-    const res1 = await fetch(`${process.env.API_URL}/job-seekers/?profile.user=${userId}`);
-    const dataS = await res1.json();
+
+    const res2 = await fetch(`${process.env.API_URL}/job-seekers/?profile.user=${userId}`);
+    const dataS = await res2.json();
 
     return {
         props: {
             jobsF: dataF,
             jobsS: dataS,
+            jwt
         }
     }
 }
