@@ -44,12 +44,6 @@
       "required": false,
       "pluginOptions": {}
     },
-    "user": {
-      "unique": true,
-      "plugin": "users-permissions",
-      "model": "user",
-      "via": "profile"
-    },
     "interests": {
       "type": "text"
     },
@@ -75,6 +69,10 @@
     },
     "favorite_jobs": {
       "collection": "job"
+    },
+    "user": {
+      "plugin": "users-permissions",
+      "model": "user"
     }
   }
 }

@@ -105,7 +105,7 @@ export default function Home(props) {
             onSwiper={(swiper) => <div></div>}
         >
             {
-                profiles.profiles.map(card => (<SwiperSlide><FreelancerCard key={card._id} card={card} className='h-100' ></FreelancerCard></SwiperSlide>))
+                profiles.profiles.map(card => (card.skills ? <SwiperSlide><FreelancerCard key={card._id} card={card} className='h-100' ></FreelancerCard></SwiperSlide> : <></>))
             }
             
         </Swiper>

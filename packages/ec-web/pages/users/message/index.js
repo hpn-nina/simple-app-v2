@@ -1,5 +1,9 @@
 import React from 'react'
-import WholeSideNav from '../../components/WholeSideNav'
+import WholeSideNav from '../../../components/WholeSideNav'
+import {faPlus} from '@fortawesome/free-solid-svg-icons'
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import Link from 'next/link'
+import {Button, Row, Col} from 'react-bootstrap'
 
 export default function Message(props) {
     return (
@@ -10,7 +14,18 @@ export default function Message(props) {
             <div className='main-body'>
                 <div className='main-content'>
                     <div className='title'>Tin nhắn</div>
-                    
+                    <br></br>
+                    <div className='myMessages'>
+                        <Row>
+                            <Col><div className='myMessTitle'>Tin nhắn của tôi</div></Col>
+                            <Col>
+                                <div className='addButton'>
+                                    <Link href='/users/message/createMessage'><Button><FontAwesomeIcon icon={faPlus}/> Tạo tin nhắn mới</Button></Link>
+                                </div>
+                            </Col>
+                        </Row>
+                    </div>
+
                 </div>
             </div>
             
@@ -58,6 +73,7 @@ export default function Message(props) {
                             
                         }
                     }
+                    
                 }
                 `}
 

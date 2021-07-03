@@ -6,6 +6,8 @@ import AuthContext from '../../context/AuthContext';
 import HeaderContext from '../../context/HeaderContext';
 import Link from 'next/link'
 import { setCookie } from 'nookies';
+import nookies from 'nookies';
+import { getSession, signIn, signOut } from "next-auth/client";
 
 export default function WholeSideNav(props) {
     const router = useRouter();
@@ -28,7 +30,8 @@ export default function WholeSideNav(props) {
                 name = '';
                 break;
         }
-        async function handleLogout(ctx){
+        async function handleLogout(e, ctx){
+            e.preventDefault();
             console.log('Logging out');
             nookies.destroy(ctx, 'jwt', {
               path: '/'
@@ -36,6 +39,7 @@ export default function WholeSideNav(props) {
             nookies.destroy(ctx, 'user', {
               path: '/'
             } )
+            signOut();
             logoutUser();
             
         }
@@ -52,7 +56,7 @@ export default function WholeSideNav(props) {
                     <div className='nav'> 
                         <SideNav active={name}></SideNav>
                         <div className='logoutbtn'>
-                            <button className='btn' type='button' onClick={() => handleLogout()}>Đăng xuất</button>
+                            <Link href='/api/auth/signout'><button className='btn' type='button' onClick={(e) => handleLogout(e)}>Đăng xuất</button></Link>
                         </div>
                     </div>
                 <style jsx>

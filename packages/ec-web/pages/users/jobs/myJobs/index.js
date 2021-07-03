@@ -5,9 +5,8 @@ import AuthContext from '../../../../context/AuthContext';
 import HeaderContext from '../../../../context/HeaderContext';
 import fetch from 'isomorphic-unfetch'
 import parseCookie from 'nookies'
-import jobF from './jobF.json'
-import jobS from './jobS.json'
 import Link from 'next/link'
+import { getSession } from 'next-auth/client'
 
 // Listing things that is needed a table contains datas: 
 // name of jobs and its option 
@@ -15,8 +14,6 @@ import Link from 'next/link'
 
 export default function myJobs(props) {
     var count = 0;
-    console.log(props.jwt)
-    console.log(props.userId);
     return (
         <div className='container'>
             <div className='Freelancer'>
@@ -29,7 +26,7 @@ export default function myJobs(props) {
                         <th>Giá khởi điểm</th>
                     </thead>
                     <tbody>
-                        { jobF ? jobF.map(job => (
+                        { props.jobF ? props.jobF.map(job => (
                             <tr>
                                 <td>{++count}</td>
                                 <td><Link href={`/users/jobs/myJobs/jobF/${job._id}`}>{job.name}</Link></td>
@@ -54,7 +51,7 @@ export default function myJobs(props) {
                         <th>Tiền lương</th>
                     </thead>
                     <tbody>
-                        { jobS ? jobS.map(job => (
+                        { props.jobS ? props.jobS.map(job => (
                             <tr>
                                 <td>{++count}</td>
                                 <td><Link href={`/users/jobs/myJobs/jobSeek/${job._id}`}>{job.name}</Link></td>
@@ -80,20 +77,21 @@ export default function myJobs(props) {
     )
 }
 
-// export async function getServerSideProps(req, res) {
-//     const {userId} = useContext(AuthContext);
-//     const res = await fetch(`${process.env.API_URL}/jobs/?profile.user=${userId}`);
-//     const dataF = await res.json();
-//     console.log(res);
+export async function getServerSideProps({req, res}) {
+    const session = await getSession({req});
 
-//     const res1 = await fetch(`${process.env.API_URL}/job-seekers/?profile.user=${userId}`);
-//     const dataS = await res1.json();
+    const userId = session.id;
+    const res = await fetch(`${process.env.API_URL}/jobs/?profile.user=${userId}`);
+    const dataF = await res.json();
+    console.log(res);
 
-//     return {
-//         props: {
-//             jobsF: dataF,
-//             jobsS: dataS,
-//             jwt: req.cookies
-//         }
-//     }
-// }
+    const res1 = await fetch(`${process.env.API_URL}/job-seekers/?profile.user=${userId}`);
+    const dataS = await res1.json();
+
+    return {
+        props: {
+            jobsF: dataF,
+            jobsS: dataS,
+        }
+    }
+}

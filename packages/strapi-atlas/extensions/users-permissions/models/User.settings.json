@@ -63,13 +63,12 @@
       "via": "user",
       "model": "checkout-info"
     },
-    "profile": {
-      "via": "user",
-      "model": "profile"
-    },
     "transactions": {
       "via": "seeker",
       "collection": "transaction"
+    },
+    "profile": {
+      "model": "profile"
     }
   }
 }

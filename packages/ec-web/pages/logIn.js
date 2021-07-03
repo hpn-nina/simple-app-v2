@@ -3,11 +3,88 @@ import { useState } from 'react';
 import { setCookie } from 'nookies';
 import  Router  from 'next/router';
 import { useContext } from 'react';
+import Head from 'next/head';
+import Link from "next/link";
 import AuthContext from '../context/AuthContext';
 import nookies from 'nookies'
+import { getSession, signIn, signOut } from "next-auth/client";
+import { takeUsernameFromEmail } from '../utils/format'
 
 
-export default function login() {
+const Login = (props) => {
+
+    
+    // const signInButtonNode = () => {
+    //     if (session) {
+    //       return false;
+    //     }
+    
+    //     return (
+    //       <div>
+    //         <Link href="/api/auth/signin">
+    //           <button
+    //             onClick={(e) => {
+    //               e.preventDefault();
+    //               signIn();
+    //             }}
+    //           >
+    //             Sign In
+    //           </button>
+    //         </Link>
+    //       </div>
+    //     );
+    //   };
+    
+    //   const signOutButtonNode = () => {
+    //     if (!session) {
+    //       return false;
+    //     }
+    
+    //     return (
+    //       <div>
+    //         <Link href="/api/auth/signout">
+    //           <button
+    //             onClick={(e) => {
+    //               e.preventDefault();
+    //               signOut();
+    //             }}
+    //           >
+    //             Sign Out
+    //           </button>
+    //         </Link>
+    //       </div>
+    //     );
+    //   };
+    
+    //   if (!session) {
+    //     return (
+    //       <div className="hero">
+    //         <div className="navbar">
+    //           {signOutButtonNode()}
+    //           {signInButtonNode()}
+    //         </div>
+    //         <div className="text">
+    //           You aren't authorized to view this page
+    //         </div>
+    //       </div>
+    //     )
+    //   }
+    
+    //   return (
+    //     <div className="hero">
+    //       <Head>
+    //         <title>Index Page</title>
+    //       </Head>
+    //       <div className="navbar">
+    //         {signOutButtonNode()}
+    //         {signInButtonNode()}
+    //       </div>
+    //       <div className="text">
+    //         Hello world
+    //       </div>
+    //     </div>
+    //   );
+    // };
     const [identifier, setIdentifier] = useState('');
     const [password, setPassword] = useState('');
     const { API_URL } = process.env;
@@ -48,6 +125,56 @@ export default function login() {
             alert('Hãy nhập lại');
         }
     };
+    if(props.session) {
+        const settingData = async (ctx) => {
+            nookies.set(ctx, 'jwt', props.session.jwt, {
+                maxAge: 30 * 24 * 60 * 60,
+                path: '/'
+            }) 
+            nookies.set(ctx, 'user', props.session.id, {
+                maxAge: 30 * 24 * 60 * 60,
+                path: '/'
+            }) 
+            const userData = await fetch(`${process.env.API_URL}/users/me`, {
+                method: 'GET',
+                headers: {
+                    "Authorization": `Bearer ${props.session.jwt}`
+                }
+            })
+            const user = await userData.json()
+            if(!user.profile) {
+                //First check if there is a profile in record, if not, created one
+                const data = {
+                    name: props.session.user.name, 
+                    user: user
+                }
+                const profile = await fetch(`${process.env.API_URL}/profiles`, {
+                    method: "POST",
+                    headers: {
+                        "Accept": "application/json",
+                        "Content-Type": "application/json",
+                        "Authorization": `Bearer ${props.session.jwt}`
+                    },
+                    body: JSON.stringify(data)
+                })
+                const response = await profile.json();
+                //Then using the profile just created and link it to the user
+                const UpdateUser = await fetch(`${process.env.API_URL}/users/${props.session.id}`,{
+                    method: "PUT",
+                    headers: {
+                        "Accept": "application/json",
+                        "Content-Type": "application/json",
+                        "Authorization": `Bearer ${props.session.jwt}`
+                    },
+                    body: JSON.stringify({profile: response})
+                });
+                console.log(UpdateUser);
+            }
+            return 'End';
+        }
+        settingData().then(x => console.log(x));
+        loginUser();
+    }
 
     return (
         <div className='login-pg'>
@@ -75,8 +202,12 @@ export default function login() {
                     <label htmlFor='checkbox'>Nhớ tài khoản</label>
                 </div>
                 <button className="center btn block btn-outline-danger" type='button' onClick={() => handleLogin()} >Đăng nhập</button>
+                <Link href="/api/auth/signin">
+                    <button className='btn block btn-outline-secondary' type='button'  onClick={(e) => { e.preventDefault(); signIn(); }} > Đăng nhập với Goggle</button>
+                </Link>
                 <div className='forgot'><a href='/forgotPassword'>Quên mật khẩu?</a> Hãy nhấn vào đây để tìm lại mật khẩu ngay nhé!</div>
             </form>
+            
             <style jsx>
                 {
                     `
@@ -161,4 +292,16 @@ export default function login() {
 
         </div>
     )
+    
 }
+
+export const getServerSideProps = async({req}) => {
+    const session = await getSession({ req });
+    return {
+        props: {
+        session,
+        },
+    };
+}
+
+export default Login

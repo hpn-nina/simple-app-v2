@@ -31,9 +31,9 @@
       "component": "address.billing-address"
     },
     "user": {
+      "via": "checkout_info",
       "plugin": "users-permissions",
-      "model": "user",
-      "via": "checkout_info"
+      "model": "user"
     }
   }
 }

@@ -5,7 +5,7 @@ export default function FreelancerCard(props) {
     return (
         <div key={props._id} className='card '>
             <a href={'/profiles/' + props.card._id}>
-            <img className='card-img-top' alt={props.card.name} src={API_URL + props.card.avatar.url}></img>
+            <img className='card-img-top' alt={props.card.name} src={props.card.avatar ? API_URL + props.card.avatar.url : '/'}></img>
             <div className='card-body'>
                 <div className='card-title'>{props.card.user.username}</div>
                 <div className='card-text'>{props.card.skills}</div>

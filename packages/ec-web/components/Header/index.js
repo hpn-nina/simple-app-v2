@@ -10,6 +10,8 @@ import DropdownButton from 'react-bootstrap/DropdownButton'
 import Dropdown from 'react-bootstrap/Dropdown'
 import AuthContext from '../../context/AuthContext';
 import nookies from "nookies"
+import Link from 'next/link'
+import { signOut } from 'next-auth/client'
 
 
 function Header (props) {
@@ -19,7 +21,8 @@ function Header (props) {
   if(jwt){
     user = userProfile[0];
   }
-  async function handleLogout(ctx){
+  async function handleLogout(e, ctx){
+    e.preventDefault();
     console.log('Logging out');
     nookies.destroy(ctx, 'jwt', {
       path: '/'
@@ -27,10 +30,10 @@ function Header (props) {
     nookies.destroy(ctx, 'user', {
       path: '/'
     } )
-    
+    signOut();
     logoutUser();
     
-  }
+}
   return (
     <header className='popup'>
     <div className='header'>
@@ -47,7 +50,7 @@ function Header (props) {
                 <Dropdown.Item href="/users/dashboard">Bảng điều khiển</Dropdown.Item>
                 <Dropdown.Item href="/users/message">Tin nhắn</Dropdown.Item>
                 <Dropdown.Divider />
-                <Dropdown.Item><button type='button' onClick = {() => handleLogout()} className='btn btn-secondary'>Log Out</button></Dropdown.Item>
+                <Dropdown.Item><Link href='/api/auth/signout'><button type='button' onClick = {(e) => handleLogout(e)} className='btn btn-secondary'>Log Out</button></Link></Dropdown.Item>
               </DropdownButton>
                 
               </div>
