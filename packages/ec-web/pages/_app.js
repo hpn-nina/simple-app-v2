@@ -21,6 +21,7 @@ import "nprogress/nprogress.css"
 import dynamic from 'next/dynamic'
 
 
+
 const TopProgressBar = dynamic(
   () => {
     return import("components/TopProgressBar");
@@ -84,7 +85,8 @@ MyApp.getInitialProps = async ({ Component, ctx}) => {
 
   const res2 = await fetch(`${API_URL}/profiles/?user._id=${userId}`)
   const userProfile = await res2.json();
-  
+
+
   const pageProps = await App.getInitialProps({Component, ctx});
 
   if(!jwt) {

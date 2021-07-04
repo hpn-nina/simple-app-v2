@@ -52,6 +52,15 @@
       "type": "component",
       "repeatable": true,
       "component": "log.update-logs"
+    },
+    "amount": {
+      "type": "biginteger"
+    },
+    "address": {
+      "type": "text"
+    },
+    "city": {
+      "type": "string"
     }
   }
 }

@@ -32,7 +32,7 @@ const JobDetail = (props) => {
     const [option, setOption] = useState(props.job.option[0]._id);
     const [note, setNote] = useState('');
     
-
+    var data;
     async function buyJobs(){
         if(user){
             var pickedOption;
@@ -44,28 +44,10 @@ const JobDetail = (props) => {
                     break;
                 }
             }
-            const Info = {
-                seeker: user,
-                job: props.job,
-                note: note,
-                pickedOption: {
-                    optionName: pickedOption.optionName,
-                    desc: pickedOption.desc,
-                    wage: pickedOption.wage
-                }
+            data = {
+                pickedJob: props.job,
+                pickedOption: pickedOption
             }
-            console.log(Info);
-            var buy = await fetch(`${API_URL}/transactions`, {
-                method: "POST",
-                headers: {
-                    "Accept": "application/json",
-                    "Content-Type": "application/json",
-                    "Authorization": `Bearer ${jwt}`
-                },
-                body: JSON.stringify(Info)
-            })
-            const res = await buy.json();
-            console.log(res);
             
         }
         else{
@@ -177,7 +159,8 @@ const JobDetail = (props) => {
                             </Form>
                         </div>
                         <div>
-                            <button type='button' onClick={() => buyJobs()} className='btn btn-outline-danger'>Thuê công việc</button>
+                            <Link 
+                                href={`/checkout?pickedOption=${option}&pickedJob=${props.job.id}`}><button type='button' onClick={() => buyJobs()} className='btn btn-outline-danger'>Thuê công việc</button></Link>
                         </div>
                     </div>
                     <div className='profile'>
