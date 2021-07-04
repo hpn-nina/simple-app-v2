@@ -44,7 +44,7 @@ const theme = {
 
 export const GlobalContext = createContext({});
 
-export default function MyApp({ Component, pageProps, categoriesItems, userId, jwt, userProfile, cookies }) {
+export default function MyApp({ Component, pageProps, categoriesItems, userId, jwt, userProfile}) {
   const { global } = pageProps;
   return (
     <>
@@ -76,7 +76,7 @@ export default function MyApp({ Component, pageProps, categoriesItems, userId, j
 
 MyApp.getInitialProps = async ({ Component, ctx}) => {
   const { API_URL } = process.env;
-  const cookies = nookies.get(ctx);
+
   const jwt =  nookies.get(ctx).jwt;
   const userId = nookies.get(ctx).user;
 
@@ -96,6 +96,6 @@ MyApp.getInitialProps = async ({ Component, ctx}) => {
   return { 
     pageProps,
     categoriesItems,
-    jwt, userId, userProfile, cookies
+    jwt, userId, userProfile
   }
 }
