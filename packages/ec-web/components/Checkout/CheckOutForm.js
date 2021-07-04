@@ -106,7 +106,7 @@ export default function CheckoutForm(props) {
             })
             if(transaction.status === 200) {
                 alert('Thành công đặt đơn');
-                Router.push('/users/jobs');
+                Router.push('/thankyou');
             }
         }
         catch(error) {
