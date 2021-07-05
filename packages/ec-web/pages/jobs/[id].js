@@ -19,8 +19,16 @@ import { getSession } from 'next-auth/client'
 
 const JobDetail = (props) => {
     const { userProfile, jwt } = useContext(AuthContext);
+    var heart = false;
     if(userProfile.length != 0){
         var user = userProfile[0].user;
+        
+        for(var i of userProfile[0].favorite_jobs) {
+            if(props.job.id === i.id){
+                heart = true;
+                break;
+            }
+        }
     }
     else{
         var user = null;
@@ -67,23 +75,48 @@ const JobDetail = (props) => {
 
     async function handleLike(e) {
         if(user) {
-            var favoriteJobsList = []
-            for(var i of userProfile[0].favorite_jobs) {
-                favoriteJobsList.push(i);
-            }
-            favoriteJobsList.push(props.job);
-            console.log(favoriteJobsList);
-            const favorite = await fetch(`${process.env.API_URL}/profiles/${userProfile[0].id}`, {
-                method: "PUT",
-                headers: {
-                    "Authorization": `Bearer ${jwt}`
-                },
-                body: JSON.stringify({
-                    favorite_jobs: favoriteJobsList
+            if(!heart) {
+                var favoriteJobsList = []
+                for(var i of userProfile[0].favorite_jobs) {
+                    favoriteJobsList.push(i);
+                }
+                favoriteJobsList.push(props.job);
+                const favorite = await fetch(`${process.env.API_URL}/profiles/${userProfile[0].id}`, {
+                    method: "PUT",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": `Bearer ${jwt}`
+                    },
+                    body: JSON.stringify({
+                        favorite_jobs: favoriteJobsList
+                    })
                 })
-            })
-            const re = await favorite.json();
-            console.log(re);
+                const re = await favorite.json();
+                alert('Thêm thành công việc vào công việc yêu thích');
+                Router.push(`/jobs/${props.job.id}`)
+            }
+            else {
+                var favoriteJobsList = []
+                for(var i of userProfile[0].favorite_jobs) {
+                    if(props.job.id != i.id) {
+                        favoriteJobsList.push(i);
+                    }
+                }
+                const favorite = await fetch(`${process.env.API_URL}/profiles/${userProfile[0].id}`, {
+                    method: "PUT",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": `Bearer ${jwt}`
+                    },
+                    body: JSON.stringify({
+                        favorite_jobs: favoriteJobsList
+                    })
+                })
+                const re = await favorite.json();
+                alert('Xóa yêu thích thành công');
+                Router.push(`/jobs/${props.job.id}`)
+            }
+        
         }
         else {
             alert('You must login to do this action.');
@@ -145,11 +178,13 @@ const JobDetail = (props) => {
                         <div className='price'>
                             Giá khởi đầu: {SeperatePrice(props.job.startingPrice)}
                         </div>
-                        <Row>
+                        <Row style={{marginTop: '2%'}}>
                             <Col>
                                 <div className='heart' onClick={(e) => handleLike(e)}>
                                     <span id='heart'>
-                                        <FontAwesomeIcon icon={farHeart}/>
+                                        {
+                                            heart ? <FontAwesomeIcon style={{color: 'red'}} icon={faHeart}/> : <FontAwesomeIcon icon={farHeart}/>
+                                        }
                                     </span>
                                 </div>
                             </Col>
