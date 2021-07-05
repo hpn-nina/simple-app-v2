@@ -9,12 +9,16 @@ import ProfileCard from "../../components/ProfileCard";
 import { Form, Row, Col, Carousel, Modal, Table } from 'react-bootstrap'
 import { useState } from 'react';
 import { useContext } from "react";
-import HeaderContext from "../../context/HeaderContext";
+import AuthContext from "../../context/AuthContext";
 import Router from 'next/router'
+import { faHeart as farHeart } from '@fortawesome/free-regular-svg-icons'
+import { faHeart} from '@fortawesome/free-solid-svg-icons'
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import { getSession } from 'next-auth/client'
 
 
 const JobDetail = (props) => {
-    const { userProfile, jwt } = useContext(HeaderContext);
+    const { userProfile, jwt } = useContext(AuthContext);
     if(userProfile.length != 0){
         var user = userProfile[0].user;
     }
@@ -59,6 +63,32 @@ const JobDetail = (props) => {
     const handleChange = (e) =>{
         setOption(e.target.value);
         
+    }
+
+    async function handleLike(e) {
+        if(user) {
+            var favoriteJobsList = []
+            for(var i of userProfile[0].favorite_jobs) {
+                favoriteJobsList.push(i);
+            }
+            favoriteJobsList.push(props.job);
+            console.log(favoriteJobsList);
+            const favorite = await fetch(`${process.env.API_URL}/profiles/${userProfile[0].id}`, {
+                method: "PUT",
+                headers: {
+                    "Authorization": `Bearer ${jwt}`
+                },
+                body: JSON.stringify({
+                    favorite_jobs: favoriteJobsList
+                })
+            })
+            const re = await favorite.json();
+            console.log(re);
+        }
+        else {
+            alert('You must login to do this action.');
+            Router.push('/login');
+        }
     }
 
     return (
@@ -115,9 +145,21 @@ const JobDetail = (props) => {
                         <div className='price'>
                             Giá khởi đầu: {SeperatePrice(props.job.startingPrice)}
                         </div>
-                        <div className='rating'>
-                            <Rating rating={AvgRating} numReviews={numsOfReviews}></Rating>
-                        </div>
+                        <Row>
+                            <Col>
+                                <div className='heart' onClick={(e) => handleLike(e)}>
+                                    <span id='heart'>
+                                        <FontAwesomeIcon icon={farHeart}/>
+                                    </span>
+                                </div>
+                            </Col>
+                            <Col>
+                                <div className='rating'>
+                                    <Rating rating={AvgRating} numReviews={numsOfReviews}></Rating>
+                                </div>  
+                            </Col>
+                        </Row>
+                        
                         <div className='option-listing'>
                             <Table striped bordered hover responsive>
                                 <thead>
@@ -191,22 +233,23 @@ const JobDetail = (props) => {
                         margin-top: 10%;
                         width: 100%;
                     }
+                    .heart{
+                        width: 25px;
+                    }
                     `}
                 </style>
         </div>
     )
 }
 
-export async function getStaticProps({ params: { id } }) {
+
+export async function getStaticProps({ params: { id }, req, res}) {
      const job_res = await fetch(`${API_URL}/jobs/?id=${id}`);
      const found = await job_res.json();
-
-     
 
      return {
         props: {
            job: found[0],
-           
         }
     }
      

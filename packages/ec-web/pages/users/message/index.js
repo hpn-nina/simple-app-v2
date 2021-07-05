@@ -20,7 +20,7 @@ export default function Message(props) {
                     <div className='myMessages'>
                         <div className='message-container'>
                             <div className='sentMess'>
-                                <div className='small-title'>Tin nhắn đã gửi</div>
+                                <div className='small-title'>Tin nhắn đã gửi mới nhất</div>
                                 <div>
                                     {
                                         props.sentMess.map(mess => (
@@ -30,7 +30,7 @@ export default function Message(props) {
                                 </div>
                             </div>
                             <div className='receivedMess'>
-                                <div className='small-title'>Tin nhắn đã nhận</div>
+                                <div className='small-title'>Tin nhắn đã nhận mới nhất</div>
                                 {
                                     props.receivedMess.map(mess => (
                                         <MessageCard mess={mess} isSend={false}/>

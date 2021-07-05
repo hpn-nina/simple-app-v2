@@ -21,3 +21,37 @@ export const takeUsernameFromEmail = (string) => {
     }
     return username
 }
+
+export const calculateDueDate = (createdAt, timeFinishUnit, timeFinish) => {
+    //Not implement done, still bug
+    var hourOfUnit = 1;
+    switch(timeFinishUnit) {
+        case "Hours":
+            hourOfUnit = 1;
+            break;
+        case "Days":
+            hourOfUnit = 24;
+            break;
+        case "Weeks": 
+            hourOfUnit = 24*7;
+            break;
+        case "Months": 
+            hourOfUnit = 24*31;
+            break;
+        case "Years": 
+            hourOfUnit = 24*31*12;
+            break;
+        default:
+            break;
+
+    }
+    var dateCreate = Date.parse(createdAt); // We get milseconds
+    // Due date would be dateCreate + 3 day + (timeFinishUnit * timeFinish) -> miliseconds
+    var expireDate = dateCreate + (3 * 24 * 3600000) + (Number(timeFinish) * hourOfUnit) * 3600000;
+    expireDate = new Date(expireDate)
+    console.log(expireDate.toLocaleDateString())
+    var d = new Date(1469433907836);
+    d.toLocaleDateString(); // expected output: "7/25/2016"
+    console.log(d)
+    return null
+}

@@ -44,7 +44,8 @@
       "enum": [
         "New",
         "WorkingOn",
-        "Finish"
+        "Finish",
+        "Cancel"
       ],
       "default": "New"
     },
@@ -61,6 +62,10 @@
     },
     "city": {
       "type": "string"
+    },
+    "freelancer": {
+      "plugin": "users-permissions",
+      "model": "user"
     }
   }
 }

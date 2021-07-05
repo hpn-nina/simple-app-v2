@@ -93,7 +93,8 @@ export default function CheckoutForm(props) {
                 amount: pickedOption.wage,
                 paymentStatus: 'paid',
                 transactionStatus: 'New',
-                note: note
+                note: note,
+                freelancer: pickedJob.profile.user
             }
             console.log(dataSend)
             const transaction = await fetch(`${process.env.API_URL}/transactions`, {

@@ -129,8 +129,8 @@ function Header (props) {
           }
           
           .nav{
-            margin-bottom: 5%;
-            margin-top: 2%;
+            margin-bottom: 2%;
+            
           }
           header{
             z-index: 2;

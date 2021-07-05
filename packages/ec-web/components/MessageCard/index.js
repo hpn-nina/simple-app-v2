@@ -10,8 +10,8 @@ export default function MessageCard(props) {
             {
                 props.isSend ? <div className='user'>Người nhận: {props.mess.toUser.username}</div> : <div className='user'>Người gửi: {props.mess.fromUser.username}</div>
             }
-            <div className='sm-title'>Tiêu đề: {props.mess.message[0].title}</div>
-            <div className='message'>Tin nhắn: {props.mess.message[0].message}</div>
+            <div className='sm-title'>Tiêu đề: {props.mess.message[props.mess.message.length - 1].title}</div>
+            <div className='message'>Tin nhắn: {props.mess.message[props.mess.message.length - 1].message}</div>
             <style jsx>
                 {`
                 #con{

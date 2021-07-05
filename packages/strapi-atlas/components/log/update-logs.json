@@ -16,13 +16,17 @@
     "updateDate": {
       "type": "date"
     },
-    "status": {
-      "type": "enumeration",
-      "enum": [
-        "New",
-        "WorkingOn",
-        "Finished"
-      ]
+    "image": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
     }
   }
 }

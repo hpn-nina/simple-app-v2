@@ -7,14 +7,14 @@ export default function ProfileCard(props) {
     return (
         <div className='card-container'>
             <div className='block'>
-                <div className='inline'><img className='card-image' src={API_URL + profile.avatar.url} width='10%'></img></div>
+                <div className='inline'><img alt={props.name} className='card-image' src={props.avatar ? API_URL + profile.avatar.url : '/'} width='10%'></img></div>
                 <div className='name'>{profile.name}</div>
             </div>
             <div className='block skill'>
                 Skill: {profile.skills ? profile.skills: ''}
             </div>
             <div className='block message'>
-                <Link href='/users/message'><a >Nhắn tin với tôi ngay</a></Link>
+                <Link href={`/users/message/createMessage?toUser=${profile.user}`}><a >Nhắn tin với tôi ngay</a></Link>
             </div>
             <style jsx>
                 {`
