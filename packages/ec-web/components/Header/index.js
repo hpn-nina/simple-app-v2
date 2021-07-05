@@ -49,6 +49,7 @@ function Header (props) {
                 <Dropdown.Item href="/users/jobs">Quản lý công việc</Dropdown.Item>
                 <Dropdown.Item href="/users/dashboard">Bảng điều khiển</Dropdown.Item>
                 <Dropdown.Item href="/users/message">Tin nhắn</Dropdown.Item>
+                <Dropdown.Item href='/users/myTransactions'>Đơn hàng của tôi</Dropdown.Item>
                 <Dropdown.Divider />
                 <Dropdown.Item><Link href='/api/auth/signout'><button type='button' onClick = {(e) => handleLogout(e)} className='btn btn-secondary'>Log Out</button></Link></Dropdown.Item>
               </DropdownButton>

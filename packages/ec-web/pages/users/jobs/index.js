@@ -22,8 +22,8 @@ export default function index() {
             <div className='details'>Yêu thích một công việc? Đây là nơi lưu trữ những gì mà bạn quan tâm.</div>
             <div className='small-title'><Link href='/users/jobs/jobsSeekWaiting'><a>Công việc đang chờ người xét</a></Link></div>
             <div className='details'>Nơi quản lý những đơn hàng mà bạn đã mua và đang đợi được chấp nhận</div>
-            <div className='small-title'><Link href='/users/jobs/jobsBuy'><a>Công việc đã mua</a></Link></div>
-            <div className='details'>Nơi quản lý những đơn hàng mà bạn đã mua, nếu như có trạng thái cập nhật thì chúng tôi sẽ báo ngay nhé!</div>
+            <div className='small-title'><Link href='/users/myTransactions'><a>Đơn hàng của bạn</a></Link></div>
+            <div className='details'>Nơi quản lý những đơn hàng mà bạn đã mua, nếu như có trạng thái cập nhật thì chúng tôi sẽ báo ngay nhé! Đây cũng là nơi quản lý những đơn hàng bạn đã đang hoặc chưa làm xong đấy.</div>
             <style jsx>
                 {`
                 .small-title{
