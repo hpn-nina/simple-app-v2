@@ -4,6 +4,7 @@ import {SeperatePrice} from '../../utils/format'
 import Link from 'next/link'
 import AuthContext from '../../context/AuthContext';
 import fecth from 'isomorphic-fetch'
+import  Router  from 'next/router';
 
 export default function TransactionCard(props) {
     const {transaction, count} = props;
@@ -19,7 +20,25 @@ export default function TransactionCard(props) {
             },
             body: JSON.stringify({transactionStatus: "Cancel"})
         })
-        alert('Hủy đơn hàng thành công');
+        if(res1.status === 200) {
+            alert('Hủy đơn hàng thành công');
+            Router.push('/users/myTransactions');
+        }
+    }
+
+    async function handleAccept(e) {
+        const res1 = await fecth(`${process.env.API_URL}/transactions/${transaction._id}`,{
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization" : `Bearer ${jwt}`
+            },
+            body: JSON.stringify({transactionStatus: "WorkingOn"})
+        })
+        if (res1.status === 200) {
+            alert('Nhận đơn hàng thành công');
+            Router.push('/users/myTransactions');
+        }
     }
 
     return (
@@ -41,13 +60,13 @@ export default function TransactionCard(props) {
                 transaction.transactionStatus === 'New' ? (
                     <div className='center btn-zone'>
                         <div className='btn-container'>
+                            <Button onClick={(e) => handleAccept(e)} className='Button'>Nhận đơn hàng này</Button>
+                        </div>
+                        <div className='btn-container'>
                             <Button variant='danger' onClick={(e) => handleDelete(e)}>Hủy đơn hàng</Button>
                         </div>
                         <div className='btn-container'>
                             <Link href='/users/message'><a><Button variant='secondary' className='Button'>Nhắn tin với Freelancer</Button></a></Link>
-                        </div>
-                        <div className='btn-container'>
-                            <Link href={`/jobs/${transaction.job.id}`}><a><Button className='Button'>Xem công việc này</Button></a></Link>
                         </div>
                     </div>
                 ) : (transaction.transactionStatus === 'WorkingOn' ? (
