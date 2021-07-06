@@ -66,6 +66,9 @@
     "freelancer": {
       "plugin": "users-permissions",
       "model": "user"
+    },
+    "expireDate": {
+      "type": "date"
     }
   }
 }

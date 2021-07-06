@@ -8,7 +8,8 @@ import AuthContext from "../../context/AuthContext";
 import Router from 'next/router'
 import axios from 'axios';
 import { CARD_OPTIONS } from "../../constants/stripe/CARD_OPTIONS";
-import { SeperatePrice } from "../../utils/format";
+import { SeperatePrice, calculateDueDate } from "../../utils/format";
+
 
 export default function CheckoutForm(props) {
 
@@ -82,6 +83,8 @@ export default function CheckoutForm(props) {
                 return;
             }
             console.log(error)
+            const today = new Date();
+            const expireDate = calculateDueDate(today, pickedJob.timeFinishUnit, pickedJob.timeFinish)
             const dataSend = {
                 job: pickedJob._id,
                 seeker: userProfile[0].user._id,
@@ -94,7 +97,8 @@ export default function CheckoutForm(props) {
                 paymentStatus: 'paid',
                 transactionStatus: 'New',
                 note: note,
-                freelancer: pickedJob.profile.user
+                freelancer: pickedJob.profile.user,
+                expireDate: expireDate
             }
             console.log(dataSend)
             const transaction = await fetch(`${process.env.API_URL}/transactions`, {

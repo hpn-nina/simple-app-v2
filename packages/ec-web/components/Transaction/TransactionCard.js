@@ -12,10 +12,12 @@ export default function TransactionCard(props) {
 
     async function handleDelete(e, ctx) {
         const res1 = await fecth(`${process.env.API_URL}/transactions/${transaction._id}`,{
-            method: "DELETE",
+            method: "PUT",
             headers: {
+                "Content-Type": "application/json",
                 "Authorization" : `Bearer ${jwt}`
-            }
+            },
+            body: JSON.stringify({transactionStatus: "Cancel"})
         })
         alert('Hủy đơn hàng thành công');
     }
@@ -32,19 +34,56 @@ export default function TransactionCard(props) {
                 <Col>
                     <div>Số tiền: <div className='bold'>{SeperatePrice(transaction.amount)}</div></div>
                     <div>Ngày tạo đơn: {transaction.createdAt ? transaction.createdAt.substring(0,10) : ''}</div>
+                    <div>Trạng thái đơn hàng: <div className='bold inline'>{transaction.transactionStatus}</div></div>
                 </Col>
             </Row>
-            <div className='center btn-zone'>
-                <div className='btn-container'>
-                    <Button variant='danger' onClick={(e) => handleDelete(e)}>Hủy đơn hàng</Button>
-                </div>
-                <div className='btn-container'>
-                    <Link href='/users/message'><a><Button variant='secondary' className='Button'>Nhắn tin với Freelancer</Button></a></Link>
-                </div>
-                <div className='btn-container'>
-                    <Link href={`/jobs/${transaction.job.id}`}><a><Button className='Button'>Xem công việc này</Button></a></Link>
-                </div>
-            </div>
+            {
+                transaction.transactionStatus === 'New' ? (
+                    <div className='center btn-zone'>
+                        <div className='btn-container'>
+                            <Button variant='danger' onClick={(e) => handleDelete(e)}>Hủy đơn hàng</Button>
+                        </div>
+                        <div className='btn-container'>
+                            <Link href='/users/message'><a><Button variant='secondary' className='Button'>Nhắn tin với Freelancer</Button></a></Link>
+                        </div>
+                        <div className='btn-container'>
+                            <Link href={`/jobs/${transaction.job.id}`}><a><Button className='Button'>Xem công việc này</Button></a></Link>
+                        </div>
+                    </div>
+                ) : (transaction.transactionStatus === 'WorkingOn' ? (
+                    <div className='center btn-zone'>
+                        <div className='btn-container'>
+                            <Link href={`/users/jobs/transactions/logs?transaction=${transaction.id}`}><a><Button variant='dark'>Xem thông tin cập nhật đơn hàng</Button></a></Link>
+                        </div>
+                        <div className='btn-container'>
+                            <Link href='/users/message'><a><Button variant='secondary' className='Button'>Nhắn tin với Freelancer</Button></a></Link>
+                        </div>
+                        
+                    </div>
+                ): (transaction.transactionStatus === 'Finish' ? (
+                    (
+                    <div className='center btn-zone'>
+                        <div className='btn-container'>
+                            <Link href={`/users/jobs/transactions/logs?transaction=${transaction.id}`}><a><Button variant='dark'>Xem thông tin cập nhật đơn hàng</Button></a></Link>
+                        </div>
+                        <div className='btn-container'>
+                            <Link href={`/jobs/${transaction.job.id}`}><a><Button className='Button'>Xem công việc này</Button></a></Link>
+                        </div>
+                    </div>
+                    )
+                ) : (
+                    (
+                    <div className='center btn-zone'>
+                        <div className='btn-container'>
+                            <Link href={`/checkout?pickedJob=${transaction.job.id}&pickedOptionName=${transaction.pickedOption.optionName}`}><a><Button variant='danger'>Đặt lại đơn hàng</Button></a></Link>
+                        </div>
+                        <div className='btn-container'>
+                            <Link href={`/jobs/${transaction.job.id}`}><a><Button className='Button'>Xem công việc này</Button></a></Link>
+                        </div>
+                    </div>
+                )
+                )))
+            }
             <style jsx>
                 {`
                 .transaction{

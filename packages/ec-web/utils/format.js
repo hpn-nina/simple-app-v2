@@ -49,9 +49,6 @@ export const calculateDueDate = (createdAt, timeFinishUnit, timeFinish) => {
     // Due date would be dateCreate + 3 day + (timeFinishUnit * timeFinish) -> miliseconds
     var expireDate = dateCreate + (3 * 24 * 3600000) + (Number(timeFinish) * hourOfUnit) * 3600000;
     expireDate = new Date(expireDate)
-    console.log(expireDate.toLocaleDateString())
-    var d = new Date(1469433907836);
-    d.toLocaleDateString(); // expected output: "7/25/2016"
-    console.log(d)
-    return null
+    var result = expireDate
+    return result
 }

@@ -75,11 +75,19 @@ export const getServerSideProps = async({req, res, query}) => {
     const session = await getSession({ req });
     
     const pickedJob = query.pickedJob;
-    const pickedOption = query.pickedOption;
+    var pickedOption = query.pickedOption;
+    const pickedOptionName = query.pickedOptionName;
 
     const job = await fetch(`${process.env.API_URL}/jobs?_id=${pickedJob}`)
     const data = await job.json();
 
+    if(pickedOptionName) {
+        for(var i of data[0].option) {
+            if(i.optionName === pickedOptionName) {
+                pickedOption = i._id;
+            }
+        }
+    }
 
     return {
         props: {
