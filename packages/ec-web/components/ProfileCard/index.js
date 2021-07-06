@@ -6,10 +6,14 @@ export default function ProfileCard(props) {
     const { API_URL } = process.env;
     return (
         <div className='card-container'>
+            <Link href={`/profiles/${profile._id}`}>
+            <a>
             <div className='block'>
-                <div className='inline'><img alt={props.name} className='card-image' src={props.avatar ? API_URL + profile.avatar.url : '/'} width='10%'></img></div>
+                <div className='inline'><img alt={profile.name} className='card-image' src={profile.avatar ? API_URL + profile.avatar.url : '/'} width='10%'></img></div>
                 <div className='name'>{profile.name}</div>
             </div>
+            </a>
+            </Link>
             <div className='block skill'>
                 Skill: {profile.skills ? profile.skills: ''}
             </div>
@@ -28,6 +32,10 @@ export default function ProfileCard(props) {
                     padding: 2%;
                     .card-image{
                         border-radius: 50%;
+                    }
+                    a{
+                        text-decoration: none;
+                        color: black;
                     }
                     .inline{
                         display: inline;

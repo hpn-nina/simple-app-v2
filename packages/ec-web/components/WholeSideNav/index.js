@@ -12,6 +12,7 @@ import { getSession, signIn, signOut } from "next-auth/client";
 export default function WholeSideNav(props) {
     const router = useRouter();
     const { userId, logoutUser, userProfile } = useContext(AuthContext);
+    const userData = userProfile[0];
     var name = '';
         switch(router.pathname){
             case '/users':
@@ -26,6 +27,8 @@ export default function WholeSideNav(props) {
             case '/users/jobs':
                 name = 'jobs';
                 break;
+            case '/users/myTransaction':
+                name='mytransactions';
             default:
                 name = '';
                 break;
@@ -47,10 +50,10 @@ export default function WholeSideNav(props) {
             <div className='side-nav'>
                     <div className='ava-name-card'>
                         <div className='ava-box'>
-                            <img className='ava' src={userProfile.avatar ? `${process.env.API_URL}`+ userProfile.avatar.url : `${process.env.API_URL} + '/uploads/Le_Doan_Thien_Nhan_image_37c5c42ab4.jpg'`}  width='50px' height='50px'></img>
+                            <img className='ava' src={userData.avatar ? `${process.env.API_URL}`+ userData.avatar.url : `${process.env.API_URL} + '/uploads/Le_Doan_Thien_Nhan_image_37c5c42ab4.jpg'`}  width='50px' height='50px'></img>
                         </div>
                         <div className='name-tag'>
-                            { userProfile ? userProfile.name : "Lâm Thành Tín"}
+                            { userData ? userData.name : "Lâm Thành Tín"}
                         </div>
                     </div>
                     <div className='nav'> 

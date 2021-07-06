@@ -86,7 +86,7 @@ export default function TransactionCard(props) {
                             <Link href={`/users/jobs/transactions/logs?transaction=${transaction.id}`}><a><Button variant='dark'>Xem thông tin cập nhật đơn hàng</Button></a></Link>
                         </div>
                         <div className='btn-container'>
-                            <Link href={`/jobs/${transaction.job.id}`}><a><Button className='Button'>Xem công việc này</Button></a></Link>
+                            <Link href={`/users/jobs/rating?id=${transaction.job.id}`}><a><Button className='Button'>Đánh giá công việc này</Button></a></Link>
                         </div>
                     </div>
                     )

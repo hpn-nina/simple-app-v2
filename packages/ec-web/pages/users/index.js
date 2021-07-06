@@ -221,6 +221,9 @@ export default function UserProfile(props) {
                             }
                         }
                     }
+                .change-pass-form{
+                    color: white;
+                }
                 }
                 `}
 

@@ -19,7 +19,7 @@ import ContextWrapper from "../context/ContextWrapper";
 import NProgress from 'nprogress'
 import "nprogress/nprogress.css"
 import dynamic from 'next/dynamic'
-
+import 'react-bootstrap-range-slider/dist/react-bootstrap-range-slider.css';
 
 
 const TopProgressBar = dynamic(

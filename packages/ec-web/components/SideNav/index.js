@@ -37,7 +37,14 @@ export default function SideNav(props) {
                 Quản lý công việc
             </a>
             </Link>
-            
+            <Link href={{
+                pathname:'/users/myTransactions',
+                query:{}
+            }}>
+            <a className={'nav-row ' + (props.active === 'jobs' ? 'active' : '')}>
+                Đơn hàng của tôi
+            </a>
+            </Link>
 
             <style jsx>
                 {`

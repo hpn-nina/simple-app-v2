@@ -9,6 +9,7 @@ import FreelancerCard from '../components/FreelancerCard';
 import { API_URL } from '../utils/urls'
 import JobCard from '../components/JobCard/index.js';
 import { Carousel } from 'react-bootstrap'
+import Link from 'next/link'
 
 
 const client = new StrapiClient()
@@ -61,7 +62,7 @@ export default function Home(props) {
             <form className="input-group">
               <input type="text" className="form-control rounded" placeholder="logo design" aria-label="logo design"
                 aria-describedby="search-addon" onChange={e => setKeyword(e.target.value)} value={keyword}/>
-              <button type="button" className="btn btn-outline-danger" onClick={() => search()}>Tìm kiếm</button>
+              <Link href={`/search?keyword=${keyword}`}><button type="button" className="btn btn-outline-danger" onClick={() => search()}>Tìm kiếm</button></Link>
             </form>
       </section>
       <section
@@ -74,12 +75,14 @@ export default function Home(props) {
                 categories.categories.map((card) => (
                     <Carousel.Item>
                         <img src={API_URL + card.coverImg.url} 
-                            className="d-block w-100"
+                            className="d-block w-75 "
                             alt={card.name}
                         />
                         <Carousel.Caption>
-                            <h3 className='black'>{card.name}</h3>
-                            <p className='black'>{card.desc}</p>
+                            <div className='d-block w-100 right bg-color'>
+                                <h3 className='white'>{card.name}</h3>
+                                <p className='white'>{card.desc}</p>
+                            </div>
                         </Carousel.Caption>
                     </Carousel.Item>
                 ))
@@ -137,11 +140,18 @@ export default function Home(props) {
         
     <style jsx>
         {`
+            .right{
+                text-align: right
+            }
             .swiper-slide{
                 height: auto;
             }
             .black{
                 color: grey;
+                font-weight: 700;
+            }
+            .white{
+                color: white;
                 font-weight: 700;
             }
             .title{
@@ -172,7 +182,12 @@ export default function Home(props) {
             #sec-3036, #sec-3038, #sec-b0f3{
                 padding: 5%;
             }
-            
+            .bg-color{
+                background-color: black;
+                opacity: 50%;
+                padding: 5%;
+                border-radius: 10px;
+            }
             
         `}
     </style>

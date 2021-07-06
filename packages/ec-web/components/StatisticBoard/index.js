@@ -12,7 +12,7 @@ export default function StatisticBoard(props){
                 <div className="u-layout-row">
                     {
                         props.statistic.map(card => (
-                            <StatisticCPN Solieu={card[0]} Mota={card[1]} textcolor2='#465f60'/>
+                            <StatisticCPN Solieu={card[0]} Mota={card[1]} textcolor2='#465f60' pending={card[2] ? card[2] : null}/>
                         ))
                     }
                 </div>

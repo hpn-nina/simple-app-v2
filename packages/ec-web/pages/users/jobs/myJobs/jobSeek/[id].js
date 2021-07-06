@@ -62,7 +62,7 @@ const JobS = (props) => {
     const [numberOfPeople, setNumberOfPeople] = useState(props.job.numberOfPeople);
     return (
         <div className='container'>
-            <div className='arrow'><Link href='/users/jobs/myJobs'><a><FontAwesomeIcon icon={faArrowLeft}/> Quay lại</a></Link></div>
+            <div className='arrow'><Link href='/users/jobs/myJobs'><a><FontAwesomeIcon style={{width: '20px'}} icon={faArrowLeft}/> Quay lại</a></Link></div>
             <Form>
                 <Form.Row>
                     <Form.Group controlId='jobName'>
