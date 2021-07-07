@@ -4,7 +4,7 @@ import { fromImageToURL, API_URL } from "../../utils/urls";
 import { fromURLToImage, SeperatePrice } from '../../utils/format';
 import Job from '../../components/JobCard'
 import React from 'react'
-import Rating from "../../components/Rating";
+import Rating, { RatingComment } from "../../components/Rating";
 import ProfileCard from "../../components/ProfileCard";
 import { Form, Row, Col, Carousel, Modal, Table } from 'react-bootstrap'
 import { useState } from 'react';
@@ -15,6 +15,7 @@ import { faHeart as farHeart } from '@fortawesome/free-regular-svg-icons'
 import { faHeart} from '@fortawesome/free-solid-svg-icons'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import { getSession } from 'next-auth/client'
+
 
 
 const JobDetail = (props) => {
@@ -243,11 +244,29 @@ const JobDetail = (props) => {
                     <div className='profile'>
                         <ProfileCard profile={props.job.profile}></ProfileCard>
                     </div>
+                    <br></br>
+                    
                 </div>
-                
+                <div className='rating-zone'>
+                        <div className='title'>Những nhận xét của khách hàng về công việc này</div>
+                        {
+                            props.job.rating.map(rating => (
+                                <div className='rating'>
+                                    <div>{rating.fromUser.username}</div>
+                                    <RatingComment rating={rating.rating} comment={rating.comment}/>
+                                </div>
+                            ))
+                        }
+                </div>
             </div>
                 <style jsx>
                     {`
+                    .rating-zone{
+                        margin: 10px;
+                    }
+                    .rating{
+                        margin: 10px;
+                    }
                     .title{
                         font-size: 2rem;
                         font-weight: 700;

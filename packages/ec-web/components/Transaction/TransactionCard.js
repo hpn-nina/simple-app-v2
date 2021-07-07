@@ -9,7 +9,7 @@ import  Router  from 'next/router';
 export default function TransactionCard(props) {
     const {transaction, count} = props;
 
-    const { jwt } = useContext(AuthContext);
+    const { jwt, userProfile } = useContext(AuthContext);
 
     async function handleDelete(e, ctx) {
         const res1 = await fecth(`${process.env.API_URL}/transactions/${transaction._id}`,{
@@ -66,7 +66,7 @@ export default function TransactionCard(props) {
                             <Button variant='danger' onClick={(e) => handleDelete(e)}>Hủy đơn hàng</Button>
                         </div>
                         <div className='btn-container'>
-                            <Link href='/users/message'><a><Button variant='secondary' className='Button'>Nhắn tin với Freelancer</Button></a></Link>
+                            <Link href={`users/message/createMessage?toUser=${transaction.freelancer.id}`}><a><Button variant='secondary' className='Button'>Nhắn tin với Freelancer</Button></a></Link>
                         </div>
                     </div>
                 ) : (transaction.transactionStatus === 'WorkingOn' ? (
@@ -75,7 +75,7 @@ export default function TransactionCard(props) {
                             <Link href={`/users/jobs/transactions/logs?transaction=${transaction.id}`}><a><Button variant='dark'>Xem thông tin cập nhật đơn hàng</Button></a></Link>
                         </div>
                         <div className='btn-container'>
-                            <Link href='/users/message'><a><Button variant='secondary' className='Button'>Nhắn tin với Freelancer</Button></a></Link>
+                            <Link href={`users/message/createMessage?toUser=${transaction.freelancer.id}`}><a><Button variant='secondary' className='Button'>Nhắn tin với Freelancer</Button></a></Link>
                         </div>
                         
                     </div>

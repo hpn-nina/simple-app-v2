@@ -16,7 +16,7 @@ export default function Job(props) {
                     <div className='price'>Giá khởi đầu: {SeperatePrice(job.startingPrice)} VND</div>
                 </a>
                 {
-                    job.rating.numReviews ? <Rating rating = {job.rating} numReviews ={job.numReviews}></Rating> : <Rating rating = {0} numReviews ={0}></Rating>
+                    job.rating.length != 0 ? (job.rating.length + ' reviews') : '0 review' 
                 }
             </div>
             </a>

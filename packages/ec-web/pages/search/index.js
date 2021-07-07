@@ -15,6 +15,7 @@ export default function Search(props) {
             <FilterPlace></FilterPlace>
             <div>
             <div className='title'>Từ khóa tìm kiếm: {props.keyword}</div>
+            {props.jobsMeetRequire.length === 0 ? <div className='title-bh'>Xin lỗi chúng tôi không tìm thấy được công việc phù hợp với từ khóa của bạn</div> : ''}
             <div className='result-display'>
                 
                 {
@@ -35,13 +36,18 @@ export default function Search(props) {
                         </a>
                         
                     </div>
-                    ))
+                    ))  
                 }
             </div>
             </div>
 
             <style jsx>
                 {`
+                .title-bh{
+                    color: red;
+                    margin: 5%;
+                    font-size: 1.5rem;
+                }
                 .container {
                     display: grid;
                     grid-template-columns: .3fr 1fr;
@@ -69,6 +75,7 @@ export default function Search(props) {
                     }
                     margin-bottom: 50px;
                 }
+                
                 `}
             </style>
         </div>
