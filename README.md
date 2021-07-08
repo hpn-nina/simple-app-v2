@@ -10,7 +10,7 @@ Then, `lerna bootstrap`
 - Our front-end code is located at: [./packages/ec-web/pages](./packages/ec-web/pages)
 
 For running you can run `npm run dev` in the two folder `ec-web` and `strapi-atlas`\
-We install quite a lot of packages so sorry to be borther your computer
+We install quite a lot of packages so sorry to be bothering.
 
 Initialized from the beginning:
 
