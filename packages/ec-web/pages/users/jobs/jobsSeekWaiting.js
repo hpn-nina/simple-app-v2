@@ -13,7 +13,7 @@ export default function jobsSeekWaiting(props) {
                         props.transactionData.map(transaction => (
                         <TransactionCard transaction={transaction} count={++count}/>
                     ))
-                    ) : <div className='message'>Không tồn tại đơn hàng đang xét của bạn, hãy thực hiện một thnah toán để có thể xem thông tin đơn hàng ở đây nha!</div>
+                    ) : <div className='message'>Không tồn tại đơn hàng đang xét của bạn, hãy thực hiện một thanh toán để có thể xem thông tin đơn hàng ở đây nha!</div>
                 }
             </div>
             <style jsx>

@@ -12,7 +12,7 @@ export default function Search(props) {
             <Head>
                 <title>Search: {props.keyword}</title>
             </Head>
-            <FilterPlace></FilterPlace>
+            <FilterPlace keyword={props.keyword}></FilterPlace>
             <div>
             <div className='title'>Từ khóa tìm kiếm: {props.keyword}</div>
             {props.jobsMeetRequire.length === 0 ? <div className='title-bh'>Xin lỗi chúng tôi không tìm thấy được công việc phù hợp với từ khóa của bạn</div> : ''}
@@ -30,7 +30,7 @@ export default function Search(props) {
                                 <div className='price'>Giá khởi đầu: {SeperatePrice(job.startingPrice)} VND</div>
                             </a>
                             {
-                                job.rating.numReviews ? <Rating rating = {job.rating} numReviews ={job.numReviews}></Rating> : <Rating rating = {0} numReviews ={0}></Rating>
+                                job.rating.length > 0 ? <Rating rating = {job.rating[0].rating} numReviews ={job.rating.length}></Rating> : <Rating rating = {0} numReviews ={0}></Rating>
                             }
                         </div>
                         </a>
@@ -84,7 +84,31 @@ export default function Search(props) {
 
 export const getServerSideProps = async({req, res, query}) => {
     const session = await getSession({ req });
-    var keyword = query.keyword
+    var keyword = query.keyword;
+    var max = 0;
+    if(query.max) {
+        max = query.max;
+    }
+    var categoriesList = []
+    if(query.category0) {
+        categoriesList.push(query.category0);
+    }
+    if(query.category1) {
+        categoriesList.push(query.category1);
+    }
+    if(query.category2) {
+        categoriesList.push(query.category2);
+    }
+    if(query.category3) {
+        categoriesList.push(query.category3);
+    }
+    if(query.category4) {
+        categoriesList.push(query.category4);
+    }
+    if(query.category5) {
+        categoriesList.push(query.category5);
+    }
+    
     //Now we need to get all the jobs for searching keyword in name or desc
     const jobs = await fetch(`${process.env.API_URL}/jobs`);
     const result = await jobs.json();
@@ -97,13 +121,29 @@ export const getServerSideProps = async({req, res, query}) => {
         var name = i.name.toLowerCase();
         var desc = i.desc.toLowerCase();
         if(name.includes(keyword)) {
-            jobsMeetRequire.push(i);
-        }
-        else {
-            if(desc.includes(keyword)) {
+            if(max != 0) {
+                if(i.startingPrice <= max) {
+                    jobsMeetRequire.push(i);
+                }
+            }
+            else{
                 jobsMeetRequire.push(i);
             }
         }
+        else {
+            if(desc.includes(keyword)) {
+                if(max != 0) {
+                    if(i.startingPrice <= max) {
+                        jobsMeetRequire.push(i);
+                    }
+                }
+                else{
+                    jobsMeetRequire.push(i);
+                }
+            }
+        }
+        
+        
     }
     return {
         props: {

@@ -54,7 +54,7 @@ export default function Home(props) {
 
     }
     return (
-        <div className="container">
+        <div className="">
         
         <section className="u-clearfix u-custom-color-1 u-section-1" id="sec-9709" >
 
@@ -117,7 +117,7 @@ export default function Home(props) {
         className="u-clearfix u-custom-color-11 u-section-4"
         id='sec-3038'
       >
-        <div className='title'>Những công việc được yêu thích</div>
+        <div className='title'>Những công việc mới</div>
 
         <Swiper
             spaceBetween={30}

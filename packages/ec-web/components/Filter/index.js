@@ -4,16 +4,41 @@ import { useContext, useState } from 'react'
 import HeaderContext from '../../context/HeaderContext'
 import RangeSlider from 'react-bootstrap-range-slider';
 import { SeperatePrice } from '../../utils/format';
+import Router, {useRouter} from 'next/router'
 
 
 
-export default function FilterPlace() {
-    const [categories, setCategroies] = useState('');
-    const [start, setStart] = useState('');
-    const [end, setEnd] = useState('');
+export default function FilterPlace(props) {
+    
+    var categories = [];
+    var setCategories = (e) => {
+        var options = e.target.options;
+        for(var i = 0; i < options.length; ++i) {
+            if(options[i].selected) {
+                categories.push(options[i].value)
+            }
+        }
+    }
     const [ value, setValue ] = useState(0); 
 
+
     const {categoriesItems} = useContext(HeaderContext);
+
+    const ClickBtn = (e) => {
+        e.preventDefault();
+        var url = `/search/?keyword=${props.keyword}`;
+        var count = 0;
+        console.log(categories);
+        for(var i of categories) {
+            var name = 'category' + count++;
+            url += `&${name}=${i}`;
+        }
+        if(value != 0) {
+            url += `&max=${value}`;
+        }
+        Router.push(url);
+    }
+
     return (
         <div className='filter'>
             <Form>
@@ -22,7 +47,8 @@ export default function FilterPlace() {
                 <Form.Group style={{margin: '4%'}}>
                     <Form.Control 
                         as='select'
-                        multiple>
+                        multiple
+                        onChange={e => setCategories(e)}>
                             {
                                 categoriesItems.map(category => (
                                     <option value={category.id}>{category.name}</option>
@@ -46,7 +72,7 @@ export default function FilterPlace() {
                 </Form.Group>
                 <div style={{margin: '4%'}}>Từ 0 VND đến {SeperatePrice(value)} VND</div>
                 <div className='center'>
-                <Button style={{fontWeight: '800'}} variant='dark'>Lọc kết quả</Button>
+                <Button onClick={e => ClickBtn(e)} style={{fontWeight: '800'}} variant='dark'>Lọc kết quả</Button>
                 </div>
             </Form>
 
