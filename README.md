@@ -1,7 +1,8 @@
 **Contributors:**
 1. *Huỳnh Phương Như* - FE and data model
-2. *Lâm Thành Tín* - Design and FE
-3. *Nguyễn Văn Dũng* - Content Writer and FE
+2. *Lâm Thành Tín* - Design
+3. *Nguyễn Văn Dũng* - Content Writer and advisor
+4. *Lê Đoàn Thiện Nhân* - Graphics and FE
 
 For running, using `npm i` to install.
 Then, `lerna bootstrap`
