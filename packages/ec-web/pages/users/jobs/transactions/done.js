@@ -71,6 +71,27 @@ export default function done(props) {
                 body: formData
             })
             const status = await sendLogs.json();
+
+            //Now this is the process where we update users 'balance
+            const oldBalance = await fetch(`${process.env.API_URL}/users/me`, {
+                method: "GET",
+                headers: {
+                    "Authorization": `Bearer ${props.session.jwt}`
+                }
+            })
+            var newBody = await oldBalance.json();
+            newBody.balance = parseFloat(props.transaction.amount) + parseFloat(newBody.balance);
+            console.log(newBody)
+            const updateBalance = await fetch(`${process.env.API_URL}/users/${props.session.id}`, {
+                method: "PUT",
+                headers: {
+                    "Authorization": `Bearer ${props.session.jwt}`,
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(newBody)
+            });
+            var balanceStatus = await updateBalance.json();
+            console.log(balanceStatus);
             if(status.id) {
                 alert('Gửi cập nhật tiến độ thành công');
             }

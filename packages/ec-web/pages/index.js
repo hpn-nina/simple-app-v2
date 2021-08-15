@@ -54,15 +54,15 @@ export default function Home(props) {
 
     }
     return (
-        <div className="">
+        <div className="Container">
         
         <section className="u-clearfix u-custom-color-1 u-section-1" id="sec-9709" >
 
             <div className='title'>Chúng tôi cung cấp những tài năng bậc nhất. Tìm kiếm ngay!</div>
             <form className="input-group">
-              <input type="text" className="form-control rounded" placeholder="logo design" aria-label="logo design"
+              <input type="text" className="form-control form-control-lg mb-2 rounded" placeholder="logo design" aria-label="logo design"
                 aria-describedby="search-addon" onChange={e => setKeyword(e.target.value)} value={keyword}/>
-              <Link href={`/search?keyword=${keyword}`}><button type="button" className="btn btn-outline-danger" onClick={() => search()}>Tìm kiếm</button></Link>
+              <Link href={`/search?keyword=${keyword}`}><button type="button" className="btn mb-2 btn-outline-danger" onClick={() => search()}>Tìm kiếm</button></Link>
             </form>
       </section>
       <section
@@ -70,6 +70,7 @@ export default function Home(props) {
         id="sec-b0f3"
       >
         <div className='title'>Những phân loại được yêu thích</div>
+        <div className="break"></div>
         <Carousel fade>
             {
                 categories.categories.map((card) => (
@@ -95,10 +96,10 @@ export default function Home(props) {
         id="sec-3036"
       >
         <div className='title'>Những freelancer được yêu thích</div>
-
+        <div className="break"></div>
         <Swiper
             spaceBetween={20}
-            slidesPerView={3} spaceBetween={30} pagination={{
+            slidesPerView={5} spaceBetween={30} pagination={{
             "clickable": true}} 
             className='mySwipper'
             navigation
@@ -118,11 +119,11 @@ export default function Home(props) {
         id='sec-3038'
       >
         <div className='title'>Những công việc mới</div>
-
+        <div className="break"></div>
         <Swiper
             spaceBetween={30}
             direction='horizontal'
-            slidesPerView={4} spaceBetween={30} pagination={{
+            slidesPerView={5} spaceBetween={30} pagination={{
             "clickable": true}} 
             className='mySwipper'
             navigation
@@ -140,6 +141,12 @@ export default function Home(props) {
         
     <style jsx>
         {`
+            .Container{
+                margin: -2% 0px 0px 0px;
+            }
+            .break{
+                margin: 60px;
+            }
             .right{
                 text-align: right
             }
@@ -158,14 +165,15 @@ export default function Home(props) {
                 text-align: center;
                 font-size: 3.5rem;
                 font-weight: 700;
-                margin: 25px;
+                margin: 20px;
                 display: block;
                 padding: 10px;
                 font-family: 'Montserrat';
                 }
             #sec-9709{
                 
-                padding: 20px;
+                height: 800px;
+                padding: 140px 10% 0 10%;
                 padding-bottom: 5%;
                 .input-group{
                 width: 90%;
@@ -182,13 +190,18 @@ export default function Home(props) {
             #sec-3036, #sec-3038, #sec-b0f3{
                 padding: 5%;
             }
+            #sec-3036, #sec-3038{
+                height: 800px;
+            }
             .bg-color{
                 background-color: black;
                 opacity: 50%;
                 padding: 5%;
                 border-radius: 10px;
             }
-            
+            #sec-b0f3{
+                background-color: #f5f5f5;
+            }
         `}
     </style>
     </div>

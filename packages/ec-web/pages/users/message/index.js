@@ -99,7 +99,10 @@ export default function Message(props) {
                             .title{
                                 color: var(--main-color);
                                 font-size: 3rem;
+                                font-weight: 700;
                                 padding-bottom: 1.5rem;
+                                text-align: left;
+                                
                             }
                             
                         }

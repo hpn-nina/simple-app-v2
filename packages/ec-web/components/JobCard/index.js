@@ -47,6 +47,17 @@ export default function Job(props) {
 
 export const BigJob = (props) => {
     const { job } = props;
+    var avg_star = 0;
+    var total_review = 0;
+    if (job.rating.length > 0){
+        for ( var i of job.rating) {
+            avg_star += i.rating;
+            ++total_review;
+        }
+    }
+    if (total_review != 0) {
+        avg_star /= total_review;
+    }
     return (
         <div key = {job._id} className = 'card'>
             <a href = {`/jobs/${job._id}`}>
@@ -58,7 +69,7 @@ export const BigJob = (props) => {
                     <div className='price'>Giá khởi đầu: {SeperatePrice(job.startingPrice)} VND</div>
                 </a>
                 {
-                    job.rating.numReviews ? <Rating rating = {job.rating} numReviews ={job.numReviews}></Rating> : <Rating rating = {0} numReviews ={0}></Rating>
+                    total_review > 0 ? <Rating rating = {avg_star} numReviews ={total_review}></Rating> : <Rating rating = {0} numReviews ={0}></Rating>
                 }
             </div>
             </a>

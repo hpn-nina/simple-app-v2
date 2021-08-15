@@ -156,13 +156,14 @@ export default function UserProfile(props) {
                 {`
                 .bold{
                     font-size: 1.2rem;
-                    font-weigth: 700;
+                    font-weight: 500;
                 }
                 .body-container{
                     width: 100%;
                     height: auto;
                     margin-top: 5%;
                     margin-bottom: 5%;
+                    background-color: white;
                     .content-container{
                         margin-right: auto;
                         margin-left: auto;
@@ -172,11 +173,11 @@ export default function UserProfile(props) {
                         grid-template-columns: .1fr .3fr 1fr .1fr;
 
                         .change-pass-form{
-                            border: 1px solid grey;
+                            border: 1px solid #222831;
                             border-radius: 10px;
                             margin-top: 3%;
                             padding: 3%;
-                            background-color: black;
+                            background-color: #222831;
                             .pass-title{
                                 font-size: 3rem;
                                 padding-bottom: 1.5rem;
@@ -192,9 +193,9 @@ export default function UserProfile(props) {
                             position: relative;
                             .profile{
                                 display: grid;
-                                border: 1px solid grey;
+                                border: 1px solid #F6E5E9;
                                 border-radius: 10px;
-                                background-color: white;
+                                background-color: #F6E5E9;
                                 padding: 3%;
                                 
                                 grid-template-columns: 1fr .3fr;
@@ -209,6 +210,7 @@ export default function UserProfile(props) {
                             .profile-title{
                                 color: var(--main-color);
                                 font-size: 3rem;
+                                font-weight: 500;
                                 padding-bottom: 1.5rem;
                             }
                             .form-group{

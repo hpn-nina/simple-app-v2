@@ -54,19 +54,22 @@ export default function SideNav(props) {
                     grid-templat-rows: 1fr;
                     width: 100%;
                     height: auto;
-                    background-color: var(--main-color);
+                    background-color: #e892b4;
                 }
                 .nav-row{
                     text-align: center;
-                    padding: 5% 0px;
-                    font-weight: 700;
-                    border-bottom: 1px solid white;
+                    padding: 10% 0px;
+                    font-size: 18px;
+                    font-weight: 500;
                     text-decoration: none;
                     color: white;
                 }
+                .nav-row:hover{
+                    background-color: #e17ea9;
+                }
                 .active.nav-row{
                     color: grey;
-                    
+                    background-color: #e17ea6;
                 }
                 `}
             </style>

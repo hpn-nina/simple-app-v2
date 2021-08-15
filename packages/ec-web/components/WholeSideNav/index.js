@@ -68,9 +68,9 @@ export default function WholeSideNav(props) {
                                 width: 95%;
                                 height: 100%;
                                 position: relative;
+                                background-color: #F4F4F4;
+                                border: 1px solid #F4F4F4;
                                 
-                                background-color: white;
-                                border: 1px solid grey;
                                 border-radius: 10px;
                                 .ava-name-card{
                                     display: block;
@@ -92,6 +92,7 @@ export default function WholeSideNav(props) {
                                     
                                     width: 100%;
                                     margin-top: 20%;
+                                    font-weight: 700;
                                     .logoutbtn{
                                         margin-right: auto;
                                         margin-left: auto;

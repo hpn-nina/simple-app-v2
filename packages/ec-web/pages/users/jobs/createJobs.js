@@ -248,7 +248,7 @@ export default function createJobs(props) {
                         <div id='addOption4'></div>
                         <div id='addOption5'></div>
                         <div id='addOption6'></div>
-                        <button type='button' className='btn btn-outline-light' onClick={() => addOptions()}>Thêm lựa chọn</button>
+                        <button type='button' className='btn btn-primary' onClick={() => addOptions()}>Thêm lựa chọn</button>
                     </Form.Group>
                 </div>
                 <Row>
@@ -258,10 +258,11 @@ export default function createJobs(props) {
 
             <style jsx>
                 {`
-                    .option{
+                .option{
                         margin: 5%;
-                        background-color: var(--main-color);
+                        background-color: #F5F5F5;
                         border-radius: 10px;
+                        padding: 30px;
                         .optionTitle{
                             font-weight: 600;
                             font-size: 1.5rem;
@@ -273,9 +274,11 @@ export default function createJobs(props) {
                             border-radius: 10px;
                         }
                     }
-                    .btn.btn-outline-light{
-                        color: black;
+                    .btn.btn-primary{
                         margin-top: 2%;
+                    }
+                    .tittle{
+                        font-weight:500;
                     }
                     
                 `}
