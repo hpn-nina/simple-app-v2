@@ -1,9 +1,12 @@
+# Introduction
 **Contributors:**
-1. *Huỳnh Phương Như* - FE and data model
+1. *Huỳnh Phương Như* - Leader / Build / Document
 2. *Lâm Thành Tín* - Design
-3. *Nguyễn Văn Dũng* - Content Writer and advisor
-4. *Lê Đoàn Thiện Nhân* - Graphics and FE
+3. *Nguyễn Văn Dũng* - Document
 
+You can see the web's details in Product Document [here](./ProductDocument.pdf)
+
+## Running product
 For running, using `npm i` to install.
 Then, `lerna bootstrap`
 
@@ -13,7 +16,8 @@ Then, `lerna bootstrap`
 For running you can run `npm run dev` in the two folder `ec-web` and `strapi-atlas`\
 We install quite a lot of packages so sorry to be bothering.
 
-Initialized from the beginning:
+## Initialize from the beginning
+In case you want to create an NextJS web app with Strapi like us, you can do the following actions:
 
 1. For the whole projects:\
 npm i -g lerna
